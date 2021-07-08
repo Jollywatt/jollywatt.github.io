@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jollywatt</title>
+	<link rel="stylesheet" href="https://latex.now.sh/style.css">
+
+	<!-- KaTeX stylesheet -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
+
+	<!-- The loading of KaTeX is deferred to speed up page rendering -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+
+	<!-- To automatically render math in text elements, include the auto-render extension: -->
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
+
+	<script defer src="physics.katex.min.js"></script>
+
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", () => {
+			renderMathInElement(document.body, {
+				macros: macros_physics,
+				delimiters: [
+					{left: `$$`, right: `$$`, display: true},
+					{left: `$`, right: `$`, display: false},
+				]
+			})
+		})
+	</script>
+
+	<style>
+	html {
+		background-color: #723b44;
+	}
+	body {
+		margin:  50px auto;
+		box-shadow:  0 5px 12px #0007;
+		clip-path: ellipse(100% 100% at 50% 50%);
+	}
+	</style>
+</head>
+<body>
+
+	<h1>Jollywatt’s $i$th Blog</h1>
+
+	$$ \dd f(𝒖)(φ)|_{f(x)} = 𝒖(φ \circ f)|_x $$
+	$$ \dd f(∂_u) = \pdv{f}{u} $$
+	$$ \dd f(∂_i) = \pdv{f}{x^i} $$
+	$$ \dd f(∂_i) = \pdv{f^j}{x^i} ∂_j $$
+	$$ \dd f = \pdv{f^j}{x^i} ∂_j ⊗ \dd x^i $$
+	$$ \dd f = \dd x^i ⊗ \pdv{f}{x^i} $$
+	$$ \qty[\dd f\qty(\pdv{x^i})]^j\pdv{φ(y)}{y^j} = \pdv{x^i}φ(f(x)) $$
+	$$ \qty(\dd f (∂_u))φ \big|_{f(x)} = ∂_u(φ \circ f)\big|_x = \pdv{φ}{y^j}\Big|_{f(x)} \pdv{f^j(x)}{u}$$
+
+</body>
+</html>
