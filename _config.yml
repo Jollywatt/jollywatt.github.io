@@ -21,7 +21,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-katex
+  # - jekyll-katex
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
 title:              'Jollywatt'
@@ -35,4 +35,5 @@ author:             'Joseph A. Wilson'
 
 markdown:           kramdown
 kramdown:
-  math_engine:      katex
+  math_engine:      mathjax
+  # math_engine:      katex

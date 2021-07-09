@@ -36,7 +36,7 @@ A collection of succinct but wonderfully satisfying mathematical results.
 <a href="mailto:joseph.wilson@sms.vuw.ac.nz">Email me</a> if you have a good one!
 Try to guess the blanks. Click to <button onclick="toggleSpoilers()">toggle “spoilers”.</button>
 
-- **(Fundamental theorem of finite Abelian groups)** <br>
+- *(Fundamental theorem of finite Abelian groups)* <br>
 	A finite Abelian group is a direct sum of <span class="spoiler">prime-order cyclic groups</span>.
 
 
@@ -46,14 +46,14 @@ Try to guess the blanks. Click to <button onclick="toggleSpoilers()">toggle “s
 
 - The only complete ordered field is <span class="spoiler">the real line</span>.
 
-- **(Cayley’s theorem)** <br>
+- *(Cayley’s theorem)* <br>
 	All groups are <span class="spoiler">permutation groups</span>.
 
 
-- **(Lagrange’s theorem)** <br>
+- *(Lagrange’s theorem)* <br>
 	The order of a finite group is <span class="spoiler">divisible by</span> the orders of its subgroups.
 
 
-- **(Cayley–Hamilton theorem)** <br>
+- *(Cayley–Hamilton theorem)* <br>
 	A square matrix <span class="spoiler">satisfies</span> its own characteristic polynomial.
 
