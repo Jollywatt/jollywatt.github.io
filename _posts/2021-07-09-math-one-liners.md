@@ -4,7 +4,7 @@ title: "Mathematical One-liners"
 author: "Joseph Wilson"
 categories: journal
 tags: [maths]
-image: mandel.png
+image: math-collage.png
 ---
 
 <script>
