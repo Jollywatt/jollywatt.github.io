@@ -1,0 +1,26 @@
+---
+layout: default
+title: Research
+permalink: research
+---
+
+{% for post in site.categories.research %}
+	<div class="posts-container">
+		<div class="post-date">
+			{{ post.date | date_to_string }}
+		</div>
+		<h1>
+			<a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
+			<a class="accent" href="{{ site.github.url }}/assets/pdf/{{ post.pdf }}" target="blank">· PDF</a>
+		</h1>
+		{% if post.image %}
+			<div class="thumbnail-container">
+				<a href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{{ post.image }}"></a>
+			</div>
+		{% endif %}
+		<p>
+			{{ post.content }}
+			<!-- <a href="{{ site.github.url }}{{ post.url }}">Read more</a> -->
+		</p>
+	</div>
+{% endfor %}

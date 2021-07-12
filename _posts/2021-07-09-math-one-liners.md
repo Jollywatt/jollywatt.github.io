@@ -5,6 +5,8 @@ author: "Joseph Wilson"
 categories: journal
 tags: [maths]
 image: math-collage.png
+blurb: >
+ A collection of succinct but wonderfully satisfying mathematical results.
 ---
 
 <script>
@@ -31,10 +33,10 @@ function toggleSpoilers() {
 }
 </style>
 
-A collection of succinct but wonderfully satisfying mathematical results.
-<!-- split -->
+This is a collection of succinct but wonderfully satisfying theorems, for your mathematical satisfaction.
 <a href="mailto:joseph.wilson@sms.vuw.ac.nz">Email me</a> if you have a good one!
-Try to guess the blanks. Click to <button onclick="toggleSpoilers()">toggle “spoilers”.</button>
+
+The punchlines are hidden; try to guess the blanks. Click to <button onclick="toggleSpoilers()">toggle “spoilers”.</button>
 
 - *(Fundamental theorem of finite Abelian groups)* <br>
 	A finite Abelian group is a direct sum of <span class="spoiler">prime-order cyclic groups</span>.

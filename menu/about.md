@@ -1,7 +1,23 @@
 ---
-layout: page
-title: Joseph Wilson’s personal page
-permalink: /about
+layout: default
+title: "Joseph Alexander Wilson"
+author: "Joseph Wilson"
+permalink: about
+categories: journal
+tags: [maths]
 ---
 
-Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+
+
+<img src="{{ site.github.url }}/assets/img/portrait.jpeg" style="float: right; margin-left: 4rem; width: 30%;">
+
+<h1>Joseph A. Wilson</h1>
+
+Salut ! I’m a master’s student in mathematical physics at <a href="https://sms.wgtn.ac.nz/Main/GradJosephWilson">Victoria University of Wellington</a>.
+
+I enjoy
+1) meddling in maths
+2) tinkering with code
+3) dabbling in art
+...
+$$n$$) building blogs.

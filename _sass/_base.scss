@@ -6,14 +6,14 @@ body {
   font-family: $serif-font-family;
   font-size: 18px;
   color: $body-color;
-  line-height: 1.75rem;
+  // line-height: 1.75rem;
   margin: 0;
 }
 
 @media (max-width: $elements-responsive-width) {
   body {
     font-size: 14px;
-    line-height: 1.5rem;
+    // line-height: 1.5rem;
   }
   body h1 {
     font-size: 1.5rem;
@@ -78,4 +78,8 @@ table, th, td {
 th, td {
   padding: 15px;
   text-align: left;
+}
+
+.accent {
+  color: $light-gray-color;
 }

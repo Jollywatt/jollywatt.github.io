@@ -4,6 +4,9 @@ layout: default
 
 {% for post in paginator.posts %}
   <div class="posts-container">
+    <span class="post-date">
+      <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date_to_string }}
+    </span>
     <h1>
       <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
     </h1>
@@ -13,8 +16,12 @@ layout: default
       </div>
     {% endif %}
     <p>
-      {{ post.content | split:'<!-- split -->' | first }} <a href="{{ site.github.url }}{{ post.url }}">Read more</a>
-      <span class="post-date"><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date_to_string }} - <i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</span>
+      {% if post.blurb %}
+        {{ post.blurb }}
+      {% else %}
+        {{ post.content | truncatewords: 25 }}
+      {% endif %}
+      <a href="{{ site.github.url }}{{ post.url }}">Read more</a>
     </p>
   </div>
 {% endfor %}
