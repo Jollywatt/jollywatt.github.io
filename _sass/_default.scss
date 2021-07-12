@@ -62,6 +62,7 @@ body {
 
 .header-subtitle {
   font-size: 2rem;
+  margin-left: 1rem;
   color: $light-gray-color;
   font-weight: normal;
   white-space: nowrap;
@@ -96,6 +97,7 @@ body {
 
 .social-icons {
   float: right;
+  margin-top: -.4rem;
 }
 
 .social-icons a {
@@ -105,8 +107,7 @@ body {
 
 @media (max-width: $elements-responsive-width) {
   .social-icons {
-    float: left;
-    padding-top: 0px;
+    // padding-top: 0px;
   }
   .menu-content {
     margin-bottom: 5px;
@@ -125,7 +126,7 @@ body {
 
 .footer a {
   color: $light-gray-color;
-  padding: 10px;
+  // padding: 10px;
   text-decoration: none;
 }
 

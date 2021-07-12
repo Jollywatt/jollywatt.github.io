@@ -25,7 +25,7 @@ plugins:
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
 title:              'Jollywatt'
-description:        'a blog & portfolio'
+description:        'blog ⊕ portfolio'
 author:             'Joseph A. Wilson'
 
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
