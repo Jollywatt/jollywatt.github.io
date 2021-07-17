@@ -11,7 +11,7 @@ menu:
 - {name: 'Writing', url: 'writing'}
 - {name: 'Math One-liners', url: 'math-one-liners'}
 - {name: 'Research', url: 'research'}
-- {name: 'CV', url: 'assets/pdf/Joseph-Wilson-CV.pdf'}
+- {name: 'CV', url: 'assets/pdf/Joseph-Wilson-CV.pdf', target: 'blank'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:

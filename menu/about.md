@@ -9,7 +9,7 @@ tags: [maths]
 
 
 
-<img src="{{ site.github.url }}/assets/img/portrait.jpeg" style="float: right; margin-left: 4rem; width: 30%;">
+<!-- <img src="{{ site.github.url }}/assets/img/portrait.jpeg" style="float: right; margin-left: 4rem; width: 30%;"> -->
 
 <h1>Joseph A. Wilson</h1>
 

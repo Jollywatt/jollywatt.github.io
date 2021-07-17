@@ -4,16 +4,11 @@ layout: default
 
 {% for post in paginator.posts %}
   <div class="posts-container">
-    <span class="post-date">
-      <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date_to_string }}
-    </span>
-    <h1>
-      <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
-    </h1>
+    {% include post-title.html %}
     {% if post.image %}
-      <div class="thumbnail-container">
-        <a href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{{ post.image }}"></a>
-      </div>
+    <div class="thumbnail-container">
+      <a href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{{ post.image }}"></a>
+    </div>
     {% endif %}
     <p>
       {% if post.blurb %}
@@ -24,7 +19,9 @@ layout: default
       <a href="{{ site.github.url }}{{ post.url }}">Read more</a>
     </p>
   </div>
+  <hr>
 {% endfor %}
+
 <!-- Pagination links -->
 <div class="pagination">
   {% if paginator.next_page %}

@@ -6,8 +6,12 @@ body {
   font-family: $serif-font-family;
   font-size: 18px;
   color: $body-color;
-  // line-height: 1.75rem;
+  // line-height: 1.3rem;
   margin: 0;
+}
+
+p strong {
+  line-height: 1;
 }
 
 @media (max-width: $elements-responsive-width) {
@@ -36,11 +40,13 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: underline;
   color: $dark-gray-color;
+  cursor: pointer;
 }
 
 a:hover {
   color: $link-color;
-  border-bottom: none;
+  text-decoration: none;
+  // border-bottom: none;
 }
 
 img {
@@ -58,7 +64,14 @@ blockquote {
 }
 
 hr {
-  border-top: 1px solid $extra-light-gray-color;
+  // border-top: 10px solid $extra-light-gray-color;
+  text-align: center;
+  border: none;
+  margin: 30px 0;
+  &:after {
+    content: "· · ·";
+    color: $extra-light-gray-color;
+  }
 }
 
 /*

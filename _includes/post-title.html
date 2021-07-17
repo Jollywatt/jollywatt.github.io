@@ -1,0 +1,12 @@
+<h1 class="post-title">
+  <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
+
+  {% if post.pdf %}
+  <a class="accent" href="{{ site.github.url }}/assets/pdf/{{ post.pdf }}" target="blank">· PDF</a>
+  {% endif %}
+  {% if post.link %}
+  <a class="accent" href="{{ post.link }}" target="blank">· {{ post.link_label | default: "link" }}
+  </a>
+  {% endif %}
+</h1>
+<div style="margin-bottom: 1rem;">{% include post-date.html %}</div>

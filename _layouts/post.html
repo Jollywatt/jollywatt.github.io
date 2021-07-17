@@ -2,14 +2,10 @@
 layout: default
 ---
 
-<h1>
-  {{ page.title }}
-  {% if page.pdf %}
-  <a class="accent" href="{{ site.github.url }}/assets/pdf/{{ page.pdf }}" target="blank">· PDF</a>
-  {% endif %}
-</h1>
-{% if page.image %}
-  <img src="{{ site.github.url }}/assets/img/{{ page.image }}">
+{% assign post=page %}
+{% include post-title.html %}
+{% if post.image %}
+<img src="{{ site.github.url }}/assets/img/{{ post.image }}">
 {% endif %}
 <article>
   {{ content }}

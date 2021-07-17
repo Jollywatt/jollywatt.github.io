@@ -5,7 +5,7 @@ author: "Joseph Wilson"
 categories: research
 pdf: 2019.Asymptotic-Structure-of-FLRW.pdf
 image: gravitational-waves.png
-tags: [physics, general relativity, maths]
+tags: [physics, general relativity]
 ---
 
 Honours project supervised by Prof. David Wiltshire at the University of Canterbury.

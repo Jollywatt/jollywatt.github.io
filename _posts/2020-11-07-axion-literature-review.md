@@ -5,7 +5,7 @@ author: "Joseph Wilson"
 categories: research
 pdf: 2020.Strong-CP-Problem-and-Axions.pdf
 image: axion-lagrangian.png
-tags: [maths]
+tags: [physics, mathematics, cosmology]
 ---
 
 Literature review supervised by Dr. Jenni Adams at the University of Canterbury.

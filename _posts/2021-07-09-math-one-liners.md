@@ -3,7 +3,7 @@ layout: post
 title: "Mathematical One-liners"
 author: "Joseph Wilson"
 categories: journal
-tags: [maths]
+tags: [mathematics]
 image: math-collage.png
 blurb: >
  A collection of succinct but wonderfully satisfying mathematical results.
@@ -33,10 +33,10 @@ function toggleSpoilers() {
 }
 </style>
 
-This is a collection of succinct but wonderfully satisfying theorems, for your mathematical satisfaction.
+This is a collection of succinct but wonderfully satisfying theorems.
 <a href="mailto:joseph.wilson@sms.vuw.ac.nz">Email me</a> if you have a good one!
 
-The punchlines are hidden; try to guess the blanks. Click to <button onclick="toggleSpoilers()">toggle “spoilers”.</button>
+The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers()">toggle “spoilers”</a>.
 
 - *(Fundamental theorem of finite Abelian groups)* <br>
 	A finite Abelian group is a direct sum of <span class="spoiler">prime-order cyclic groups</span>.
@@ -59,3 +59,8 @@ The punchlines are hidden; try to guess the blanks. Click to <button onclick="to
 - *(Cayley–Hamilton theorem)* <br>
 	A square matrix <span class="spoiler">satisfies</span> its own characteristic polynomial.
 
+- *(Green–Tao theorem)* <br>
+	There are <span class="spoiler">arbitrarily long</span> arithmetic progressions of primes.
+
+- *(Dirichlet’s Theorem)* <br>
+	Every proper arithmetic sequence contains <span class="spoiler">infinitely many</span> primes.
