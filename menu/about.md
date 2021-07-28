@@ -9,11 +9,13 @@ tags: [maths]
 
 
 
-<!-- <img src="{{ site.github.url }}/assets/img/portrait.jpeg" style="float: right; margin-left: 4rem; width: 30%;"> -->
 
 <h1>Joseph A. Wilson</h1>
 
-Salut ! I’m a master’s student in mathematical physics at <a href="https://sms.wgtn.ac.nz/Main/GradJosephWilson">Victoria University of Wellington</a>.
+<img src="{{ site.github.url }}/assets/img/cv-portrait.jpeg" style="float: left; margin-right: 1rem; width: 20%; min-width: 8rem;">
+
+Hello! I’m a master’s student in mathematical physics at [Victoria University of Wellington](https://sms.wgtn.ac.nz/Main/GradJosephWilson), New Zealand.
+
 
 I enjoy
 1) meddling in maths

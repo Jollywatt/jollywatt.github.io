@@ -236,10 +236,14 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/jollywatt/Sites/jollywatt.github.io"
+		"/Users/jollywatt/Sites/jollywatt"
 	],
 	"file_history":
 	[
+		"/Users/jollywatt/Sites/jollywatt/menu/about.md",
+		"/Users/jollywatt/Sites/jollywatt/_posts/2021-07-12-sexy-girls.md",
+		"/Users/jollywatt/Sites/jollywatt/_posts/2021-07-20-path-ordered-exponential.md",
+		"/Users/jollywatt/Sites/jollywatt/_layouts/archive.html",
 		"/home/josephwilson/.XCompose",
 		"/home/josephwilson/MSc/MSc Repository/MSC Thesis/preamble.tex",
 		"/home/josephwilson/Desktop/IsomerGeneratorForOrganicMolecules-author.nb",
@@ -310,7 +314,7 @@
 	],
 	"find":
 	{
-		"height": 29.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -324,6 +328,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"img",
+			"research"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -350,7 +356,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -395,7 +401,7 @@
 	"project": "jollywatt.github.io.sublime-project",
 	"replace":
 	{
-		"height": 54.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -404,6 +410,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"ab",
+				"menu/about.md"
+			],
+			[
+				"lay",
+				"_layouts/archive.html"
+			],
+			[
+				"se",
+				"_posts/2021-07-12-sexy-girls.md"
+			],
+			[
+				"path",
+				"_posts/2021-07-20-path-ordered-exponential.md"
+			],
 			[
 				"pre",
 				"preamble.tex"

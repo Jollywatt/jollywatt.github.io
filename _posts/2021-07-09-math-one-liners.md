@@ -2,7 +2,7 @@
 layout: post
 title: "Mathematical One-liners"
 author: "Joseph Wilson"
-categories: journal
+categories: maths
 tags: [mathematics]
 image: math-collage.png
 blurb: >
@@ -34,7 +34,7 @@ function toggleSpoilers() {
 </style>
 
 This is a collection of succinct but wonderfully satisfying theorems.
-<a href="mailto:joseph.wilson@sms.vuw.ac.nz">Email me</a> if you have a good one!
+[Email me](mailto:joseph.wilson@sms.vuw.ac.nz) if you have a good one!
 
 The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers()">toggle “spoilers”</a>.
 
