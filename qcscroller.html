@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QC by Jeph Jacques</title>
+
+<style>
+
+body {
+	color: white;
+	background: black;
+	margin: 0;
+}
+
+a, a:visited {
+	color: white;
+}
+
+h1 {
+	font-family: Impact, Arial;
+}
+
+img {
+	display: block;
+	margin: auto;
+	max-width: 100vw;
+}
+
+#controls {
+	text-align: center;
+	margin: 50px 0;
+}
+
+input#goto {
+	width: 4em;
+}
+
+</style>
+</head>
+<body>
+	<div id="controls">
+		<h1>QC Comic Viewer</h1>
+		<p><em><a href="https://questionablecontent.net/">Questionable Content by Jeph Jacques</a></p>
+		<input id="goto" type="number" pattern="[0-9]*" placeholder="№">
+		<button onclick="go()">Go</button>
+	</div>
+<div id="content"></div>
+<script type="text/javascript">
+let contentEl = document.getElementById('content')
+let imgEls = []
+
+function add(num=imgEls.length) {
+	console.log(`add(${num})`)
+	let imgEl = document.createElement("img")
+	imgEl.src = `https://questionablecontent.net/comics/${num}.png`
+	imgEl.setAttribute("comic", num)
+	contentEl.appendChild(imgEl)
+	// observer.observe(imgEl)
+	imgEls[num] = imgEl
+	history.replaceState(null, '', `?${num}`)
+}
+
+
+function which() {
+	for (var i = imgEls.length - 1; i > 0; i--) {
+		let imgEl = imgEls[i]
+		if (imgEl === undefined) continue
+		let t = imgEl.getBoundingClientRect().top
+		if (t < window.innerHeight/2) break
+	}
+	if (i == imgEls.length - 1) add()
+	return i
+}
+
+function go() {
+	imgEls.map(el => el.remove())
+	imgEls = []
+	add(document.getElementById("goto").value)
+}
+
+window.addEventListener('scroll', () => {
+	document.title = `QC: № ${which()}`
+})
+
+function bookmark() {
+	let n = window.location.search.slice(1)
+	if (n) add(n)
+}
+
+bookmark()
+
+</script>
+</body>
+</html>

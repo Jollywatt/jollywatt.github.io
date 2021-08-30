@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Timeline of Science"
+title: "Timeline of Scientists"
 author: "Joseph Wilson"
-categories: maths
+categories: interactive
 tags: []
 blurb: Interactive timeline of famous scientists throughout history, using Wikidata.
 ---
@@ -10,19 +10,15 @@ blurb: Interactive timeline of famous scientists throughout history, using Wikid
 
 This is an interactive timeline of famous mathematicians and physicists throughout history.
 The data is pulled from [Wikidata](wikidata.org).
+
 <script src="https://visjs.github.io/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
 
 <div class="fullwidth">
-
-<p>
-	Showing <input id="display-count" type="number" value=50 onenter="buttonUpdate()"/><button onclick="buttonUpdate()">↩︎</button> scientists, in order of decreasing number of entities named after them.
-</p>
-
-
-<div id="timeline"></div>
-
+	<p>
+		Showing <input id="display-count" type="number" value=50 onenter="buttonUpdate()"/><button onclick="buttonUpdate()">↩︎</button> scientists, in decreasing order of number of Wikidata entities named after them.
+	</p>
+	<div id="timeline"></div>
 </div>
-
 
 
 <script>

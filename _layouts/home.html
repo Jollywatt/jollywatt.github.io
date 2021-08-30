@@ -14,7 +14,7 @@ layout: default
       {% if post.blurb %}
         {{ post.blurb }}
       {% else %}
-        {{ post.content | truncatewords: 25 }}
+        {{ post.content | strip_html | truncatewords: 50 }}
       {% endif %}
       <a href="{{ site.github.url }}{{ post.url }}">Read more</a>
     </p>
@@ -25,13 +25,9 @@ layout: default
 <!-- Pagination links -->
 <div class="pagination">
   {% if paginator.next_page %}
-    <a class="pagination-button pagination-active next" href="{{ site.github.url }}{{ paginator.next_page_path }}">{{ site.data.settings.pagination.previous_page }}</a>
-  {% else %}
-    <span class="pagination-button">{{ site.data.settings.pagination.previous_page }}</span>
+    <a class="pagination-button pagination-active next" href="{{ site.github.url }}{{ paginator.next_page_path }}">⟵ Older</a>
   {% endif %}
   {% if paginator.previous_page %}
-    <a class="pagination-button pagination-active" href="{{ site.baseurl }}{{ paginator.previous_page_path }}">{{ site.data.settings.pagination.next_page }}</a>
-  {% else %}
-    <span class="pagination-button">{{ site.data.settings.pagination.next_page }}</span>
+    <a class="pagination-button pagination-active" href="{{ site.baseurl }}{{ paginator.previous_page_path }}">Newer ⟶</a>
   {% endif %}
 </div>

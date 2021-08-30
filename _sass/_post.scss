@@ -56,3 +56,12 @@ $fullwidth-margin: 5vw;
 input[type="number"] {
   width: 4rem;
 }
+
+p.box {
+  outline: 1px solid #aaa;
+  outline-offset: 0.5rem;
+}
+
+.def {
+  border-left: 1px solid red;
+}

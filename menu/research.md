@@ -4,6 +4,9 @@ title: Research
 permalink: research
 ---
 
+# Research
+
+<div>
 {% for post in site.categories.research %}
 	<div class="posts-container">
 		{% include post-title.html %}
@@ -19,3 +22,4 @@ permalink: research
 	</div>
 	<hr>
 {% endfor %}
+</div>

@@ -2,7 +2,7 @@
 layout: post
 title: "Mathematical One-liners"
 author: "Joseph Wilson"
-categories: maths
+categories: interactive
 tags: [mathematics]
 image: math-collage.png
 blurb: >
@@ -45,6 +45,9 @@ The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers
 - The $$ℤ$$-modules are exactly the <span class="spoiler">Abelian groups</span>.
 
 - A bounded entire function is <span class="spoiler">constant</span>.
+
+- *(Cauchy’s integral theorem)* <br>
+	An integral of a holomorphic function around a loop <span class="spoiler">vanishes identically</span>.
 
 - The only complete ordered field is <span class="spoiler">the real line</span>.
 

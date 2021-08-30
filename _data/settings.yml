@@ -9,8 +9,9 @@ google-ID: ''
 menu:
 - {name: 'About',   url: 'about'}
 - {name: 'Writing', url: 'writing'}
-- {name: 'Math One-liners', url: 'math-one-liners'}
 - {name: 'Research', url: 'research'}
+- {name: 'Interactive', url: 'interactive'}
+# - {name: 'Math One-liners', url: 'math-one-liners'}
 - {name: 'CV', url: 'assets/pdf/Joseph-Wilson-CV.pdf', target: 'blank'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
@@ -23,11 +24,9 @@ social:
 # - {icon: 'rss-square', link: '/rss-feed.xml'}
 
 # Customize site text
-pagination:
-  next_page: 'Newer'
-  previous_page: 'Older'
 
 
+use-katex: yes
 
 sharing_button_prompt: 'Feel free to share!'
 
