@@ -13,8 +13,8 @@ We present a compact Baker–Campbell–Hausdorff–Dynkin formula for the compo
 
 $$
 	\ln(e^{σ_1}e^{σ_2}) =
-	\tanh^{-1}(\frac{
-		\tanh σ_1 + \tanh σ_2 + \frac12[\tanh σ_1, \tanh σ_2]
+	\tanh^{-1}\qty(\frac{
+		\tanh σ_1 + \tanh σ_2 + \frac12\qty[\tanh σ_1, \tanh σ_2]
 	}{
 		1 + \frac12\qty{\tanh σ_1, \tanh σ_2}
 	})
