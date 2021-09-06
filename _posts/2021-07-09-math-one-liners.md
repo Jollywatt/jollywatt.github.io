@@ -38,26 +38,25 @@ This is a collection of succinct but wonderfully satisfying theorems.
 
 The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers()">toggle “spoilers”</a>.
 
-- *(Fundamental theorem of finite Abelian groups)* <br>
-	A finite Abelian group is a direct sum of <span class="spoiler">prime-order cyclic groups</span>.
 
-
-- The $$ℤ$$-modules are exactly the <span class="spoiler">Abelian groups</span>.
-
-- A bounded entire function is <span class="spoiler">constant</span>.
+- *(Liouville's theorem)* <br>
+	A bounded complex differentiable function is <span class="spoiler">constant</span>.
 
 - *(Cauchy’s integral theorem)* <br>
-	An integral of a holomorphic function around a loop <span class="spoiler">vanishes identically</span>.
+	The integral of a holomorphic function around a loop <span class="spoiler">vanishes identically</span>.
 
-- The only complete ordered field is <span class="spoiler">the real line</span>.
+- A complete ordered field is <span class="spoiler">the real line</span>.
 
 - *(Cayley’s theorem)* <br>
-	All groups are <span class="spoiler">permutation groups</span>.
-
+	All groups are <span class="spoiler">permutation</span> groups.
 
 - *(Lagrange’s theorem)* <br>
 	The order of a finite group is <span class="spoiler">divisible by</span> the orders of its subgroups.
 
+- *(Fundamental theorem of finite Abelian groups)* <br>
+	A finite Abelian group is a direct sum of <span class="spoiler">prime-order cyclic groups</span>.
+
+- The $$ℤ$$-modules are exactly the <span class="spoiler">Abelian groups</span>.
 
 - *(Cayley–Hamilton theorem)* <br>
 	A square matrix <span class="spoiler">satisfies</span> its own characteristic polynomial.
