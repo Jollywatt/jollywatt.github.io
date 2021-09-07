@@ -80,7 +80,8 @@ function add(num) {
 
 	}
 	imgEls[num] = imgEl
-	history.replaceState(null, '', `?${num}`)
+	// history.replaceState({comic: num}, '', `?${num}`)
+	localStorage["comic"] = num
 }
 const prev = () => add(imgEls.findIndex(i => i) - 1)
 const next = () => add(imgEls.length)
@@ -117,7 +118,8 @@ function go() {
 }
 
 function bookmark() {
-	let n = window.location.search.slice(1)
+	// let n = window.location.search.slice(1)
+	let n = Number(localStorage["comic"])
 	add(n || 1)
 }
 
