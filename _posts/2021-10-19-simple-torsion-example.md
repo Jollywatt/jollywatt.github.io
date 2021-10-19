@@ -4,7 +4,6 @@ title: "A Simple Example of a Connection With Torsion"
 author: "Joseph Wilson"
 categories: math
 tags: []
-blurb: Interactive timeline of famous scientists throughout history, using Wikidata.
 ---
 
 
