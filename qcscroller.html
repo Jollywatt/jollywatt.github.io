@@ -63,6 +63,10 @@ function addComic(num) {
 	imgEl.src = `https://questionablecontent.net/comics/${num}.${extensions[0]}`
 	imgEl.setAttribute("comic", num)
 	imgEl.addEventListener("error", () => cycleExtension(imgEl))
+	imgEl.addEventListener("load", () => {
+		history.replaceState({comic: num}, '', `?${num}`)
+		localStorage["comic"] = num
+	})
 
 	let linkEl = document.createElement("a")
 	linkEl.href = `https://questionablecontent.net/view.php?comic=${num}`
@@ -84,8 +88,7 @@ function addComic(num) {
 
 	}
 	imgEls[num] = imgEl
-	history.replaceState({comic: num}, '', `?${num}`)
-	localStorage["comic"] = num
+	
 }
 const prev = () => addComic(imgEls.findIndex(i => i) - 1)
 const next = () => addComic(imgEls.length)
