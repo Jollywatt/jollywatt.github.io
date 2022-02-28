@@ -78,3 +78,17 @@ p.box {
 .def {
   border-left: 1px solid red;
 }
+
+.proof {
+  & > *:first-child::before {
+    content: "Proof:";
+    margin-right: 1rem;
+    font-style: italic;
+    display: inline-block;
+  }
+  & > *:last-child::after {
+    content: '◼︎';
+    float: right;
+  }
+
+}

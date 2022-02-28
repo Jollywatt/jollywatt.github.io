@@ -22,7 +22,10 @@
     .katex { font-size: 1em; }
     .katex-display {
       overflow-x: scroll;
-      padding: 3px 0;
+
+      /* prevent vertical overflow */
+      padding: +15px 0;
+      margin: -15px 0;
     }
   </style>
 

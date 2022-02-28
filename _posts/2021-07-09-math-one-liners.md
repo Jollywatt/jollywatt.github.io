@@ -66,3 +66,5 @@ The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers
 
 - *(Dirichlet’s Theorem)* <br>
 	Every proper arithmetic sequence contains <span class="spoiler">infinitely many</span> primes.
+
+- Two random infinite graphs are <span class="spoiler">isomorphic</span> with probability one.
