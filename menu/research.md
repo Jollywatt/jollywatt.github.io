@@ -4,7 +4,7 @@ title: Research
 permalink: research
 ---
 
-# Research
+# _Research_
 
 <div>
 {% for post in site.categories.research %}
