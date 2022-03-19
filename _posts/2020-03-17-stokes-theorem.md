@@ -6,7 +6,7 @@ blurb: >
   Interactively tabulate the special cases of Stokes’ theorem, \( \int_Ω \dd ω = \int_{∂Ω} ω \).
 ---
 
-{% assign project_url = site.github.url | append: "projects/stokes-theorem/" %}
+{% assign project_url = site.github.url | append: "/projects/stokes-theorem" %}
 
 The [generalised Stokes theorem](https://en.wikipedia.org/wiki/Stokes%27_theorem) has the remarkably compact form
 
