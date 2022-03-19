@@ -16,8 +16,12 @@ permalink: research
 			</div>
 		{% endif %}
 		<p>
-			{{ post.content }}
-			<!-- <a href="{{ site.github.url }}{{ post.url }}">Read more</a> -->
+			{% if post.blurb %}
+				{{ post.blurb }}
+			{% else %}
+				{{ post.content | strip_html | truncatewords: 50 }}
+			{% endif %}
+			<a href="{{ site.github.url }}{{ post.url }}">Read more</a>
 		</p>
 	</div>
 	<hr>

@@ -11,7 +11,7 @@ blurb: Master’s thesis in mathematical physics.
 
 My master’s thesis in mathematical physics completed in March 2022 at Victoria University of Wellington.
 
-The thesis centres around geometric algebra and its applications to special relativity.
+The [thesis]({{ site.github.url }}/assets/pdf/{{ page.pdf }}) centres around geometric algebra and its applications to special relativity.
 
 ***Table of Contents***
 
