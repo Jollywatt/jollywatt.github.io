@@ -11,11 +11,12 @@ blurb: Interactive timeline of famous scientists throughout history, using Wikid
 This is an interactive timeline of famous mathematicians and physicists throughout history.
 The data is pulled from [Wikidata](wikidata.org).
 
-<script src="https://visjs.github.io/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/vis-timeline@7.5.1/standalone/umd/vis-timeline-graph2d.min.js"></script>
 
 <div class="fullwidth">
 	<p>
 		Showing <input id="display-count" type="number" value=50 onenter="buttonUpdate()"/><button onclick="buttonUpdate()">↩︎</button> scientists, in decreasing order of number of Wikidata entities named after them.
+		Hold `alt` and scroll to zoom.
 	</p>
 	<div id="timeline"></div>
 </div>
@@ -102,8 +103,6 @@ var options = {
 	horizontalScroll: true,
 	verticalScroll: true,
 	zoomKey: "altKey",
-	multiselect: true,
-	sequentialSelection: false,
 	maxHeight: 600,
 	end: new Date(),
 	margin: {
@@ -112,16 +111,17 @@ var options = {
 	},
 	// zoom max/min, specified in milliseconds
 	zoomMin: 1e3*60*60*24*30, // about a month
-
 	orientation: "top",
 	order: (a, b) => b.info.score - a.info.score,
+	xss: { disabled: true }, // IMPORTANT: required for html attributes to be preserved; https://github.com/visjs/vis-timeline/pull/1010
 	template: (item, element, data) => {
 		console.log('retemplate')
 		let i = item.info
-		element.innerHTML = `
+		// element.innerHTML = `
+		return `
 			<span class="if-not-hover">${i.shortname}</span>
 			<span class="if-hover">${i.fullname}</span>
-			<a class="if-selected" href=${item.info.wikidata} onclick="alert(6)">🔗</a>
+			<a class="if-selected" href=${item.info.wikidata} target="_blank">🔗</a>
 			<div class="if-selected">
 				<div>${i.dob.toLocaleDateString()} – ${i.isAlive ? 'present' : i.dod.toLocaleDateString()}</div>
 				<div>${i.country || ''}</div>
@@ -131,7 +131,7 @@ var options = {
 };
 
 
-// create a Timeline
+// create timeline
 var container = document.getElementById("timeline");
 window.itemSet = new vis.DataSet()
 window.timeline = new vis.Timeline(container, itemSet, options);
