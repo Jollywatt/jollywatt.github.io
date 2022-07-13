@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DALL·E 2 Journal</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+
+	<!-- from https://fonts.google.com/specimen/Montserrat -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap" rel="stylesheet">
+
+<style type="text/css">
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background: black;
+	color:  white;
+	margin: 2vw;
+}
+
+#gallery .record {
+	margin-top: 8ex;
+}
+
+.record-id {
+	font-weight: 100;
+}
+
+.img-container {
+	line-height: 0;
+	/*display: flex;*/
+	/*flex-wrap: wrap;*/
+    /*justify-content: space-between;*/
+}
+
+.img-container img {
+	width: 32vw
+	/*flex: 0 1 auto;*/
+}
+
+input#filter {
+	width: 50vw;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Joseph’s Unfiltered DALL•E 2 Journal</h1>
+
+<input id="filter" type="text" placeholder="filter prompts" oninput="setfilter(this.value)">
+
+<div id="gallery">
+	
+</div>
+
+<script src="records.js"></script>
+<script type="text/javascript">
+function buildgallery(filter) {
+	// if (!filter) filter = '.*'
+	let regexp = RegExp(filter, 'i')
+	let galleryEl = document.getElementById('gallery')
+	console.log("ABMNG")
+	galleryEl.innerHTML = ''
+
+	records.forEach(record => {
+		if (!regexp.test(record.prompt)) return
+		let generations = JSON.parse(record.generations)
+		let rowEl = document.createElement('div')
+		rowEl.innerHTML = `
+		<div class="record">
+			<p class="record-header">
+				<div class="record-id">${record.id}</div>
+				<div class="record-prompt">${record.prompt.trim()}</div>
+			</p>
+			<div class="img-container">
+				${
+					generations.map((url, i) => {
+						let id = String(Number(record.id)).padStart(4, '0')
+						return `<img src="archive/${id}.${i + 1}.webp"/>`
+					}).join('')
+				}
+			</div>
+		</div>
+		`
+		galleryEl.appendChild(rowEl)
+	})
+}
+
+window.filterTimeoutID = null
+function setfilter(filter) {
+	if (window.filterTimeoutID) clearTimeout(window.filterTimeoutID)
+	window.filterTimeoutID = setTimeout(() => buildgallery(filter), 300)
+}
+
+buildgallery()
+
+
+</script>
+</body>
+</html>
