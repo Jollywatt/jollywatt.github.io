@@ -12,31 +12,40 @@ JSON.stringify({
 })
 """
 
-function savegenerations(jsoutput)
+function savegenerations(jsoutput; redownload=false)
     records = CSV.read("records.csv", DataFrame, types=String)
 
     obj = JSON.parse(jsoutput)
-    if obj["batchurl"] ∈ records[:, "batchurl"]
-        @warn "Batch already exists. Skipping." obj["batchurl"] obj["prompt"]
-        return
+    idx = findfirst(==(obj["batchurl"]), records[:, "batchurl"])
+    if isnothing(idx)
+        id = lpad(nrow(records) + 1, 4, '0')
+        push!(records, (;
+            id,
+            prompt = obj["prompt"],
+            batchurl = obj["batchurl"],
+            generations = json(obj["generations"]),
+        ))
+    else
+        if redownload
+            id = records[idx, "id"]
+        else
+            @warn "Batch already exists. Skipping. Pass `redownload=true` to re-download images without affecting the records." obj["batchurl"] obj["prompt"]
+            return
+        end
     end
-
-    id = lpad(nrow(records) + 1, 4, '0')
-    push!(records, (;
-        id,
-        prompt = obj["prompt"],
-        batchurl = obj["batchurl"],
-        generations = json(obj["generations"]),
-    ))
-
 
     for (i, url) in enumerate(obj["generations"])
         filename = "$id.$i.webp"
         HTTP.download(url, joinpath("archive", filename))
+        sleep(0.5)
     end
 
 
     CSV.write("records.csv", records)
+
+    written = exportrecords()
+
+    @info "Wrote $written bytes to `records.js`"
 
 end
 

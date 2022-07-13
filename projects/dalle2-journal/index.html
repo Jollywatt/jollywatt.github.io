@@ -42,6 +42,10 @@ body {
 
 input#filter {
 	width: 50vw;
+	background: transparent;
+	border: none;
+	color: white;
+	border-bottom: 1px solid white;
 }
 
 </style>
@@ -62,11 +66,11 @@ function buildgallery(filter) {
 	// if (!filter) filter = '.*'
 	let regexp = RegExp(filter, 'i')
 	let galleryEl = document.getElementById('gallery')
-	console.log("ABMNG")
 	galleryEl.innerHTML = ''
 
 	records.forEach(record => {
 		if (!regexp.test(record.prompt)) return
+
 		let generations = JSON.parse(record.generations)
 		let rowEl = document.createElement('div')
 		rowEl.innerHTML = `
@@ -77,9 +81,11 @@ function buildgallery(filter) {
 			</p>
 			<div class="img-container">
 				${
-					generations.map((url, i) => {
+					generations.map((external_url, i) => {
 						let id = String(Number(record.id)).padStart(4, '0')
-						return `<img src="archive/${id}.${i + 1}.webp"/>`
+						let url = `archive/${id}.${i + 1}.webp`
+						return `<a href="${url}" target="blank_"><img src="${url}"/></a>`
+						// return `<img src="${url}"/>`
 					}).join('')
 				}
 			</div>
