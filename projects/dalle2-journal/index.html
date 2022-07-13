@@ -24,28 +24,36 @@ body {
 	margin-top: 8ex;
 }
 
+#gallery[zoom="1"] .img-container img { width: calc(96vw/6); }
+#gallery[zoom="2"] .img-container img { width: calc(96vw/4); }
+#gallery[zoom="3"] .img-container img { width: calc(96vw/3); }
+#gallery[zoom="4"] .img-container img { width: calc(96vw/2); }
+#gallery[zoom="5"] .img-container img { width: calc(96vw/1); }
+
 .record-id {
 	font-weight: 100;
 }
 
 .img-container {
 	line-height: 0;
-	/*display: flex;*/
-	/*flex-wrap: wrap;*/
-    /*justify-content: space-between;*/
 }
 
-.img-container img {
-	width: 32vw
-	/*flex: 0 1 auto;*/
+
+#controls td:first-child {
+	font-weight: 100;
+	text-align: right;
+	padding-right: 1ex;
 }
 
-input#filter {
-	width: 50vw;
+input {
 	background: transparent;
 	border: none;
 	color: white;
 	border-bottom: 1px solid white;
+	font-size: inherit;
+}
+input[type="text"] {
+	width: 50vw;
 }
 
 </style>
@@ -54,18 +62,29 @@ input#filter {
 
 <h1>Joseph’s Unfiltered DALL•E 2 Journal</h1>
 
-<input id="filter" type="text" placeholder="filter prompts" oninput="setfilter(this.value)">
+<table id="controls">
+	<tr>
+		<td>Filter prompts</td>
+		<td><input id="filter" type="text" placeholder="regex" oninput="setfilter(this.value)"></td>
+	</tr>
+	<tr>
+		<td>Zoom level</td>
+		<td><input id="zoom-input" type="number" min=1 max=5 value=3 onchange="setZoomLevel(this.value)"></td>
+	</tr>
+</table>
 
-<div id="gallery">
+<div id="gallery" zoom="3">
 	
 </div>
 
 <script src="records.js?total=0023"></script>
 <script type="text/javascript">
+
+let galleryEl = document.getElementById('gallery')
+
 function buildgallery(filter) {
-	// if (!filter) filter = '.*'
+
 	let regexp = RegExp(filter, 'i')
-	let galleryEl = document.getElementById('gallery')
 	galleryEl.innerHTML = ''
 
 	records.forEach(record => {
@@ -102,6 +121,29 @@ function setfilter(filter) {
 }
 
 buildgallery()
+
+
+function getZoomLevel() {
+	let level = Number(galleryEl.getAttribute("zoom"))
+	if ([1, 2, 3, 4, 5].indexOf(level) >= 0) return level
+	else return 3
+}
+
+function setZoomLevel(level) {
+	level = Math.round(level)
+	if (level < 1) level = 1
+	else if (5 < level) level = 5
+	galleryEl.setAttribute("zoom", level)
+	document.getElementById('zoom-input').value = level
+}
+
+window.addEventListener('keydown', event => {
+
+	if (event.key == "=") setZoomLevel(getZoomLevel() + 1)
+	if (event.key == "-") setZoomLevel(getZoomLevel() - 1)
+})
+
+
 
 
 </script>

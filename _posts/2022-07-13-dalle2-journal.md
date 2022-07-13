@@ -4,6 +4,7 @@ title: "DALL•E 2 Journal"
 author: "Joseph Wilson"
 tags: []
 blurb: Unfiltered archive of my DALL•E 2 generations.
+image: dalle2-banner.png
 ---
 
 I was lucky enough to gain access to [Open AI’s](https://openai.com/) [DALL•E 2](https://openai.com/dall-e-2/) text-to-image system on 2022-07-13.
