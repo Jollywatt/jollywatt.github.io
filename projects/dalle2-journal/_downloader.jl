@@ -7,6 +7,7 @@ turtsid = "bZdsI78pamhDuwRFflqknt7e"
 jscmd = raw"""
 JSON.stringify({
     prompt: $('.image-prompt-input').value,
+    date: new Date().toISOString().split('T')[0],
     batchurl: window.location.href,
     generations: $$('.task-page-generations img').map(i => i.src)
 })
@@ -21,6 +22,7 @@ function savegenerations(jsoutput; redownload=false)
         id = lpad(nrow(records) + 1, 4, '0')
         push!(records, (;
             id,
+            date = obj["date"],
             prompt = obj["prompt"],
             batchurl = obj["batchurl"],
             generations = json(obj["generations"]),
