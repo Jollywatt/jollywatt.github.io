@@ -32,6 +32,7 @@ body {
 
 .record-id {
 	font-weight: 100;
+	opacity: 0.5;
 }
 
 .img-container {
@@ -77,7 +78,7 @@ input[type="text"] {
 	
 </div>
 
-<script src="records.js?total=0031"></script>
+<script src="records.js?total=0034"></script>
 <script type="text/javascript">
 
 let galleryEl = document.getElementById('gallery')
@@ -92,10 +93,14 @@ function buildgallery(filter) {
 
 		let generations = JSON.parse(record.generations)
 		let rowEl = document.createElement('div')
+
+		let date = new Date(record.date).toLocaleDateString('en-nz', { weekday:"long", year:"numeric", month:"long", day:"numeric"}) 
+
+
 		rowEl.innerHTML = `
 		<div class="record">
 			<p class="record-header">
-				<div class="record-id">${record.id}</div>
+				<div class="record-id">${record.id} · ${date}</div>
 				<div class="record-prompt">${record.prompt.trim()}</div>
 			</p>
 			<div class="img-container">
