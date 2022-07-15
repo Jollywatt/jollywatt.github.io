@@ -16,8 +16,13 @@
 body {
 	font-family: 'Montserrat', sans-serif;
 	background: black;
-	color:  white;
+	color: white;
 	margin: 2vw;
+}
+
+a {
+	color: white;
+	font-weight: 600;
 }
 
 #gallery .record {
@@ -32,7 +37,7 @@ body {
 
 .record-id {
 	font-weight: 100;
-	opacity: 0.5;
+	/*opacity: 0.5;*/
 }
 
 .img-container {
@@ -41,7 +46,6 @@ body {
 
 
 #controls td:first-child {
-	font-weight: 100;
 	text-align: right;
 	padding-right: 1ex;
 }
@@ -61,7 +65,9 @@ input[type="text"] {
 </head>
 <body>
 
-<h1>Joseph’s Unfiltered DALL•E 2 Journal</h1>
+<h1>Joseph’s Unabridged DALL•E 2 Journal</h1>
+
+<p>All images were generated using <a href="https://openai.com/">OpenAI</a>’s <a href="https://openai.com/dall-e-2/">DALL·E 2</a> AI system.</p>
 
 <table id="controls">
 	<tr>
@@ -96,12 +102,12 @@ function buildgallery(filter) {
 
 		let date = new Date(record.date).toLocaleDateString('en-nz', { weekday:"long", year:"numeric", month:"long", day:"numeric"}) 
 
-
+		console.log(record)
 		rowEl.innerHTML = `
 		<div class="record">
 			<p class="record-header">
-				<div class="record-id">${record.id} · ${date}</div>
-				<div class="record-prompt">${record.prompt?.trim()}</div>
+				<div class="record-id">${record.id}</div>
+				<div class="record-prompt">${record.prompt?.trim() || "(unknown)"}</div>
 			</p>
 			<div class="img-container">
 				${
@@ -109,7 +115,6 @@ function buildgallery(filter) {
 						let id = String(Number(record.id)).padStart(4, '0')
 						let url = `archive/${id}.${i + 1}.webp`
 						return `<a href="${url}" target="blank_"><img src="${url}"/></a>`
-						// return `<img src="${url}"/>`
 					}).join('')
 				}
 			</div>
