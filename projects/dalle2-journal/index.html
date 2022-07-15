@@ -58,7 +58,7 @@ input {
 	font-size: inherit;
 }
 input[type="text"] {
-	width: 50vw;
+	width: 30vw;
 }
 
 input#zoom-input {
@@ -70,18 +70,19 @@ input#zoom-input {
 	width: 6ex;
 }
 
+
 </style>
 </head>
 <body>
 
 <h1>Joseph’s Unabridged DALL•E 2 Journal</h1>
 
-<p>All images were generated using <a href="https://openai.com/">OpenAI</a>’s <a href="https://openai.com/dall-e-2/">DALL·E 2</a> AI system.</p>
+<p>All images were generated using <a href="https://openai.com/">OpenAI</a>’s <a href="https://openai.com/dall-e-2/">DALL·E 2</a> AI system. Use <code>-</code> and <code>=</code> keys to zoom.</p>
 
 <table id="controls">
 	<tr>
 		<td>Filter prompts</td>
-		<td><input id="filter" type="text" placeholder="regex" oninput="setfilter(this.value)"></td>
+		<td><input id="filter" type="text" placeholder="" oninput="setfilter(this.value)"></td>
 	</tr>
 	<tr>
 		<td>Zoom level</td>
@@ -89,8 +90,11 @@ input#zoom-input {
 			<button class="zoom-button" onclick="zoomBy(-1)">−</button>
 			<input id="zoom-input" type="number" min=1 max=5 value=3 onchange="setZoomLevel(this.value)">
 			<button class="zoom-button" onclick="zoomBy(+1)">+</button>
-			<span style="font-style: italic; opacity: 0.5;">Shortcut: -/= keys</span>
 		</td>
+	</tr>
+	<tr>
+		<td><label for="filter-fav">Joseph’s favourites</label></td>
+		<td><input type="checkbox" id="filter-fav" checked onclick="buildGallery()"></td>
 	</tr>
 </table>
 
@@ -99,24 +103,27 @@ input#zoom-input {
 </div>
 
 <script src="records.js?total=0113"></script>
+<script src="favourites.js?total=0113"></script>
 <script type="text/javascript">
 
 let galleryEl = document.getElementById('gallery')
 
-function buildgallery(filter) {
+function buildGallery(filter) {
 
 	let regexp = RegExp(filter, 'i')
 	galleryEl.innerHTML = ''
 
+	let filterFav = document.getElementById('filter-fav').checked
+
 	records.forEach(record => {
 		if (!regexp.test(record.prompt)) return
+		if (filterFav && !favourites.some(i => i.startsWith(record.id.padStart(4, '0')))) return
 
 		let generations = JSON.parse(record.generations)
 		let rowEl = document.createElement('div')
 
 		let date = new Date(record.date).toLocaleDateString('en-nz', { weekday:"long", year:"numeric", month:"long", day:"numeric"}) 
 
-		console.log(record)
 		rowEl.innerHTML = `
 		<div class="record">
 			<p class="record-header">
@@ -127,6 +134,7 @@ function buildgallery(filter) {
 				${
 					generations.map((external_url, i) => {
 						let id = String(Number(record.id)).padStart(4, '0')
+						if (filterFav && favourites.indexOf(`${id}.${i + 1}`) < 0) return
 						let url = `archive/${id}.${i + 1}.webp`
 						return `<a href="${url}" target="blank_"><img src="${url}"/></a>`
 					}).join('')
@@ -141,10 +149,10 @@ function buildgallery(filter) {
 window.filterTimeoutID = null
 function setfilter(filter) {
 	if (window.filterTimeoutID) clearTimeout(window.filterTimeoutID)
-	window.filterTimeoutID = setTimeout(() => buildgallery(filter), 300)
+	window.filterTimeoutID = setTimeout(() => buildGallery(filter), 300)
 }
 
-buildgallery()
+buildGallery()
 
 function findFirstRecordInView() {
 	if (window.scrollY < window.innerHeight/2) return null
