@@ -94,7 +94,7 @@ input#zoom-input {
 	</tr>
 	<tr>
 		<td><label for="filter-fav">Joseph’s favourites</label></td>
-		<td><input type="checkbox" id="filter-fav" checked onclick="buildGallery()"></td>
+		<td><input type="checkbox" id="filter-fav"  onclick="buildGallery()"></td>
 	</tr>
 </table>
 
@@ -102,8 +102,8 @@ input#zoom-input {
 	
 </div>
 
-<script src="records.js?total=0164"></script>
-<script src="favourites.js?total=0164"></script>
+<script src="records.js?total=0212"></script> <!-- query string is to prevent caching -->
+<script src="favourites.js?total=0212"></script>
 <script type="text/javascript">
 
 let galleryEl = document.getElementById('gallery')
@@ -124,12 +124,10 @@ function buildGallery(filter) {
 
 		let date = new Date(record.date).toLocaleDateString('en-nz', { weekday:"long", year:"numeric", month:"long", day:"numeric"}) 
 
+		rowEl.classList.add('record')
 		rowEl.innerHTML = `
-		<div class="record">
-			<p class="record-header">
-				<div class="record-id">${record.id}</div>
-				<div class="record-prompt">${record.prompt?.trim() || "(unknown)"}</div>
-			</p>
+			<div class="record-id">${record.id}</div>
+			<div class="record-prompt">${record.prompt?.trim() || "(unknown)"}</div>
 			<div class="img-container">
 				${
 					generations.map((external_url, i) => {
@@ -140,7 +138,6 @@ function buildGallery(filter) {
 					}).join('')
 				}
 			</div>
-		</div>
 		`
 		galleryEl.appendChild(rowEl)
 	})

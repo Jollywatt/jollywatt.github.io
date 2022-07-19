@@ -38,8 +38,9 @@ function savegenerations(jsoutput; redownload=false)
 
     for (i, url) in enumerate(obj["generations"])
         filename = "$id.$i.webp"
-        HTTP.download(url, joinpath("archive", filename))
-        sleep(0.5)
+        path = joinpath("archive", filename)
+        HTTP.download(url, path)
+        run(`convert $path $path`)
     end
 
 
