@@ -55,6 +55,6 @@ end
 function exportrecords()
     records = CSV.read("records.csv", DataFrame, types=String)
     open("records.js", "w") do file
-        write(file, "let records = $(json(eachrow(reverse(records)), 1))")
+        write(file, "let records = $(json(eachrow(records[reverse(1:nrow(records)),:]), 1))")
     end
 end

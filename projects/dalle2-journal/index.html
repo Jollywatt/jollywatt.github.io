@@ -94,16 +94,16 @@ input#zoom-input {
 	</tr>
 	<tr>
 		<td><label for="filter-fav">Joseph’s favourites</label></td>
-		<td><input type="checkbox" id="filter-fav"  onclick="buildGallery()"></td>
+		<td><input type="checkbox" id="filter-fav" checked onclick="buildGallery()"></td>
 	</tr>
 </table>
 
-<div id="gallery" zoom="3">
+<div id="gallery" zoom="2">
 	
 </div>
 
-<script src="records.js?total=0212"></script> <!-- query string is to prevent caching -->
-<script src="favourites.js?total=0212"></script>
+<script src="records.js?total=0277"></script> <!-- query string is to prevent caching -->
+<script src="favourites.js?total=0277"></script>
 <script type="text/javascript">
 
 let galleryEl = document.getElementById('gallery')
@@ -132,6 +132,7 @@ function buildGallery(filter) {
 				${
 					generations.map((external_url, i) => {
 						let id = String(Number(record.id)).padStart(4, '0')
+						console.log(`${id}.${i + 1}`, favourites.indexOf(`${id}.${i + 1}`))
 						if (filterFav && favourites.indexOf(`${id}.${i + 1}`) < 0) return
 						let url = `archive/${id}.${i + 1}.webp`
 						return `<a href="${url}" target="blank_"><img src="${url}"/></a>`
