@@ -1,8 +1,3 @@
-import Interactive from "https://vectorjs.org/interactive.js";
-
-
-
-
 const COLORSCHEME = [
   'rgb(147 22 50)',
   'rgb(35 71 152)',
@@ -25,11 +20,23 @@ class Vec {
   mul(λ) {
     return vec(this.x*λ, this.y*λ)
   }
-  length() {
+  get length() {
     return Math.hypot(this.x, this.y)
   }
+  get angle() {
+    return Math.atan2(this.y, this.x)
+  }
   normalize() {
-    return this.mul(1/this.length())
+    return this.mul(1/this.length)
+  }
+  rotate(θ) {
+    θ = this.angle + θ
+    let r = this.length
+    return vec(r*Math.cos(θ), r*Math.sin(θ))
+  }
+
+  toArray() {
+    return [this.x, this.y]
   }
 
 }
@@ -41,7 +48,7 @@ window.vec = function(a, b) {
 }
 
 
-Interactive.prototype.lineConnecting = function(from, to) {
+Interactive.prototype.lineConnecting = function(from, to, {arrow, color} = {}) {
   let line = this.line(0,0,0,0)
   line.update = () => {
     line.x1 = from.x
@@ -49,8 +56,14 @@ Interactive.prototype.lineConnecting = function(from, to) {
     line.x2 = to.x
     line.y2 = to.y
   }
+  line.addDependency(from, to)
 
-  line.addDependency(...[from, to].filter(obj => obj.constructor.name == 'Control'))
+  line.style.stroke = color
+
+  const arrowhead = this.arrowhead(line.style.stroke)
+  line.setAttribute('marker-end', `url(#${arrowhead.id})`)
+
+  line.update()
   return line
 }
 
@@ -67,73 +80,6 @@ Interactive.prototype.arrowhead = function(color) {
 
 function massToRadius(mass) {
   return 10*Math.sqrt(mass)
-}
-
-
-class MomentumDiagram {
-  constructor(interactive, state) {
-    this.interactive = interactive
-    this.state = state
-
-    this.origin = {x: interactive.width/4, y: interactive.height/2}
-    this.c1i = interactive.control(this.origin.x + 10, this.origin.y - 80)
-    this.c1f = interactive.control(this.origin.x + 60, this.origin.y + 20)
-    this.cΣ = interactive.control(this.origin.x + 100, this.origin.y - 100)
-
-    ;[this.c1i, this.c1f, this.cΣ].forEach(control => {
-      control.onchange = () => {
-        this.updateState()
-        control.updateDependents()
-      }
-    })
-
-    this.l1i = interactive.lineConnecting(this.origin, this.c1i)
-    this.l2i = interactive.lineConnecting(this.c1i, this.cΣ)
-
-    this.l1f = interactive.lineConnecting(this.origin, this.c1f)
-    this.l2f = interactive.lineConnecting(this.c1f, this.cΣ)
-    this.lΣ = interactive.lineConnecting(this.origin, this.cΣ)
-
-    this.lΣ.style.strokeDasharray = 5
-    // this.lΣ.style.stroke = 'black'
-
-
-
-    this.l1i.style.stroke = COLORSCHEME[0]
-    this.l2i.style.stroke = COLORSCHEME[1]
-    this.l1f.style.stroke = COLORSCHEME[0]
-    this.l2f.style.stroke = COLORSCHEME[1]
-
-
-
-    ;[this.l1i, this.l2i, this.l1f, this.l2f].forEach(line => {
-      const arrowhead = this.interactive.arrowhead(line.style.stroke)
-      line.setAttribute('marker-end', `url(#${arrowhead.id})`)
-
-      line.update()
-    })
-
-    this.lΣ.update()
-
-    this.updateState()
-
-  }
-
-  onFrame() {
-    let i = this.state.time < 0 ? 1 : 0.1
-    let f = this.state.time > 0 ? 1 : 0.1
-    this.l1i.style.opacity = i
-    this.l2i.style.opacity = i
-    this.l1f.style.opacity = f
-    this.l2f.style.opacity = f
-  }
-
-  updateState() {
-    this.state.momenta.initial[0] = vec(this.c1i).sub(this.origin)
-    this.state.momenta.initial[1] = vec(this.cΣ).sub(this.c1i)
-    this.state.momenta.final[0] = vec(this.c1f).sub(this.origin)
-    this.state.momenta.final[1] = vec(this.cΣ).sub(this.c1f)
-  }
 }
 
 
@@ -172,7 +118,7 @@ class BilliardDiagram {
   }
 
   update() {
-    let t = this.state.time = (new Date().getTime()/1.5e3) % 2 - 1
+    let t = this.state.time
     let α = Math.max(1, 10*(1 - Math.abs(t)))
 
     let momenta = this.state.momenta[t < 0 ? 'initial' : 'final']
@@ -200,35 +146,57 @@ class BilliardDiagram {
 }
 
 class Scene {
-  constructor(interactive) {
-    this.interactive = interactive
+  constructor(selector) {
+    this.element = document.querySelector(selector)
+    this.interactive = new Interactive(this.element)
 
     this.state = {
       masses: [1, 1],
       momenta: {
         initial: [
-          {x: 10, y: -10},
-          {x: 10, y: 5},
+          vec(10, -80),
+          vec(90, -20),
         ],
         final: [
-          {x: 10, y: 5},
-          {x: 10, y: -10},
+          vec(60, 20),
+          vec(40, -120),
         ],
       },
       time: 0,
     }
  
-    this.diagram = new MomentumDiagram(this.interactive, this.state)
     this.anim = new BilliardDiagram(this.interactive, this.state)
 
+    this.origin = {x: this.interactive.width/4, y: this.interactive.height/2}
+
+
+    // this.element.addEventListener('mouseover', e => {
+    //   e.stopPropagation();
     this.play()
+    // })
+    // this.element.addEventListener('mouseout', () => this.playing = false)
 
   }
 
+  controlAt(v) {
+    const control = this.interactive.control(...vec(this.origin).add(v).toArray())
+    control.onchange = () => {
+      this.updateState()
+      control.updateDependents()
+      this.anim.update()
+    }
+    return control
+  }
+
   play() {
+    if (this.playing) return
+    this.startTime = new Date().getTime()
+
     const onFrame = () => {
       this.anim.update()
-      this.diagram.onFrame()
+      let t = new Date().getTime() - this.startTime
+      this.state.time = t/1e3 % 2 - 1
+      this.onFrame()
       if (this.playing) requestAnimationFrame(onFrame)
     }
     this.playing = true
@@ -237,4 +205,199 @@ class Scene {
 
 }
 
-window.scene = new Scene(new Interactive('figure-1'))
+class Figure1 extends Scene {
+  constructor() {
+    super(...arguments)
+
+    this.c1i = this.controlAt(this.state.momenta.initial[0])
+    this.c2i = this.controlAt(this.state.momenta.initial[1])
+    this.c1f = this.controlAt(this.state.momenta.final[0])
+    this.c2f = this.controlAt(this.state.momenta.final[1])
+
+    this.l1i = this.interactive.lineConnecting(this.origin, this.c1i, {color: COLORSCHEME[0], arrow: true})
+    this.l2i = this.interactive.lineConnecting(this.origin, this.c2i, {color: COLORSCHEME[1], arrow: true})
+    this.l1f = this.interactive.lineConnecting(this.origin, this.c1f, {color: COLORSCHEME[0], arrow: true})
+    this.l2f = this.interactive.lineConnecting(this.origin, this.c2f, {color: COLORSCHEME[1], arrow: true})
+
+    this.updateState()
+
+  }
+
+  onFrame() {
+    let i = this.state.time < 0 ? 1 : 0.1
+    let f = this.state.time > 0 ? 1 : 0.1
+    this.l1i.style.opacity = i
+    this.l2i.style.opacity = i
+    this.l1f.style.opacity = f
+    this.l2f.style.opacity = f
+  }
+
+  updateState() {
+    this.state.momenta.initial[0] = vec(this.c1i).sub(this.origin)
+    this.state.momenta.initial[1] = vec(this.c2i).sub(this.origin)
+    this.state.momenta.final[0] = vec(this.c1f).sub(this.origin)
+    this.state.momenta.final[1] = vec(this.c2f).sub(this.origin)
+  }
+}
+
+
+
+class Figure2 extends Scene {
+  constructor() {
+    super(...arguments)
+
+    this.origin = {x: this.interactive.width/4, y: this.interactive.height/2}
+    this.c1i = this.controlAt(this.state.momenta.initial[0])
+    this.c1f = this.controlAt(this.state.momenta.final[0])
+    this.cΣ = this.controlAt(this.state.momenta.initial[0].add(this.state.momenta.initial[1]))
+
+    this.l1i = this.interactive.lineConnecting(this.origin, this.c1i, {color: COLORSCHEME[0], arrow: true})
+    this.l2i = this.interactive.lineConnecting(this.c1i   , this.cΣ , {color: COLORSCHEME[1], arrow: true})
+    this.l1f = this.interactive.lineConnecting(this.origin, this.c1f, {color: COLORSCHEME[0], arrow: true})
+    this.l2f = this.interactive.lineConnecting(this.c1f   , this.cΣ , {color: COLORSCHEME[1], arrow: true})
+    this.lΣ  = this.interactive.lineConnecting(this.origin, this.cΣ)
+
+    this.lΣ.style.strokeDasharray = 5
+    // this.lΣ.style.stroke = 'black'
+
+    this.updateState()
+
+  }
+
+  onFrame() {
+    let i = this.state.time < 0 ? 1 : 0.1
+    let f = this.state.time > 0 ? 1 : 0.1
+    this.l1i.style.opacity = i
+    this.l2i.style.opacity = i
+    this.l1f.style.opacity = f
+    this.l2f.style.opacity = f
+  }
+
+  updateState() {
+    this.state.momenta.initial[0] = vec(this.c1i).sub(this.origin)
+    this.state.momenta.initial[1] = vec(this.cΣ).sub(this.c1i)
+    this.state.momenta.final[0] = vec(this.c1f).sub(this.origin)
+    this.state.momenta.final[1] = vec(this.cΣ).sub(this.c1f)
+  }
+}
+
+
+
+class Figure3 extends Scene {
+  constructor() {
+    super(...arguments)
+
+    this.origin = {x: this.interactive.width/4, y: this.interactive.height/2}
+    this.c1i = this.controlAt(this.state.momenta.initial[0])
+    this.c1f = this.controlAt(this.state.momenta.final[0])
+    this.cΣ = this.controlAt(this.state.momenta.initial[0].add(this.state.momenta.initial[1]))
+
+    this.l1i = this.interactive.lineConnecting(this.origin, this.c1i, {color: COLORSCHEME[0], arrow: true})
+    this.l2i = this.interactive.lineConnecting(this.c1i,    this.cΣ,  {color: COLORSCHEME[1], arrow: true})
+    this.l1f = this.interactive.lineConnecting(this.origin, this.c1f, {color: COLORSCHEME[0], arrow: true})
+    this.l2f = this.interactive.lineConnecting(this.c1f,    this.cΣ,  {color: COLORSCHEME[1], arrow: true})
+    this.lΣ  = this.interactive.lineConnecting(this.origin, this.cΣ)
+
+    this.lΣ.style.strokeDasharray = 5
+    // this.lΣ.style.stroke = 'black'
+
+    this.locus = this.interactive.ellipse(10, 10, 50, 20)
+    this.locus.style.fill = 'none'
+    this.locus.style.stroke = 'green'
+
+    this.locus.update = () => {
+      let p1 = this.state.momenta.initial[0]
+      let p2 = this.state.momenta.initial[1]
+      let pΣ = p1.add(p2)
+
+      let l = p1.length + p2.length
+
+
+      this.locus.rx = l/2
+      this.locus.ry = Math.sqrt(Math.pow(l, 2) - Math.pow(pΣ.length, 2))/2
+
+      let θ = this.locus.θ = pΣ.angle
+      this.locus.style.transform = `rotate(${θ}rad)`
+
+      let center = pΣ.mul(1/2).add(this.origin).rotate(-θ)
+      this.locus.cx = center.x
+      this.locus.cy = center.y
+
+      let pathLength = this.locus.root.getTotalLength()
+      let n = 800
+      this.locusPoints = []
+      for (var i = 0; i < n; i++) {
+        let a = i/n*pathLength
+        let point = this.locus.root.getPointAtLength(a)
+        this.locusPoints.push(vec(point).rotate(θ))
+      }
+    }
+
+    this.locus.update()
+
+    this.locus.addDependency(this.c1i, this.cΣ)
+
+    this.c1f.onchange = () => {
+
+      this.snapToLocus()
+      this.updateState()
+      this.c1f.updateDependents()
+      this.anim.update()
+    }
+
+    this.c1f.update = () => this.snapToLocus()
+
+    this.c1f.addDependency(this.c1i, this.cΣ)
+    this.c1f.onchange()
+
+    this.updateState()
+
+
+
+  }
+
+  snapToLocus() {
+    let lengths = this.locusPoints.map(point => vec(point).sub(this.c1f).length)
+
+    let closest = {index: 0, length: Infinity}
+    lengths.forEach((length, i) => {
+      if (length < closest.length) {
+        closest.length = length
+        closest.index = i
+      }
+    })
+
+    let closestPoint = this.locusPoints[closest.index]
+
+    this.c1f.x = closestPoint.x
+    this.c1f.y = closestPoint.y
+  }
+
+
+
+  onFrame() {
+    let i = this.state.time < 0 ? 1 : 0.1
+    let f = this.state.time > 0 ? 1 : 0.1
+    this.l1i.style.opacity = i
+    this.l2i.style.opacity = i
+    this.l1f.style.opacity = f
+    this.l2f.style.opacity = f
+  }
+
+  updateState() {
+    this.state.momenta.initial[0] = vec(this.c1i).sub(this.origin)
+    this.state.momenta.initial[1] = vec(this.cΣ).sub(this.c1i)
+    this.state.momenta.final[0] = vec(this.c1f).sub(this.origin)
+    this.state.momenta.final[1] = vec(this.cΣ).sub(this.c1f)
+  }
+}
+
+
+
+
+
+window.onload = function() {
+  window.fig1 = new Figure1('#figure-1')
+  window.fig2 = new Figure2('#figure-2')
+  window.fig3 = new Figure3('#figure-3')
+}

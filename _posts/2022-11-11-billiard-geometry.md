@@ -13,7 +13,11 @@ blurb: stuff
 .control .handle { stroke: black; }
 </style>
 
-<script type="module" src="projects/billiards/vector.js"></script>
+<script src="assets/vector.min.js"></script>
+<script src="projects/billiards/vector.js"></script>
+
+
+<div id="figure-1"></div>
 
 ## Conservation of momentum
 
@@ -26,8 +30,8 @@ where $$'$$ indicates the value after the collision.
 
 We can more easily visualise this constraint by drawing the momenta tip-to-tail, connecting to the same total momentum before and after the collision:
 
-<div id="figure-1"></div>
+<div id="figure-2"></div>
 
 ## Conservation of energy
 
-<div id="figure-2"></div>
+<div id="figure-3"></div>
