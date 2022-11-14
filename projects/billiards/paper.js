@@ -1,0 +1,1 @@
+paper.install(window)

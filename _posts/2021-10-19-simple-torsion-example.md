@@ -7,9 +7,8 @@ tags: []
 ---
 
 
-While learning general relativity as an undergrad, I was always uneasy with the idea of _torsion_ in relation to affine connections.
-I was familiar with phrases like, “torsion measures how a frame _twists_ as it undergoes parallel transport,” but was sceptical to allow this lofty phrase serve as a mental image.
-It was only until I found some examples that indeed I realised that this _is_ precisely what torsion measures.
+While learning general relativity as an undergrad, I was uneasy with the idea of _torsion_ of an affine connection.
+Familiar phrases like “torsion measures how a frame _twists_ as it undergoes parallel transport” seemed too lofty to serve as a helpful mental model.
 
 The following example is one which gave me an _aha!_ moment.
 
