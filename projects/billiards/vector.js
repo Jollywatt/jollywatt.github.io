@@ -60,8 +60,10 @@ Interactive.prototype.lineConnecting = function(from, to, {arrow, color} = {}) {
 
   line.style.stroke = color
 
-  const arrowhead = this.arrowhead(line.style.stroke)
-  line.setAttribute('marker-end', `url(#${arrowhead.id})`)
+  if (arrow) {
+    const arrowhead = this.arrowhead(line.style.stroke)
+    line.setAttribute('marker-end', `url(#${arrowhead.id})`)
+  }
 
   line.update()
   return line
@@ -338,7 +340,6 @@ class Figure3 extends Scene {
     this.locus.addDependency(this.c1i, this.cΣ)
 
     this.c1f.onchange = () => {
-
       this.snapToLocus()
       this.updateState()
       this.c1f.updateDependents()
