@@ -11,6 +11,15 @@ blurb: A neat relationship between elastic collisions and ellipses.
 <style>
 .control .point { fill: black; }
 .control .handle { stroke: black; }
+
+div[id^="figure"] {
+	margin: auto;
+	width: min-content;
+}
+div[id^="figure"] svg {
+	box-shadow: 2px 4px 10px #0001 inset;
+	border-radius: 10px;	
+}
 </style>
 
 <script src="assets/vector.min.js"></script>
@@ -48,3 +57,9 @@ This is the defining property of an ellipse with the origin and $$p_\text{total}
 <div id="figure-3"></div>
 
 Now, all the scenarios we can describe are plausible elastic collisions.
+
+## Angle of contact
+
+To complete the picture, the tangent line at which the bodies kiss is found geometrically by connecting the ellipse points.
+
+<div id="figure-4"></div>
