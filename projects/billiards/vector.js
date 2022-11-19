@@ -84,7 +84,6 @@ function massToRadius(mass) {
   return 10*Math.sqrt(mass)
 }
 
-
 class BilliardDiagram {
   constructor(interactive, state, crosshairs) {
     this.interactive = interactive
@@ -98,7 +97,7 @@ class BilliardDiagram {
       this.normal = this.interactive.line(0,0,0,0)
 
       this.normal.style.stroke = '#6D1C76'
-      this.tangent.style.stroke = '#bbb'
+      this.tangent.style.stroke = '#ddd'
       this.normal.style.strokeDasharray = 2
       // this.tangent.style.strokeDasharray = 2
     }
@@ -249,7 +248,6 @@ class Scene {
 
       this.onFrame()
 
-
       if (this.playing || lastTime < this.state.time) requestAnimationFrame(onFrame)
     }
     this.playing = true
@@ -299,7 +297,6 @@ class Figure2 extends Scene {
   constructor() {
     super(...arguments)
 
-    this.origin = {x: this.interactive.width/4, y: this.interactive.height/2}
     this.c1i = this.controlAt(this.state.momenta.initial[0])
     this.c1f = this.controlAt(this.state.momenta.final[0])
     this.cΣ = this.controlAt(this.state.momenta.initial[0].add(this.state.momenta.initial[1]))
@@ -311,7 +308,6 @@ class Figure2 extends Scene {
     this.lΣ  = this.interactive.lineConnecting(this.origin, this.cΣ)
 
     this.lΣ.style.strokeDasharray = 5
-    // this.lΣ.style.stroke = 'black'
 
     this.updateState()
 
@@ -335,26 +331,28 @@ class Figure2 extends Scene {
 }
 
 
+function closestPointOnEllipse(foci, l, z) {
+  let origin = vec(foci[0]).add(foci[1]).mul(1/2)
+  let α = -vec(foci[0]).sub(origin).angle
+  let ζ = z.sub(origin).rotate(α)
 
-class Figure3 extends Scene {
+  let F = foci.map(p => z.sub(p).length)
+
+  let a = origin.sub(foci[1]).length
+  let μ = Math.acosh(l/(2*a))
+  let nu = Math.acos(-(F[0] - F[1])/(2*a))
+
+  let ζ0 = vec(Math.cosh(μ)*Math.cos(nu), Math.sinh(μ)*Math.sin(nu)*Math.sign(ζ.y)).mul(a)
+  let z0 = ζ0.rotate(-α).add(origin)
+
+  return z0
+}
+
+class Figure3 extends Figure2 {
   constructor() {
     super(...arguments)
 
-    this.origin = {x: this.interactive.width/4, y: this.interactive.height/2}
-    this.c1i = this.controlAt(this.state.momenta.initial[0])
-    this.c1f = this.controlAt(this.state.momenta.final[0])
-    this.cΣ = this.controlAt(this.state.momenta.initial[0].add(this.state.momenta.initial[1]))
-
-    this.l1i = this.interactive.lineConnecting(this.origin, this.c1i, {stroke: COLORSCHEME[0], arrow: true})
-    this.l2i = this.interactive.lineConnecting(this.c1i,    this.cΣ,  {stroke: COLORSCHEME[1], arrow: true})
-    this.l1f = this.interactive.lineConnecting(this.origin, this.c1f, {stroke: COLORSCHEME[0], arrow: true})
-    this.l2f = this.interactive.lineConnecting(this.c1f,    this.cΣ,  {stroke: COLORSCHEME[1], arrow: true})
-    this.lΣ  = this.interactive.lineConnecting(this.origin, this.cΣ)
-
-    this.lΣ.style.strokeDasharray = 5
-    // this.lΣ.style.stroke = 'black'
-
-    this.locus = this.interactive.ellipse(10, 10, 50, 20)
+    this.locus = this.interactive.ellipse(0, 0, 0, 0)
     this.locus.style.fill = 'none'
     this.locus.style.stroke = 'green'
 
@@ -365,7 +363,6 @@ class Figure3 extends Scene {
 
       let l = p1.length + p2.length
 
-
       this.locus.rx = l/2
       this.locus.ry = Math.sqrt(Math.pow(l, 2) - Math.pow(pΣ.length, 2))/2
 
@@ -375,15 +372,6 @@ class Figure3 extends Scene {
       let center = pΣ.mul(1/2).add(this.origin).rotate(-θ)
       this.locus.cx = center.x
       this.locus.cy = center.y
-
-      let pathLength = this.locus.root.getTotalLength()
-      let n = 800
-      this.locusPoints = []
-      for (var i = 0; i < n; i++) {
-        let a = i/n*pathLength
-        let point = this.locus.root.getPointAtLength(a)
-        this.locusPoints.push(vec(point).rotate(θ))
-      }
     }
 
     this.locus.update()
@@ -391,173 +379,40 @@ class Figure3 extends Scene {
     this.locus.addDependency(this.c1i, this.cΣ)
 
     this.c1f.onchange = () => {
-      this.snapToLocus()
+      this.snapToEllipse()
       this.updateState()
       this.c1f.updateDependents()
       this.anim.update()
     }
 
-    this.c1f.update = () => this.snapToLocus()
+    this.c1f.update = () => this.snapToEllipse()
 
     this.c1f.addDependency(this.c1i, this.cΣ)
     this.c1f.onchange()
 
     this.updateState()
 
-
-
   }
 
-  snapToLocus() {
-    let lengths = this.locusPoints.map(point => vec(point).sub(this.c1f).length)
+  snapToEllipse() {
+    let l = this.state.momenta.initial[0].length + this.state.momenta.initial[1].length
+    let closest = closestPointOnEllipse([this.origin, this.cΣ], l, vec(this.c1f))
+    this.c1f.x = closest.x
+    this.c1f.y = closest.y
 
-    let closest = {index: 0, length: Infinity}
-    lengths.forEach((length, i) => {
-      if (length < closest.length) {
-        closest.length = length
-        closest.index = i
-      }
-    })
-
-    let closestPoint = this.locusPoints[closest.index]
-
-    this.c1f.x = closestPoint.x
-    this.c1f.y = closestPoint.y
-  }
-
-
-
-  onFrame() {
-    let i = this.state.time < 0 ? 1 : 0.1
-    let f = this.state.time > 0 ? 1 : 0.1
-    this.l1i.style.opacity = i
-    this.l2i.style.opacity = i
-    this.l1f.style.opacity = f
-    this.l2f.style.opacity = f
-  }
-
-  updateState() {
-    this.state.momenta.initial[0] = vec(this.c1i).sub(this.origin)
-    this.state.momenta.initial[1] = vec(this.cΣ).sub(this.c1i)
-    this.state.momenta.final[0] = vec(this.c1f).sub(this.origin)
-    this.state.momenta.final[1] = vec(this.cΣ).sub(this.c1f)
   }
 }
 
 
 
-
-
-class Figure4 extends Scene {
+class Figure4 extends Figure3 {
   constructor() {
     super(...arguments)
-
-    this.origin = {x: this.interactive.width/4, y: this.interactive.height/2}
-    this.c1i = this.controlAt(this.state.momenta.initial[0])
-    this.c1f = this.controlAt(this.state.momenta.final[0])
-    this.cΣ = this.controlAt(this.state.momenta.initial[0].add(this.state.momenta.initial[1]))
-
-    this.l1i = this.interactive.lineConnecting(this.origin, this.c1i, {stroke: COLORSCHEME[0], arrow: true})
-    this.l2i = this.interactive.lineConnecting(this.c1i,    this.cΣ,  {stroke: COLORSCHEME[1], arrow: true})
-    this.l1f = this.interactive.lineConnecting(this.origin, this.c1f, {stroke: COLORSCHEME[0], arrow: true})
-    this.l2f = this.interactive.lineConnecting(this.c1f,    this.cΣ,  {stroke: COLORSCHEME[1], arrow: true})
-    this.lΣ  = this.interactive.lineConnecting(this.origin, this.cΣ)
 
     this.l1i1f  = this.interactive.lineConnecting(this.c1i, this.c1f, {
       stroke: '#6D1C76',
       strokeDasharray: 2
     })
-
-    this.lΣ.style.strokeDasharray = 5
-    // this.lΣ.style.stroke = 'black'
-
-    this.locus = this.interactive.ellipse(10, 10, 50, 20)
-    this.locus.style.fill = 'none'
-    this.locus.style.stroke = 'green'
-
-    this.locus.update = () => {
-      let p1 = this.state.momenta.initial[0]
-      let p2 = this.state.momenta.initial[1]
-      let pΣ = p1.add(p2)
-
-      let l = p1.length + p2.length
-
-
-      this.locus.rx = l/2
-      this.locus.ry = Math.sqrt(Math.pow(l, 2) - Math.pow(pΣ.length, 2))/2
-
-      let θ = this.locus.θ = pΣ.angle
-      this.locus.style.transform = `rotate(${θ}rad)`
-
-      let center = pΣ.mul(1/2).add(this.origin).rotate(-θ)
-      this.locus.cx = center.x
-      this.locus.cy = center.y
-
-      let pathLength = this.locus.root.getTotalLength()
-      let n = 800
-      this.locusPoints = []
-      for (var i = 0; i < n; i++) {
-        let a = i/n*pathLength
-        let point = this.locus.root.getPointAtLength(a)
-        this.locusPoints.push(vec(point).rotate(θ))
-      }
-    }
-
-    this.locus.update()
-
-    this.locus.addDependency(this.c1i, this.cΣ)
-
-    this.c1f.onchange = () => {
-      this.snapToLocus()
-      this.updateState()
-      this.c1f.updateDependents()
-      this.anim.update()
-    }
-
-    this.c1f.update = () => this.snapToLocus()
-
-    this.c1f.addDependency(this.c1i, this.cΣ)
-    this.c1f.onchange()
-
-    this.updateState()
-
-
-
-  }
-
-  snapToLocus() {
-    let lengths = this.locusPoints.map(point => vec(point).sub(this.c1f).length)
-
-    let closest = {index: 0, length: Infinity}
-    lengths.forEach((length, i) => {
-      if (length < closest.length) {
-        closest.length = length
-        closest.index = i
-      }
-    })
-
-    let closestPoint = this.locusPoints[closest.index]
-
-    this.c1f.x = closestPoint.x
-    this.c1f.y = closestPoint.y
-  }
-
-
-
-  onFrame() {
-    let i = this.state.time < 0 ? 1 : 0.1
-    let f = this.state.time > 0 ? 1 : 0.1
-    this.l1i.style.opacity = i
-    this.l2i.style.opacity = i
-    this.l1f.style.opacity = f
-    this.l2f.style.opacity = f
-  }
-
-  updateState() {
-    this.state.momenta.initial[0] = vec(this.c1i).sub(this.origin)
-    this.state.momenta.initial[1] = vec(this.cΣ).sub(this.c1i)
-    this.state.momenta.final[0] = vec(this.c1f).sub(this.origin)
-    this.state.momenta.final[1] = vec(this.cΣ).sub(this.c1f)
   }
 }
 
