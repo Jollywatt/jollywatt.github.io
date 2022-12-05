@@ -241,14 +241,16 @@ class Scene {
     this.startTime = new Date().getTime()
 
     const onFrame = () => {
-      this.anim.update()
       let t = new Date().getTime() - this.startTime
       let lastTime = this.state.time
       this.state.time = t/1e3 % 2 - 1
 
-      this.onFrame()
+      if (!this.playing && lastTime > this.state.time) return
 
-      if (this.playing || lastTime < this.state.time) requestAnimationFrame(onFrame)
+      this.onFrame()
+      this.anim.update()
+
+      requestAnimationFrame(onFrame)
     }
     this.playing = true
     requestAnimationFrame(onFrame)
@@ -339,6 +341,9 @@ function closestPointOnEllipse(foci, l, z) {
   let F = foci.map(p => z.sub(p).length)
 
   let a = origin.sub(foci[1]).length
+
+  if (a == 0) return ζ.normalize().mul(l/2).rotate(α).add(origin)
+
   let μ = Math.acosh(l/(2*a))
   let nu = Math.acos(-(F[0] - F[1])/(2*a))
 
