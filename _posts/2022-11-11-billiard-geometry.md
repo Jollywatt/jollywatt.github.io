@@ -2,6 +2,7 @@
 layout: post
 title: "Note on billiard geometry: Visually solving elastic collisions"
 author: "Joseph Wilson"
+categories: interactive
 tags: []
 blurb: A neat relationship between elastic collisions and ellipses.
 ---
@@ -63,3 +64,5 @@ Now, all the scenarios we can describe are plausible elastic collisions.
 To complete the picture, the tangent line at which the bodies kiss is found geometrically by connecting the ellipse points.
 
 <div id="figure-4"></div>
+
+Now, everything looks right, no matter what you do to the points!
