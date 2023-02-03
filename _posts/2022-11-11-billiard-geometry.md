@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Note on billiard geometry: Visually solving elastic collisions"
+title: "Billiard geometry: Visually solving elastic collisions"
 author: "Joseph Wilson"
 categories: interactive
 tags: []

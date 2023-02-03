@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Daylight Hours: a spherical geometry problem"
+title: "Daylight Hours: A spherical geometry problem"
 author: "Joseph Wilson"
 categories: interactive
 tags: []
