@@ -4,6 +4,9 @@ title: Research
 permalink: interactive
 ---
 
+# _Interactive things_
+
+<div>
 {% for post in site.categories.interactive %}
 	<div class="posts-container">
 		{% include post-title.html %}
@@ -14,8 +17,9 @@ permalink: interactive
 		{% endif %}
 		<p>
 			{{ post.blurb }}
-			<!-- <a href="{{ site.github.url }}{{ post.url }}">Read more</a> -->
+			<a href="{{ site.github.url }}{{ post.url }}">Read more</a>
 		</p>
 	</div>
 	<hr>
 {% endfor %}
+</div>

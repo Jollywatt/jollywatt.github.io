@@ -6,9 +6,10 @@ body {
   background: url("../img/header.png") fixed top no-repeat;
   background-color: hsl(205deg, 100%, 98%);
   background-blend-mode: multiply;
-  padding-top: 250px;
+  padding-top: calc((450px + 28vw)*0.33);
   padding-bottom: 60px;
-  background-size: 776px;
+  // background-size: 776px;
+  background-size: calc(450px + 28vw)
 
 }
 
@@ -19,7 +20,7 @@ body {
   padding: 0 4rem;
   padding-top: 1.5rem;
   padding-bottom: .4rem;
-  box-shadow: 0px 12px 16px #0002;
+  box-shadow: 0px 6px 16px #0002;
   border-radius: 8px;
   // background: $container-color;
   background: white;
