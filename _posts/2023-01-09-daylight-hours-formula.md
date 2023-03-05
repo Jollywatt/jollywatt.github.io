@@ -9,7 +9,7 @@ blurb: |
   The Earth’s tilt makes this a fun geometry problem…
 ---
 
-<script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script async src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6" onload="init()"></script>
 <style>
 .figlabel {
 	font-family: sans-serif;
@@ -27,7 +27,7 @@ The Earth’s tilt makes this a fun geometry problem…
 
 ## Hours of daylight at the solstice
 
-Let $$ε$$ be the Earth’s tilt, or _obliquity_. This is the angle between Earth’s axis of rotation and the normal to Earth’s orbital plane around the sun.
+Let $$ε$$ be the Earth’s tilt, or _obliquity_. This is the angle between Earth’s axis of rotation $$N$$ and the normal to Earth’s orbital plane around the sun, $$O$$.
 At first, let’s assume that the Earth tilts directly toward the sun (or directly away, for $$ε < 0$$).
 This direct alignment occurs twice a year, at the summer and winder solstices.
 We can consider seasons later; for now, assume we’re at summer solstice.
@@ -106,11 +106,49 @@ $$
 L = \frac1π\arctan\left(\frac{1}{\sin ε} \tan \left[\arccos\left(\frac{\sin φ}{\cos ε}\right)\right]\right)
 .$$
 
-<!-- <div id="fig-daylight-plot" class="fig"></div> -->
 
 ## Incorporating seasons
 
-_…coming soon…_
+In reality, the Earth’s tilt is not exactly toward or away from the sun, because it orbits the sun while its axis of rotation remains fixed.
+
+At the northern summer solstice, the north pole is tilted toward the sun. Let $$ω$$ be the angle of the Earth’s course around the sun from this point.
+
+Looking down the axis the orbital plane, $$O$$, with the sun always to the right, we see the north pole trace out a circle as $$ω$$ varies over the course of a year.
+
+<div id="fig4" class="fig"></div>
+
+The Earth’s obliquity $$ε_0$$ remains fixed (the angle of the dashed green arc).
+However, the true angle the north pole makes from the day–night boundary (the solid green arc which we called $$ε$$ before) varies with $$ω$$.
+This is the seasonal dependence of day length.
+
+Our task now is to find $$ε$$ in terms of $$ε_0$$ and $$ω$$.
+
+The points $$O$$, $$N$$ and $$P$$ form a spherical triangle in which each side is an arc of a great circle.
+To find $$ε$$, the angle of the arc $$\overline{PN}$$, we may use the spherical law of sines:
+
+$$
+\frac{\sin a}{\sin A} = \frac{\sin b}{\sin B} = \frac{\sin c}{\sin C}
+$$
+
+Specifically, this gives us
+
+$$
+\frac{\sin\overline{PN}}{\sin(\frac{π}{2} - ω)} = \frac{\sin\overline{ON}}{\sin\frac{π}{2}}
+$$
+
+which reduces to
+
+$$
+\frac{\sin ε}{\cos ω} = \sin ε_0
+.$$
+
+For completeness, the full expression for the fraction of the day in daylight is
+
+$$
+L = \frac1π\arctan\left(\frac{1}{\sin ε_0\cosω} \tan \left[\arccos\left(\frac{\sin φ}{\sqrt{1 - (\sin ε_0\cosω)^2}}\right)\right]\right)
+$$
+
+where $$ε_0 = 24.5^\circ$$ is the obliquity of the Earth, $$φ$$ is the latitude of the reference point and $$ω$$ is the season expressed as the arc angle along Earth’s orbit since the solstice.
 
 
 <script>
@@ -131,8 +169,8 @@ let expressions = {
 	view: [
 		{
 			id: "earth",
-			latex: "r\\le1",
-			color: "#2d70b3",
+			latex: "x^{2}+y^{2}\\le1",
+			color: "#2d70b380",
 			lineWidth: 0,
 		},
 		{
@@ -160,13 +198,6 @@ let expressions = {
 			color: "#000000",
 		},
 		{
-			id: "north pole",
-			latex: "\\left(0,\\ \\sin o\\right)",
-			color: "#c74440",
-			showLabel: true,
-			label: "N",
-		},
-		{
 			id: "equator circle back",
 			latex: "\\left(\\cos t, \\left(\\cos o\\right)\\sin t\\right)",
 			color: "black",
@@ -181,10 +212,20 @@ let expressions = {
 			lineWidth: 0.5,
 			parametricDomain: { min: "\\pi", max: "2\\pi" },
 		},
+		{
+			id: "rotation",
+			latex: "R\\left(\\alpha,\\ A,\\ B\\right)=A\\cos\\alpha+B\\sin\\alpha",
+		},
 	],
 
-
 	obliquity: [
+		{
+			id: "north pole",
+			latex: "\\left(0,\\ \\sin o\\right)",
+			color: "#c74440",
+			showLabel: true,
+			label: "N",
+		},
 		{
 			id: "obliquity slider value",
 			latex: "\\varepsilon_{s}=-0.5",
@@ -201,20 +242,24 @@ let expressions = {
 			id: "obliquity slider",
 			type: "expression",
 			latex: "\\left(\\varepsilon_{s},\\ \\left(\\sin o\\right)\\left(\\cos \\varepsilon\\right)\\right)",
+			dragMode: "NONE",
 			color: "#388c46",
 			showLabel: true,
 		},
 		{
-			id: "rotation",
-			latex: "R\\left(\\alpha,\\ A,\\ B\\right)=A\\cos\\alpha+B\\sin\\alpha",
+			id: "solar system pole",
+			latex: "\\left(\\varepsilon_{s},\\ \\left(\\sin o\\right)\\left(\\cos \\varepsilon\\right)\\right)",
+			color: "black",
+			label: "O",
+			showLabel: true,
 		},
 		{
 			id: "obliquity slider curve",
 			type: "expression",
 			latex: "\\left(\\sin t,\\ R\\left(o,0,\\cos t\\right)\\right)",
 			color: "#388c46",
-			lineStyle: "DASHED",
-			lineWidth: 1,
+			// lineStyle: "DASHED",
+			// lineWidth: 1,
 			parametricDomain: {
 				min: "\\min\\left(0,\\varepsilon\\right)",
 				max: "\\max\\left(0,\\varepsilon\\right)",
@@ -299,7 +344,6 @@ let expressions = {
 			}
 		}
 	],
-
 }
 
 
@@ -429,38 +473,172 @@ function Figure3(id) {
 
 }
 
-Figure1("fig1")
-Figure2("fig2")
-Figure3("fig3")
 
+function Figure4(id) {
 
+	let exprs = [
+		...expressions.view,
+		{
+			id: "solstice arc",
+			latex: "\\left(\\cos t, \\left(\\sin o\\right)\\sin t\\right)",
+			color: "black",
+			lineWidth: 0.5,
+			lineOpacity: 0.5,
+			parametricDomain: { min: 0, max: "\\frac{\\pi}{2}" },
+		},
 
+		{
+			id: "shadow",
+			latex: "x^{2}+y^{2}\\le1\\left\\{x\\le0\\right\\}",
+			color: "#0006",
+			lineWidth: 0,
+		},
+		{
+			id: "solar system pole",
+			latex: "\\left(0,\\sin o\\right)",
+			color: "black",
+			label: "O",
+			showLabel: true,
+			dragMode: "NONE",
+		},
+		{
+			id: "season slider value",
+			latex: `\\omega = ${7/8*2*Math.PI}`,
+			sliderBounds: {
+				min: "0",
+				max: "2\\pi - 10^{-10}",
+			},
+		},
+		{
+			id: "season slider",
+			latex: "\\left(\\frac{3}{2},\\ \\frac{\\omega}{\\pi} - 1\\right)",
+			color: "#6042a6",
+			showLabel: true,
+		},
+		{
+			id: "season slider line",
+			latex: "\\left(\\frac{3}{2},t\\right)",
+			color: "#6042a6",
+			parametricDomain: {
+				min: -1,
+				max: +1,
+			}
+		},
+		{
+			id: "obliquity slider value",
+			latex: "\\varepsilon_{s}=-0.5",
+			sliderBounds: {
+				min: "-1+10^{-10}",
+				max: 1,
+			},
+		},
+		{
+			id: "obliquity angle",
+			latex: "\\varepsilon=\\arcsin \\varepsilon_{s}",
+		},
+		{
+			id: "north pole",
+			latex: "\\left(-\\varepsilon_s\\cos\\omega,R\\left(o,-\\varepsilon_s\\sin\\omega,\\cos\\varepsilon\\right)\\right)",
+			color: "#c74440",
+			showLabel: true,
+			label: "N",
+		},
+		{
+			id: "north pole orbit",
+			latex: "\\left(-\\varepsilon_s\\cos t,R\\left(o,-\\varepsilon_s\\sin t,\\cos\\varepsilon\\right)\\right)",
+			color: "#c74440",
+			lineWidth: "1",
+			domain: {
+				min: "0",
+				max: "\\operatorname{mod}\\left(\\omega,\\ 2\\pi\\right)"
+			},
+		},
+		{
+			id: "north pole orbit outline",
+			latex: "\\left(-\\varepsilon_s\\cos t,R\\left(o,-\\varepsilon_s\\sin t,\\cos\\varepsilon\\right)\\right)",
+			color: "#c74440",
+			lineOpacity: 0.2,
+			lineWidth: "1",
+			domain: {
+				min: 0,
+				max: "2\\pi",
+			},
+		},
+		{
+			id: "obliquity curve",
+			latex: "\\left(\\sin\\left(-t\\varepsilon\\right)\\cos\\omega,R\\left(o,\\sin\\left(-t\\varepsilon\\right)\\sin\\omega,\\cos t\\varepsilon\\right)\\right)",
+			color: "#388c46",
+			lineStyle: "DASHED",
+			lineWidth: 1,
+		},
+		{
+			id: "seasonal obliquity curve",
+			latex: "\\left(\\sin t,\\frac{R\\left(o,-\\varepsilon_s\\sin\\omega,\\cos \\varepsilon\\right)}{\\sqrt{1-\\left(\\varepsilon_s\\cos\\omega\\right)^2}}\\cos t\\right)",
+			parametricDomain: {
+				min: "\\min\\left(0,\\arcsin\\left(-\\varepsilon_s\\cos\\omega\\right)\\right)",
+				max: "\\max\\left(0,\\arcsin\\left(-\\varepsilon_s\\cos\\omega\\right)\\right)",
+			},
+			color: "#388c46",
+			// lineStyle: "DASHED",
+			// lineWidth: 1,
 
+		},
+		{
+			id: "seasonal obliquity curve outline",
+			latex: "\\left(\\sin t,\\frac{R\\left(o,-\\varepsilon_s\\sin\\omega,\\cos \\varepsilon\\right)}{\\sqrt{1-\\left(\\varepsilon_s\\cos\\omega\\right)^2}}\\cos t\\right)",
+			parametricDomain: {
+				min: "\\max\\left(0,\\arcsin\\left(-\\varepsilon_s\\cos\\omega\\right)\\right)",
+				max: "\\frac{\\pi}{2}",
+			},
+			color: "#0002",
+			// lineStyle: "DASHED",
+			// lineWidth: 1,
 
+		},
+		{
+			id: "perpendicular point",
+			latex: "\\left(0,\\frac{R\\left(o,-\\varepsilon_s\\sin\\omega,\\cos \\varepsilon\\right)}{\\sqrt{1-\\left(\\varepsilon_s\\cos\\omega\\right)^2}}\\right)",
+			color: "#388c46",
+			label: "P",
+			showLabel: true,
+		},
+		
+	]
 
-function FigDaylightPlot(id) {
-	var element = document.getElementById(id)
-	var calculator = Desmos.GraphingCalculator(element, {
+	let calc = Figure(id, exprs, {
 		expressions: false,
-		settingsMenu: false,
 		lockViewport: true,
-		border: false,
-		xAxisStep: Math.PI,
-	})
-	let visibleRadius = 1.5
-	let rect = calculator.graphpaperBounds.pixelCoordinates
-	let aspect = rect.width/rect.height
-
-	calculator.setMathBounds({
-		left: -Math.PI/2 - 0.1,
-		right: Math.PI/2 + 0.1,
-		bottom: 0 - 0.1,
-		top: 1 + 0.1,
 	})
 
-	return calculator
+	let ω = calc.HelperExpression({ latex: "\\omega" })
+	ω.observe("numericValue.magnitude", () => {
+		calc.setExpression({
+			id: "season slider",
+			label: `ω = ${formatAngle(ω.numericValue)}`
+		})
+	})
+
+	let ε0 = calc.HelperExpression({ latex: "\\varepsilon" })
+	ε0.observe("numericValue.magnitude", () => {
+		calc.setExpression({
+			id: "obliquity label",
+			label: `ε₀ = ${formatAngle(ε0.numericValue)}`
+		})
+	})
+
+	return calc
 }
 
-// FigDaylightPlot("fig-daylight-plot")
+
+
+
+function init() {
+	Figure1("fig1")
+	Figure2("fig2")
+	Figure3("fig3")
+	Figure4("fig4")
+}
+
+
 
 </script>
