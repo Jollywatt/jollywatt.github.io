@@ -1,5 +1,12 @@
 <div style="margin-bottom: 1rem;">
   {% include post-date.html %}
+  {% if include.category %}
+    <span class="post-date">
+      {% for category in post.categories %}
+        · {{ category }}
+      {% endfor %}
+    </span>
+  {% endif %}
 </div>
 <h1 class="post-title">
   <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>

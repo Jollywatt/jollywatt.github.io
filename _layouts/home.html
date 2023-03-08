@@ -4,7 +4,7 @@ layout: default
 
 {% for post in paginator.posts %}
   <div class="posts-container">
-    {% include post-title.html %}
+    {% include post-title.html category=true %}
     {% if post.image %}
     <div class="thumbnail-container">
       <a href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{{ post.image }}"></a>

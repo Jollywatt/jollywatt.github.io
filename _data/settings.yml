@@ -8,10 +8,9 @@ google-ID: ''
 
 menu:
 - {name: 'About',   url: 'about'}
-- {name: 'Writing', url: 'writing'}
 - {name: 'Research', url: 'research'}
 - {name: 'Interactive', url: 'interactive'}
-# - {name: 'Math One-liners', url: 'math-one-liners'}
+- {name: 'Archive', url: 'archive'}
 - {name: 'CV', url: 'assets/pdf/Joseph-Wilson-CV.pdf', target: 'blank'}
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer

@@ -1,12 +1,10 @@
 ---
 layout: default
-title: Writing
-permalink: /writing
+title: Archive
+permalink: /archive
 ---
 
-<h1>
-  {{ page.title }}
-</h1>
+# _Archive of posts_
 
 <ul class="posts-container">
   {% for post in site.posts %}
@@ -21,8 +19,12 @@ permalink: /writing
     {% endunless %}
     <li itemscope>
       <a href="{{ site.github.url }}{{ post.url }}">{{ post.title }}</a>
-      ·
-      <span class="post-date" ><i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%B %-d" }} 
+      <span class="post-date" >
+        ·
+        <i class="fa fa-calendar" aria-hidden="true"></i> {{ post.date | date: "%B %-d" }} 
+        {% for category in post.categories %}
+          · {{ category }}
+        {% endfor %}
       </span>
     </li>
   {% endfor %}
