@@ -9,7 +9,7 @@ tags: [physics, mathematics]
 ---
 
 **In brief.**
-There’s a simple formula in $$≤4$$ dimensions for the bivector $$σ_3$$ as a function of bivectors $$σ_1$$ and $$σ_2$$ such that $$e^{σ_1}e^{σ_2} = ±e^{σ_3}$$.
+In $$≤4$$ dimensions, there’s a simple formula for the bivector $$σ_3$$ in terms of bivectors $$σ_1$$ and $$σ_2$$ such that $$e^{σ_1}e^{σ_2} = ±e^{σ_3}$$.
 
 **Abstract.**
 We present a compact Baker–Campbell–Hausdorff–Dynkin formula for the composition of Lorentz transformations $$e^{σ_i}$$ in the spin representation (a.k.a. Lorentz rotors) in terms of their generators $$σ_i$$:
