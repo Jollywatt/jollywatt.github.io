@@ -34,12 +34,12 @@ We can consider seasons later; for now, assume we’re at summer solstice.
 
 
 In this scenario, the boundary between day and night is a great circle whose angle from the north pole is $$ε$$.
-In the figure below, we show the Earth with the north pole always pointing up, so that changing the tilt $$ε$$ changes the relative position of the sun.
+In the figure below, the view of Earth is aligned to the north pole, so that changing the tilt $$ε$$ changes the relative position of the sun.
 
 <div id="fig1" class="fig"></div>
 
 Now, let $$φ$$ be the latitude of a reference point on Earth, so that $$φ = 0$$ is on the equator, and $$φ > 0$$ is in the northern hemisphere.
-Looking down on the north pole, we see that the number of daylight hours is determined by the arc length of the circle of latitude which lies outside the shadow of night.
+Looking down on the north pole, we see that the number of daylight hours is determined by the arc length of the circle of latitude which lies outside the shadow of night (indicated in orange).
 
 <div id="fig2" class="fig"></div>
 
@@ -47,7 +47,7 @@ To find this arc length in terms of $$ε$$ and $$φ$$, we must find the points o
 
 ### Dawn and dusk intercept points
 
-Assuming that the Earth is the unit circle, the circle of latitude has radius $$\cos φ$$, and the day/night ellipse has width $$\sin ε$$ and unit height. Parametrically, the ellipse is represented as
+Assuming that the Earth is the unit circle, the circle of latitude has radius $$\cos φ$$, and the day/night ellipse has horizontal radius $$\sin ε$$ and unit vertical radius. Parametrically, the ellipse is represented as
 
 $$
 (x, y) = (\sin ε \cos λ, \sin λ), λ ∈ [0, 2π)
@@ -109,7 +109,7 @@ L = \frac1π\arctan\left(\frac{1}{\sin ε} \tan \left[\arccos\left(\frac{\sin φ
 
 ## Incorporating seasons
 
-In reality, the Earth’s tilt is not exactly toward or away from the sun, because it orbits the sun while its axis of rotation remains fixed.
+In reality, the Earth’s tilt is not exactly toward or away from the sun, because it orbits the sun while its titled axis of rotation remains fixed.
 
 At the northern summer solstice, the north pole is tilted toward the sun. Let $$ω$$ be the angle of the Earth’s course around the sun from this point.
 
@@ -124,13 +124,13 @@ This is the seasonal dependence of day length.
 Our task now is to find $$ε$$ in terms of $$ε_0$$ and $$ω$$.
 
 The points $$O$$, $$N$$ and $$P$$ form a spherical triangle in which each side is an arc of a great circle.
-To find $$ε$$, the angle of the arc $$\overline{PN}$$, we may use the spherical law of sines:
+To find $$ε$$ (the angle of the arc $$\overline{PN}$$) we may use the spherical law of sines:
 
 $$
 \frac{\sin a}{\sin A} = \frac{\sin b}{\sin B} = \frac{\sin c}{\sin C}
 $$
 
-Specifically, this gives us
+Specifically, reading off the figure above, this gives us
 
 $$
 \frac{\sin\overline{PN}}{\sin(\frac{π}{2} - ω)} = \frac{\sin\overline{ON}}{\sin\frac{π}{2}}
