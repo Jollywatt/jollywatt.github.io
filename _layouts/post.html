@@ -10,6 +10,7 @@ layout: default
 <article>
   {{ content }}
 </article>
-{% if site.data.settings.disqus.comments %}
-  {% include disqus.html %}
+{% if site.data.settings.giscus %}
+  <hr>
+  {% include giscus.html %}
 {% endif %}
