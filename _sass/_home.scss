@@ -44,9 +44,11 @@
 .pagination-button {
   color: $light-gray-color;
   padding: 15px 45px;
+  padding-top: 19px;
   display: inline-block;
   font-size: 16px;
   font-weight: bold;
+  border-radius: 5px;
   &:not(.pagination-active) {
     display: none;
   }
