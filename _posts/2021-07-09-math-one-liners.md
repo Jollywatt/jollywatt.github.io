@@ -34,7 +34,7 @@ function toggleSpoilers() {
 </style>
 
 This is a collection of succinct but wonderfully satisfying theorems.
-[Email me](mailto:joseph.wilson@sms.vuw.ac.nz) if you have a good one!
+Leave a comment if you have a good one!
 
 The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers()">toggle “spoilers”</a>.
 
