@@ -14,7 +14,7 @@
 paginate:           8
 
 # Build settings
-highlighter:        rouge
+# highlighter:        rouge
 permalink:          /:title
 plugins:
   - jekyll-paginate
@@ -35,5 +35,5 @@ author:             'Joseph A. Wilson'
 
 markdown:           kramdown
 kramdown:
-  math_engine:      mathjax
-  # math_engine:      katex
+  input: GFM
+  # syntax_highlighter: rouge
