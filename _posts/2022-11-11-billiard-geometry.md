@@ -30,7 +30,25 @@ Suppose two bodies with initial momentum vectors $$𝒑_1$$ and $$𝒑_2$$ colli
 
 <div id="figure-1"></div>
 
-If no restrictions are placed on these four momentum vectors, then we can describe all kinds of collisions, including ones that violate momentum and energy conservation.
+If no restrictions are placed on these four momentum vectors, then we can describe all kinds of collisions, including ones that <a onclick="ex1()">violate momentum</a> and <a onclick="ex2()">energy conservation</a>.
+
+<script>
+ex1 = () => {
+	fig1.c1i.setPosition(+50, +50)
+	fig1.c2i.setPosition(+50, -50)
+	fig1.c1f.setPosition(-50, +50)
+	fig1.c2f.setPosition(-50, -50)
+	fig1.play()
+}
+
+ex2 = () => {
+	fig1.c1i.setPosition(+20, +20)
+	fig1.c2i.setPosition(+20, -20)
+	fig1.c1f.setPosition(+100, +100)
+	fig1.c2f.setPosition(+100, -100)
+	fig1.play()
+}
+</script>
 
 ## Conservation of momentum
 
@@ -43,7 +61,22 @@ The initial and final vector pairs must both extend to the same $$𝒑_\text{tot
 
 <div id="figure-2"></div>
 
-The collisions we can describe look more realistic now that momentum is conserved, but we can still create or destroy kinetic energy…
+The collisions we can describe look more realistic now that momentum is conserved, but we can still <a onclick="ex3()">create</a> or <a onclick="ex4()">destroy</a> kinetic energy…
+
+<script>
+ex3 = () => {
+	fig2.c1i.setPosition(40, 10)
+	fig2.c1f.setPosition(40, -80)
+	fig2.cΣ.setPosition(80, 0)
+	fig2.play()
+}
+ex4 = () => {
+	fig2.c1i.setPosition(40, 80)
+	fig2.c1f.setPosition(40, -10)
+	fig2.cΣ.setPosition(80, 0)
+	fig2.play()
+}
+</script>
 
 ## Conservation of energy
 
@@ -66,3 +99,13 @@ To complete the picture, the tangent line at which the bodies kiss is found geom
 <div id="figure-4"></div>
 
 Now, everything looks right, no matter what you do to the points!
+(Except perhaps scenarios with <a onclick="ex5()">intersecting</a> balls…)
+
+<script>
+ex5 = () => {
+	fig4.cΣ.setPosition(126, 0)
+	fig4.c1i.setPosition(87, 10)
+	fig4.c1f.setPosition(122, -3)
+	fig4.play()
+}
+</script>

@@ -233,6 +233,9 @@ class Scene {
       control.updateDependents()
       this.anim.update()
     }
+    control.setPosition = (x, y) => {
+      control.translate(...vec(this.origin).add(vec(x, y)).toArray())
+    }
     return control
   }
 
