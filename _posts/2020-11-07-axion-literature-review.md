@@ -14,4 +14,4 @@ I wanted to learn more about particle physics after my Bachelor’s, so a year o
 I learned basic classical (and a little quantum) field theory, and read about the “strong $$CP$$ problem” of quantum chromodynamics and its solution via “axions”.
 The report is aimed at the mathematically-inclined graduate who is uninitiated in particle physics.
 
-Full [PDF](2020.Strong-CP-Problem-and-Axions.pdf).
+Full [PDF]({{ site.github.url }}/assets/pdf/{{ page.pdf }}).

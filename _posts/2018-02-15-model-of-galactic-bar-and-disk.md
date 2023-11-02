@@ -8,4 +8,4 @@ image: galactic-model.png
 tags: [physics, cosmology]
 ---
 
-Cosmology summer project in which we reproduced [an empirical model](https://www.doi.org/10.1086/305065) of our galaxy’s centre and wrote code to visualise it. Full [PDF](2018.Freudenreich-Galactic-Bar-and-Disk.pdf).
+Cosmology summer project in which we reproduced [an empirical model](https://www.doi.org/10.1086/305065) of our galaxy’s centre and wrote code to visualise it. Full [PDF]({{ site.github.url }}/assets/pdf/{{ page.pdf }}).

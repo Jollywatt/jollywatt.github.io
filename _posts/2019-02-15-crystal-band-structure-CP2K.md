@@ -8,4 +8,4 @@ image: bands.png
 tags: [physics]
 ---
 
-Summer project about the theory behind numerical computation of the semiconductor band structure of crystals using the open source software [CP2K](https://www.cp2k.org/). Full [PDF](2019.Crystal-Band-Structures-CP2K.pdf).
+Summer project about the theory behind numerical computation of the semiconductor band structure of crystals using the open source software [CP2K](https://www.cp2k.org/). Full [PDF]({{ site.github.url }}/assets/pdf/{{ page.pdf }}).
