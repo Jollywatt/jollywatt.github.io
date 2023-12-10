@@ -1,10 +1,9 @@
 ---
 layout: post
-title: "Hands-on general relativity with Julia"
+title: "Basic general relativity with Julia"
 author: "Joseph Wilson"
 categories: math
 tags: []
-draft: true
 ---
 
 <style>
@@ -87,7 +86,7 @@ In our case, we’re not doing anything fancy — just building vectors with mat
 
 ### Dual numbers
 
-If you extend the reals by adding an element $$ε ≠ 0$$ satisfying $$ε^2 = 0$$, then you can get derivative information for free when you evaluate a function with a $$+ε$$, since
+If you extend the reals by adding an element $$ε ≠ 0$$ satisfying $$ε^2 = 0$$, then you can get derivative information for free when you evaluate a function with $$+ε$$, since
 
 $$
 f(x + ε) = f(x) + ε f'(x)
@@ -252,7 +251,7 @@ This shows how `∂` diverges slightly from other Jacobian implementations: ours
 To do things like compute geodesics and simulate parallel transport, we need the metric $$g_{μν}$$ and Christoffel symbols $$Γ^λ{}_{μν}$$ for our manifold.
 
 
-### Induced metrics
+### Induced metrics for embedded manifolds
 
 If our manifold happens to be a parametric surface embedded in $$ℝ^n$$, such as our sphere embedding $$f : 𝕊^2 → ℝ^3$$, then we should be able to compute the metric on the surface induced by the ambient Euclidean metric, $$η = \operatorname{diag}(1, \dots, 1)$$.
 Specifically, the induced metric $$g$$ is the _pullback_ of $$η$$ by $$f$$,
@@ -564,10 +563,3 @@ This means we can animate it, with a little extra setup code:
 <figure>
   <video src="{{ site.github.url }}/projects/julia-general-relativity/sphere-transport.mp4" autoplay muted loop width="70%"/>
 </figure>
-
-
-## More to come...
-
-- from embedded surfaces to (slices of) spacetime manifolds
-- simulate the precession of the perihelion?
-- code bundle
