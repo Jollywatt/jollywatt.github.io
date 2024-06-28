@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 500" version="1.1">
-<g id="surface1190">
-<rect x="0" y="0" width="1000" height="500" style="fill:rgb(75.68512%,0%,0%);fill-opacity:1;stroke:none;"/>
-<path style=" stroke:none;fill-rule:evenodd;fill:rgb(99.998474%,99.998474%,99.998474%);fill-opacity:1;" d="M 0 0 L 416.667969 0 L 416.667969 250 L 0 250 Z M 0 0 "/>
-<path style=" stroke:none;fill-rule:evenodd;fill:rgb(75.68512%,0%,0%);fill-opacity:1;" d="M 177.082031 31.25 L 239.582031 31.25 L 239.582031 218.75 L 177.082031 218.75 Z M 177.082031 31.25 "/>
-<path style=" stroke:none;fill-rule:evenodd;fill:rgb(75.68512%,0%,0%);fill-opacity:1;" d="M 114.582031 93.75 L 302.082031 93.75 L 302.082031 156.25 L 114.582031 156.25 Z M 114.582031 93.75 "/>
-</g>
-</svg>
+<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h1000v500h-1000z" fill="#c10000"/><g fill-rule="evenodd"><path d="m0 0h416.667969v250h-416.667969zm0 0" fill="#fff"/><path d="m177.082031 31.25h62.5v187.5h-62.5zm0 0" fill="#c10000"/><path d="m114.582031 93.75h187.5v62.5h-187.5zm0 0" fill="#c10000"/></g></svg>

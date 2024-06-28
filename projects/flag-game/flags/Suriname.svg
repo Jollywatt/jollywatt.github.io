@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 667" version="1.1">
-<defs>
-<clipPath id="clip1">
-  <path d="M 0 0 L 1000 0 L 1000 666.71875 L 0 666.71875 Z M 0 0 "/>
-</clipPath>
-</defs>
-<g id="surface1130">
-<g clip-path="url(#clip1)" clip-rule="nonzero">
-<path style=" stroke:none;fill-rule:evenodd;fill:rgb(21.568298%,49.411011%,24.705505%);fill-opacity:1;" d="M 0 666.667969 L 0 0 L 1000 0 L 1000 666.667969 Z M 0 666.667969 "/>
-</g>
-<path style=" stroke:none;fill-rule:evenodd;fill:rgb(99.998474%,99.998474%,99.998474%);fill-opacity:1;" d="M 0 133.332031 L 1000 133.332031 L 1000 533.332031 L 0 533.332031 Z M 0 133.332031 "/>
-<path style=" stroke:none;fill-rule:evenodd;fill:rgb(70.587158%,3.921509%,17.64679%);fill-opacity:1;" d="M 0 200 L 1000 200 L 1000 466.667969 L 0 466.667969 Z M 0 200 "/>
-<path style="fill-rule:nonzero;fill:rgb(92.547607%,78.430176%,11.372375%);fill-opacity:1;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke:rgb(92.547607%,78.430176%,11.372375%);stroke-opacity:1;stroke-miterlimit:3.239307;" d="M 451.566406 361.804688 L 421.628906 453.933594 L 500 396.992188 L 578.371094 453.933594 L 548.433594 361.804688 L 626.808594 304.859375 L 529.933594 304.859375 L 500 212.734375 L 470.066406 304.859375 L 373.191406 304.859375 Z M 451.566406 361.804688 "/>
-</g>
-</svg>
+<svg viewBox="0 0 1000 667" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><clipPath id="a"><path d="m0 0h1000v666.71875h-1000zm0 0"/></clipPath><g clip-path="url(#a)"><path d="m0 666.667969v-666.667969h1000v666.667969zm0 0" fill="#377e3f" fill-rule="evenodd"/></g><path d="m0 133.332031h1000v400h-1000zm0 0" fill="#fff" fill-rule="evenodd"/><path d="m0 200h1000v266.667969h-1000zm0 0" fill="#b40a2d" fill-rule="evenodd"/><path d="m451.566406 361.804688-29.9375 92.128906 78.371094-56.941406 78.371094 56.941406-29.9375-92.128906 78.375-56.945313h-96.875l-29.933594-92.125-29.933594 92.125h-96.875zm0 0" fill="#ecc81d" stroke="#ecc81d" stroke-linecap="square" stroke-miterlimit="3.239307"/></svg>
