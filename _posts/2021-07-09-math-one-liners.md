@@ -47,6 +47,8 @@ The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers
 
 - A complete ordered field is <span class="spoiler">the real line</span>.
 
+- Every field is a subfield of <span class="spoiler">the surreal numbers</span>.
+
 - *(Cayley’s theorem)* <br>
 	All groups are <span class="spoiler">permutation</span> groups.
 
@@ -68,3 +70,4 @@ The punchlines are hidden; try to guess the blanks or <a onclick="toggleSpoilers
 	Every proper arithmetic sequence contains <span class="spoiler">infinitely many</span> primes.
 
 - Two random infinite graphs are <span class="spoiler">isomorphic</span> with probability one.
+
