@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/projects/world-flags-quizzer/static/css/main.68086ea3.css",
+    "main.js": "/projects/world-flags-quizzer/static/js/main.8b8b26a7.js",
+    "static/js/787.2530109b.chunk.js": "/projects/world-flags-quizzer/static/js/787.2530109b.chunk.js",
+    "index.html": "/projects/world-flags-quizzer/index.html",
+    "main.68086ea3.css.map": "/projects/world-flags-quizzer/static/css/main.68086ea3.css.map",
+    "main.8b8b26a7.js.map": "/projects/world-flags-quizzer/static/js/main.8b8b26a7.js.map",
+    "787.2530109b.chunk.js.map": "/projects/world-flags-quizzer/static/js/787.2530109b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.68086ea3.css",
+    "static/js/main.8b8b26a7.js"
+  ]
+}
