@@ -1,10 +1,8 @@
 <div class="menu">
-  <nav class="social-icons">
-    {% include social-icons.html %}
-  </nav>
   <nav class="menu-content">
     {% for item in site.data.settings.menu %}
       <a href="{{ site.github.url }}/{{ item.url }}" target="{{ item.target }}">{{ item.name }}</a>
     {% endfor %}
+    {% include social-icons.html %}
   </nav>
 </div>

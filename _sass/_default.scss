@@ -95,7 +95,7 @@ header {
 
     &:not(:first-child)::before {
       content: "·";
-      padding: 0 12px;
+      padding: 0 8px;
       color: $light-gray-color;
     }
   }
