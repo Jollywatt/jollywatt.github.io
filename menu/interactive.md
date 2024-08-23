@@ -10,10 +10,10 @@ permalink: interactive
 {% for post in site.categories.interactive %}
 	<div class="posts-container">
 		{% include post-title.html category=false %}
-		{% if post.image %}
-			<div class="thumbnail-container">
-				<a href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{{ post.image }}"></a>
-			</div>
+		{% if post.image or post.coverimage %}
+		<div class="thumbnail-container">
+		  <a href="{{ site.github.url }}{{ post.url }}"><img src="{{ site.github.url }}/assets/img/{% if post.coverimage %}{{ post.coverimage }}{% else %}{{ post.image }}{% endif %}"></a>
+		</div>
 		{% endif %}
 		<p>
 			{{ post.blurb }}
