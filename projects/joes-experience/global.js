@@ -58,6 +58,8 @@ class Canvas extends Layer {
 		this.fader = 1
 		this.fadeRate = 1e-3
 		this.canvasEl.style.opacity = 0
+		this.timeDelta = 0
+		this.timeDeltaMomentum = 0
 	}
 
 	size() {
@@ -75,7 +77,10 @@ class Canvas extends Layer {
 		this.ctx.translate(this.ctx.canvas.width/2, this.ctx.canvas.height/2)
 		this.ctx.scale(this.scale, this.scale)
 
-		this.drawing(...arguments)
+		this.timeDelta += this.timeDeltaMomentum
+		this.timeDeltaMomentum *= 0.9
+		t += this.timeDelta
+		this.drawing(t, Δt)
 	}
 
 	drawing() {}

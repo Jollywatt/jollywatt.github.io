@@ -10,11 +10,13 @@ permalink: /art
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
 	gap: 40px;
 }
 
 .s1 { width: 80%; }
 .s2 { width: calc(50% - 20px); }
+.s40 { width: calc(40% - 20px); }
 .s3 { width: calc(33% - 50px); }
 
 .black {
@@ -24,11 +26,17 @@ permalink: /art
 }
 .o {
 	border-radius: 100%;
+	height: 100%;
+	aspect-ratio: 1/1;
 }
 
 canvas {
 	width: 100%;
 	height: 100%;
+	border-radius: inherit;
+}
+
+a {
 	border-radius: inherit;
 }
 
@@ -47,11 +55,11 @@ A mixture of my digital art, photography, and drawing.
 	<!--  -->
 	<img class="s1" src="{{ site.github.url }}/art/louie-et-garon.jpg"/>
 	<!--  -->
-	<div class="black s2 o"><canvas joe="3" width="600" height="600"></canvas></div>
-	<div class="black s1 o"><canvas joe="2" width="600" height="600"></canvas></div>
+	<div class="black s40 o"><a href="{{ site.github.url }}/joes-experience"><canvas joe="3" width="600" height="600"/></a></div>
+	<div class="black s2 o"><a href="{{ site.github.url }}/joes-experience"><canvas joe="2" width="600" height="600"/></a></div>
 	<!--  -->
-	<div class="black s2"><canvas joe="4" width="600" height="600"></canvas></div>
-	<div class="black s2"><canvas joe="5" width="600" height="600"></canvas></div>
+	<div class="black s2"><a href="{{ site.github.url }}/joes-experience"><canvas joe="4" width="600" height="600"/></a></div>
+	<div class="black s2"><a href="{{ site.github.url }}/joes-experience"><canvas joe="5" width="600" height="600"/></a></div>
 	<!--  -->
 	<img class="s2" src="{{ site.github.url }}/art/bubble.jpg"/>
 	<img class="s2" src="{{ site.github.url }}/art/bold-and-brash.jpg"/>
@@ -78,19 +86,28 @@ window.canvasClasses = {
 	4: Crescendo,
 	5: Dessert,
 }
+
+window.joe = new Controller()
 window.addEventListener('load', event => {
-	main = new Controller()
-	main.start()
-	main.t = 2e5
+	joe.start()
+	joe.t = 2e5
 
 	document.querySelectorAll('.gallery canvas').forEach(el => {
-		let nums = el.getAttribute('joe').split(/\s+/).map(Number)
-		for (i of nums) {
-			console.log(i, el)
-			main.canvases[i] = new window.canvasClasses[i](el)
-		}
+		let i = Number(el.getAttribute('joe'))
+		let canvas = new window.canvasClasses[i](el)
+		canvas.fadeRate = 1e-1
+
+		el.addEventListener("mousemove", event => {
+			let rate = event.buttons ? 5 : 0.5
+
+			let delta = rate*event.movementX
+			canvas.timeDeltaMomentum += delta
+		})
+
+		joe.canvases[i] = canvas
 
 	})
+
 })
 
 </script>

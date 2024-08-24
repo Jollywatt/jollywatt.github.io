@@ -133,16 +133,15 @@ window.addEventListener('load', event => {
 
 
   document.querySelectorAll('canvas').forEach(el => {
-    let nums = el.getAttribute('joe').split(/\s+/).map(Number)
-    for (i of nums) {
-      console.log(i, el)
-      main.canvases[i] = new window.canvasClasses[i](el)
-    }
+    let i = Number(el.getAttribute('joe'))
+    main.canvases[i] = new window.canvasClasses[i](el)
 
-  })
+    el.addEventListener("mousemove", event => {
+      let rate = event.buttons ? 2 : 0.1
+      let delta = rate*event.movementX
+      main.canvases[i] .timeDeltaMomentum += delta
+    })
 
-  document.getElementById('gallery').addEventListener('mousemove', event => {
-    console.log(event)
   })
 
 })
