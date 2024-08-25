@@ -7,7 +7,7 @@ tags: []
 blurb: A neat relationship between elastic collisions and ellipses.
 ---
 
-<link rel="stylesheet" href="https://vectorjs.org/library.css">
+<link rel="stylesheet" href="{{ site.github.url }}/assets/css/vectorjs.css">
 
 <style>
 .control .point { fill: black; }

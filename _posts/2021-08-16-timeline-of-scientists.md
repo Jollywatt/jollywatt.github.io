@@ -9,7 +9,7 @@ blurb: Interactive timeline of famous scientists throughout history, using Wikid
 
 
 This is an interactive timeline of famous mathematicians and physicists throughout history.
-The data is pulled from [Wikidata](wikidata.org).
+The data is pulled from [Wikidata](https://wikidata.org).
 
 <script type="text/javascript" src="https://unpkg.com/vis-timeline@7.5.1/standalone/umd/vis-timeline-graph2d.min.js"></script>
 
