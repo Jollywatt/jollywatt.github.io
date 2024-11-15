@@ -92,6 +92,7 @@ header {
     color: $light-gray-color;
     font-size: 1.2rem;
     white-space: nowrap;
+    text-decoration: none;
 
     &:not(:first-child)::before {
       content: "·";
