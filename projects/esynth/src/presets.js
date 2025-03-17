@@ -1,0 +1,18 @@
+let presets = [
+	{
+		text: 'Empty',
+		data:
+			{"paramTable": [{"symbol": "osc", "category": "osc", "type": "waveform", "config": {"waveform": "sine" }, "permanence": "required" }, {"symbol": "vol", "category": "vol", "type": "env", "config": {"attack": 0, "decay": 0, "sustain": 1, "release": 0 }, "permanence": "required" }, {"symbol": "freq", "category": "freq", "type": "expr", "config": {"expr": "a*(b + y)*x" }, "permanence": "required" }, {"symbol": "y", "category": "freq", "type": "key-row", "config": {"startFrom": 1, "direction": 1 }, "permanence": "auto" }, {"symbol": "x", "category": "freq", "type": "key-col", "config": {"startFrom": 1, "direction": 1 }, "permanence": "auto" }, {"symbol": "a", "category": "freq", "type": "arrows", "config": {"value": 20, "step": 1, "controls": "left-right" }, "permanence": "auto" }, {"symbol": "b", "category": "freq", "type": "arrows", "config": {"value": 5, "step": 1, "controls": "up-down" }, "permanence": "auto" } ] }
+
+	},
+	{
+		text: 'Cylindrical 12TET',
+		data:
+			{"paramTable": [{"symbol": "osc", "category": "osc", "type": "waveform", "config": {"waveform": "sine" }, "permanence": "required" }, {"symbol": "vol", "category": "vol", "type": "env", "config": {"attack": 0, "decay": 0, "sustain": 1, "release": 0 }, "permanence": "required" }, {"symbol": "freq", "category": "freq", "type": "expr", "config": {"expr": "base*2^(v/h*x - y/h)" }, "permanence": "required" }, {"symbol": "base", "category": "freq", "type": "slider", "config": {"value": 100, "min": 10, "max": 1000 }, "permanence": "manual" }, {"symbol": "x", "category": "freq", "type": "key-col", "config": {"startFrom": 1, "direction": 1 }, "permanence": "manual" }, {"symbol": "y", "category": "freq", "type": "key-row", "config": {"startFrom": 1, "direction": 1 }, "permanence": "manual" }, {"symbol": "h", "category": "freq", "type": "arrows", "config": {"value": 12, "step": 1, "controls": "left-right" }, "permanence": "manual" }, {"symbol": "v", "category": "freq", "type": "arrows", "config": {"value": 4, "step": 1, "controls": "up-down" }, "permanence": "manual" } ]}
+	},
+	{
+		text: 'Cyl12TET + Interval Switches',
+		data:
+			{"paramTable":[{"symbol":"osc","category":"osc","type":"waveform","config":{"waveform":"sine"},"permanence":"required"},{"symbol":"vol","category":"vol","type":"env","config":{"attack":0,"decay":0,"sustain":1,"release":0},"permanence":"required"},{"symbol":"freq","category":"freq","type":"expr","config":{"expr":"150*2^(v/h*x - y/h)*[1,c*[m3,M3,p4],p5]"},"permanence":"required"},{"symbol":"x","category":"freq","type":"key-col","config":{"startFrom":1,"direction":1},"permanence":"manual"},{"symbol":"y","category":"freq","type":"key-row","config":{"startFrom":1,"direction":1},"permanence":"manual"},{"symbol":"h","category":"freq","type":"arrows","config":{"value":12,"step":1,"controls":"left-right"},"permanence":"manual"},{"symbol":"v","category":"freq","type":"arrows","config":{"value":4,"step":1,"controls":"up-down"},"permanence":"manual"},{"symbol":"p5","category":"freq","type":"key","config":{"key":"Home","mode":"press","on":"3/2","off":"[]"},"permanence":"manual"},{"symbol":"p4","category":"freq","type":"key","config":{"key":"PageUp","mode":"press","on":"4/3","off":"[]"},"permanence":"manual"},{"symbol":"M3","category":"freq","type":"key","config":{"key":"PageDown","mode":"press","on":"5/4","off":"[]"},"permanence":"manual"},{"symbol":"m3","category":"freq","type":"key","config":{"key":"End","mode":"press","on":"6/5","off":"[]"},"permanence":"manual"},{"symbol":"c","category":"freq","type":"key","config":{"key":"CapsLock","mode":"toggle","on":"[1,3/2]","off":"1"},"permanence":"manual"}]}
+	}
+]

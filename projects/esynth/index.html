@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Expression Synth</title>
+	<meta charset="utf-8"/>
+
+	<link rel="stylesheet" type="text/css" href="style/global.css">
+
+	<link rel="stylesheet" href="src/codemirror/codemirror.css">
+	<script type="text/javascript" src="src/codemirror/codemirror.js"></script>
+	<!-- <script type="text/javascript" src="src/codemirror/javascript.js"></script> -->
+
+	<script type="text/javascript" src="src/mathjs/math.js"></script>
+
+	<script type="text/javascript" src="src/utilities.js"></script>
+	<script type="text/javascript" src="src/color.js"></script>
+
+	<script type="text/javascript" src="src/layouts.js"></script>
+	<script type="text/javascript" src="src/keyboard-visual.js"></script>
+	<script type="text/javascript" src="src/note-visual.js"></script>
+
+	<script type="text/javascript" src="src/ui.js"></script>
+	<script type="text/javascript" src="src/parameters.js"></script>
+	<script type="text/javascript" src="src/parameter-table.js"></script>
+
+	<script type="text/javascript" src="src/events.js"></script>
+	<script type="text/javascript" src="src/synth.js"></script>
+	<!-- <script type="text/javascript" src="src/buffer-synth.js"></script> -->
+
+	<script type="text/javascript" src="src/presets.js"></script>
+	<script type="text/javascript" src="src/main.js"></script>
+
+	<span id="theme" style="display: none;"></span>
+</head>
+<body>
+
+<h1>🎛 Expression Synth</h1>
+<h3>xenharmonic tuning × programming</h3>
+
+<!-- <button onclick="window.location.reload(); sessionStorage.removeItem('config')">Reset</button> -->
+
+
+<table style="margin: auto;">
+<tr>
+	<td>
+		<canvas id="note-visual" width="500" height="500"></canvas>
+	</td>
+	<td>
+		<div style="font-size: 90%;">
+			<!-- <span style="opacity: 0.5"><em>Active Keys </em></span> -->
+			<span id="active-keys"></span>
+			<span style="opacity: 0.5">&nbsp;</span>
+		</div>
+		<div>
+			<svg id="keyboard-visual" width="600"></svg>
+		</div>
+	</td>
+	<td style="vertical-align: top;">
+	</td>
+</tr>
+</table>
+
+<div id="config-div">
+	<span id="presets" style="font-size: 70%;"><span>Preset:</span></span>
+	<span id="config" style="font-size: 70%;"><span>JSON:</span></span>
+</div>
+<table id="formulas"></table>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans+Extra+Condensed:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,900;1,400;1,500&display=swap');
+
+
+:root {
+	// --color-accent: #407d87;
+	// --color-accent-dark: #2c5b62;
+	--color-accent: #aaa;
+	--color-accent-dark: #555;
+	--font-family: 'Fira Sans';
+	--font-family-mono: 'Fira Code';
+	--font-family-condensed: 'Fira Sans Extra Condensed';
+}
+
+body {
+	font-family: var(--font-family);
+	color: var(--color-accent-dark);
+	font-size: 18px;
+}
+
+@media only screen and (min-width: 1500px) {
+	body {
+		padding: 15px 15%;
+	}
+}
+
+h2 {
+	font-weight: 500
+}
+
+*::after, *::before {
+	white-space: pre; // don't strip whitespace
+}
+
+table {
+	border-collapse: collapse;
+}
+
+#keyboard-visual {
+	margin: 1ex 0;
+	// border: 1px solid;
+
+	.key-icon {
+		clip-path: inset(0.02px);
+		opacity: 0.6;
+		fill: var(--color-accent);
+
+		&.held {
+			opacity: 0.3;
+		}
+	}
+
+	text {
+		// display: none
+	}
+}
+
+#note-visual {
+	display: block;
+	margin: 3ex;
+}
+
+.CodeMirror {
+	font-family: var(--font-family-mono) !important;
+	height: auto !important;
+
+	&.small {
+		display: inline-table;
+		width: fit-content;
+	}
+}
+
+input, select, .CodeMirror {
+	border: 1px solid #eee;
+	font: inherit;
+}
+
+input[type=number] {
+	width: 3em;
+}
+
+.CodeMirror.syntax-error {
+	border-bottom-color: red;
+}
+
+#config-div {
+	margin: 20px;
+}
+
+#config *, #presets * {
+	margin: 0 0.5ex;
+}
+
+.config-field {
+	width: calc(400px + 1ex);
+	margin: 0 -100px !important;
+	transform: scaleX(50%);
+}
+
+input.invalid {
+	border-color: red;
+}
+
+table#formulas {
+
+	td {
+		white-space: nowrap;
+	}
+
+	tr {
+		height: 4ex;
+	}
+
+	tr.auto {
+		opacity: 0.5;
+	}
+
+
+	tr.required td.symbol::before {
+		content: "· ";
+	}
+	tr.manual td.symbol{
+		pointer-events: none;
+		&::before {
+			content: "× ";
+			opacity: 0.5;
+			pointer-events: all;
+			cursor: pointer;
+		}
+	}
+
+	td.symbol {
+		text-align: right;
+		&::after {
+			content: " = ";
+		}
+	}
+
+	td.type {
+		// padding-right: 1ex;
+		&::after {
+			content: " "
+		}
+		select {
+			font-family: var(--font-family-condensed);
+			width: 7.5em;
+		}
+	}
+
+	 td.result {
+		 font-family: var(--font-family-mono);
+		 &:not(:empty)::before {
+			 content: " = ";
+		 }
+
+	 }
+
+}
+
+@keyframes psych {
+	from {
+		filter: hue-rotate(0deg);
+	}
+	50% {
+		filter: hue-rotate(180deg) blur(5px);
+
+	}
+	to {
+		filter: hue-rotate(360deg);
+	}
+}
+
+body {
+	// animation: psych 3s linear infinite;
+}
