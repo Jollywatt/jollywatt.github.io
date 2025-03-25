@@ -55,10 +55,10 @@ The punchlines are hidden; try to guess the blanks!<br>
 
 
 - *Liouville's theorem* <br>
-	A bounded complex differentiable function is <span class="spoiler">constant</span>.
+	Any bounded complex differentiable function is <span class="spoiler">constant</span>.
 
 - *Jordan normal form* <br>
-	A matrix is similar to an <span class="spoiler">upper triangular matrix</span>.
+	Any matrix is similar to an <span class="spoiler">upper triangular matrix</span>.
 
 - *Cauchy’s integral theorem* <br>
 	The integral of a holomorphic function around a loop <span class="spoiler">vanishes identically</span>.
@@ -66,7 +66,7 @@ The punchlines are hidden; try to guess the blanks!<br>
 - *Riemann Mapping Theorem* <br>
 	Strict subsets of $$ℂ$$ which are <span class="spoiler">nonempty, open, and simply connected</span> are related by a conformal mapping.
 
-- A complete ordered field is <span class="spoiler">the real line</span>.
+- A complete ordered field is <span class="spoiler">isomorphic to the real line</span>.
 
 - Every field is a subfield of <span class="spoiler">the surreal numbers</span>.
 
@@ -92,3 +92,5 @@ The punchlines are hidden; try to guess the blanks!<br>
 
 - Two random infinite graphs are <span class="spoiler">isomorphic</span> with probability one.
 
+- *Hurwitz’s Theorem* <br>
+	Every normed division algebra is <span class="spoiler">isomorphic to $$ℝ$$, $$ℂ$$, $$ℍ$$ or $$𝕆$$.
