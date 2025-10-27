@@ -2,7 +2,7 @@
 layout: post
 title: "Layout algorithms for flexigrids"
 author: "Joseph Wilson"
-categories: interactive
+categories: research
 tags: []
 blurb: An exposition of the elastic coordinate system used in fletcher.
 ---
