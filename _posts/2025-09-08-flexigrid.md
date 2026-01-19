@@ -82,7 +82,7 @@ $$
 \end{align*}
 $$
 
-which agrees with @table-layout when $$u \in \mathbb{Z}$$.
+which agrees with Method 1 when $$u \in \mathbb{Z}$$.
 The actual cell size is then the maximum of the new size $$w'_i$$ and the original size $$w_i$$ without the node:
 
 $$
@@ -239,8 +239,8 @@ $$
 \end{align*}
 $$
 
-Figure 5 demonstrates the tight layout algorithm for various values of $u$.
-Notice that, for each example, the centre of the node at $u$ is exactly at the linear interpolation of the cell centres, and that the cells are never too large (always tightly fitting nodes they contain).
+Figure 5 demonstrates the tight layout algorithm for various values of $$u$$.
+Notice that, for each example, the centre of the node at $$u$$ is exactly at the linear interpolation of the cell centres, and that the cells are never too large (always tightly fitting nodes they contain).
 
 
 <figure>
