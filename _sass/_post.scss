@@ -102,9 +102,13 @@ p.box {
   background-color: #f5fbff;
   border-radius: 8px;
   font-size: 93%;
-  padding: 1px 1em;
+  padding: 0.7em 1em;
   text-align: justify;
   box-shadow: inset 0px 2px 5px #0002;
+}
+.aside > p:last-child, .aside > p:first-child {
+   margin-bottom: 0;
+   margin-top: 0;
 }
 
 figure {

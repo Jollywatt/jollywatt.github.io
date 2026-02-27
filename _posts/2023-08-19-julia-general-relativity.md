@@ -389,8 +389,8 @@ The third argument $$g$$ can contain any extra data needed to evaluate $$\ddot{x
 Additionally, the first argument of the Julia function is the array `ẍ` to write the derivatives into (optional, but leads to better performance).
 
 ```julia
-function geodesic!(ẍ, ẋ, x, g, t)
-  @tensor ẍ[λ] = -Γ(g, x)[λ,μ,ν]*ẋ[μ]*ẋ[ν]
+function geodesic!(ẍ, ẋ, x, g, t)
+  @tensor ẍ[λ] = -Γ(g, x)[λ,μ,ν]*ẋ[μ]*ẋ[ν]
 end
 ```
 
@@ -403,9 +403,9 @@ end
   ```julia
   julia> using DifferentialEquations
 
-  julia> ẋ0 = [0., 1.]; x0 = [π/2, 0.]; tspan = (0, 10);
+  julia> ẋ0 = [0., 1.]; x0 = [π/2, 0.]; tspan = (0, 10);
 
-  julia> prob = SecondOrderODEProblem(geodesic!, ẋ0, x0, tspan, g)
+  julia> prob = SecondOrderODEProblem(geodesic!, ẋ0, x0, tspan, g)
   ODEProblem with uType ArrayPartition{Float64, Tuple{Vector{Float64}, Vector{Float64}}} and tType Int64. In-place: true
   timespan: (0, 10)
   u0: ([0.0, 1.0], [1.5707963267948966, 0.0])
@@ -462,8 +462,8 @@ function Γ(g, x)
   @tensor Γ[λ,μ,ν] := 2\inv(g(x))[λ,σ]*(∂G[μ,σ,ν] + ∂G[ν,σ,μ] - ∂G[σ,μ,ν])
 end
 
-function geodesic!(ẍ, ẋ, x, g, t)
-  @tensor ẍ[λ] = -Γ(g, x)[λ,μ,ν]*ẋ[μ]*ẋ[ν]
+function geodesic!(ẍ, ẋ, x, g, t)
+  @tensor ẍ[λ] = -Γ(g, x)[λ,μ,ν]*ẋ[μ]*ẋ[ν]
 end
 
 R = 2
