@@ -13,4 +13,6 @@ Honours project supervised by Prof. David Wiltshire at the University of Canterb
 There is a fascinating relationship between the asymptotic symmetries of spacetime and gravitational waves and memory, sometimes referred to as The Infrared Triangle.
 We investigated the asymptotic structures of simple cosmological spacetimes, extending the usual analysis for flat spacetime.
 
-Full [PDF]({{ site.github.url }}/assets/pdf/{{ page.pdf }}).
+You can find the [full report (PDF)]({{ site.github.url }}/assets/pdf/{{ page.pdf }}) and also the [poster (PDF)]({{ site.github.url }}/assets/pdf/2019.MAPH480-Poster.pdf).
+
+[![Poster preview]({{ site.github.url }}/assets/img/2019.MAPH480-Poster.png)]({{ site.github.url }}/assets/pdf/2019.MAPH480-Poster.pdf)
