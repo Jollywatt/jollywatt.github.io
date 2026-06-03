@@ -12,7 +12,7 @@
   )
 
   html.header({
-    html.div(class: "site-name", link(<home>)[Jollywatt])
+    html.div(class: "site-name", link(<blog>)[Jollywatt])
     html.nav({
       link(<about>)[About]
       link(<blog>)[Blog]
@@ -41,8 +41,7 @@
 
 #document("about.html", template(include "content/about.typ")) <about>
 
-
-#let post-ids = ()
+#let post-info = ()
 #for path in glob("content/posts/**/*.typ") {
   let name = path.split("/").last().replace(regex("\.typ$"), "")
   let doc = document(name + ".html", {
@@ -50,16 +49,16 @@
   })
   let id = label("post-" + name)
   [#doc #id]
-  post-ids.push(id)
+  post-info.push((id: id, path: path))
 }
 
 #let all-posts() = (
-  post-ids
-    .map(id => {
-      let title = query(selector(title).within(id)).first().body
-      let meta = query(selector(metadata).within(id)).first().value
+  post-info
+    .map(post-info => {
+      let title = query(selector(title).within(post-info.id)).first().body
+      let meta = query(selector(metadata).within(post-info.id)).first().value
       (
-        id: id,
+        ..post-info,
         title: title,
         ..meta,
       )
@@ -81,6 +80,8 @@
 
       if "blurb" in meta {
         meta.blurb
+      } else {
+        panic("missing blurb for " + meta.path)
       }
 
       html.hr()
