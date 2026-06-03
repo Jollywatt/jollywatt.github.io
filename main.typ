@@ -44,7 +44,7 @@
 
 
 #let posts = {
-  readdir("content/posts")
+  glob("content/posts/**/*.typ")
     .filter(path => path.ends-with(".typ"))
     .map(path => {
       let name = path.split("/").last().replace(regex("\.typ$"), "")
@@ -72,3 +72,11 @@
     }
   ]
 }) <blog>
+
+
+#context for m in query(metadata) {
+  let v = m.value
+  if type(v) == dictionary and "asset" in v {
+    asset(v.to, read(v.asset, encoding: none))
+  }
+}

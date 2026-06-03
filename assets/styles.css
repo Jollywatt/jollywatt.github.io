@@ -57,3 +57,7 @@ main {
 img {
   border-radius: 5px;
 }
+
+figure {
+  text-align: center;
+}
