@@ -53,23 +53,31 @@
   post-ids.push(id)
 }
 
-#let all-posts() = post-ids.map(id => {
-  let title = query(selector(title).within(id)).first().body
-  let meta = query(selector(metadata).within(id)).first().value
-  (
-    id: id,
-    title: title,
-    ..meta
-  )
-}).sorted(key: meta => meta.date)
+#let all-posts() = (
+  post-ids
+    .map(id => {
+      let title = query(selector(title).within(id)).first().body
+      let meta = query(selector(metadata).within(id)).first().value
+      (
+        id: id,
+        title: title,
+        ..meta,
+      )
+    })
+    .sorted(key: meta => meta.date)
+    .rev()
+)
 
 #document("blog/index.html", {
   template[
 
     #context for meta in all-posts() {
-
       html.div(class: "post-meta", meta.date.display("[day] [month repr:long] [year]"))
       heading(link(meta.id, meta.title))
+
+      if "image" in meta {
+        link(meta.id, html.img(src: meta.image))
+      }
 
       if "blurb" in meta {
         meta.blurb
@@ -84,6 +92,9 @@
 #context for m in query(metadata) {
   let v = m.value
   if type(v) == dictionary and "asset" in v {
-    asset(v.to, read(v.asset, encoding: none))
+    let it = asset(v.to, read(v.asset, encoding: none))
+    if "label" in v {
+      [#it #v.label]
+    } else { it }
   }
 }
