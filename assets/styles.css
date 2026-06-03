@@ -5,6 +5,8 @@
 
   --fun-font: "Mirza", sans-serif;
 
+  font-size: 14pt;
+
   background: url("/assets/header.png") fixed top no-repeat;
   background-color: hsl(205deg, 100%, 98%);
   background-blend-mode: multiply;
@@ -60,4 +62,14 @@ img {
 
 figure {
   text-align: center;
+}
+
+hr {
+  text-align: center;
+  border: none;
+  margin: 20px 0;
+}
+hr:after {
+  content: "· · ·";
+  color: var(--light-gray);
 }
