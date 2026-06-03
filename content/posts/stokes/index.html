@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css" integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB" crossorigin="anonymous">
+<style>
+:root {
+  font-family: "Crimson Text", "PT Serif", Georgia, serif;
+}
+body {
+  width: 100%;
+  margin: 0;
+}
+.katex-display {
+  overflow-x: scroll;
+  padding: 1em 0;
+}
+#buttons {
+  display: flex;
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+
+<div id="buttons">
+  <button onclick="thm(0, 1)">Fundamental Theorem</button>
+  <button onclick="thm(0, 0)">Gradient Theorem</button>
+  <button onclick="thm(1, null, true)">Divergence Theorem</button>
+  <button onclick="thm(1, null, true, [1, -1, -1, -1])">Divergence Theorem (Lorentzian)</button>
+  <button onclick="thm(1, 2)">Green’s (2D curl) Theorem</button>
+  <button onclick="thm(1, 3)">Kelvin–Stokes (3D curl) Theorem</button>
+</div>
+
+<table id="parametersTableEl" style="white-space: nowrap;">
+	<tr>
+		<th colspan="2">Ambient Space:</th>
+		<td class="output" name="n"></td>
+		<td><input class="input" type="range" name="n" min="0" max="5" value="1"></td>
+		<td>Metric signature: </td>
+		<td contenteditable class="input output" name="sig" style="font-family: monospace; width: 5em;"></td>
+	</tr>
+	<tr>
+		<th colspan="2">Differential Form:</th>
+		<td class="output" name="p"></td>
+		<td><input class="input" type="range" name="p" min="-1" max="4" value="0"></td>
+		<td><label for="dualCheckbox"><input class="input" type="checkbox" name="dual" id="dualCheckbox">Hodge dual:</label></td>
+		<td class="output" name="dual"></td>
+	</tr>
+</table>
+
+<div id="boxEl"></div>
+
+<style>
+table#parametersTableEl {
+  border: none;
+}
+table#parametersTableEl td, table#parametersTableEl th {
+	padding: 1ex;
+	border: none;
+}
+table#parametersTableEl td:nth-child(2n), table#parametersTableEl th:nth-child(2n) {
+	text-align: right;
+}
+table#parametersTableEl td label, table#parametersTableEl th label {
+	display: block;
+}
+</style>
+
+<script src="katex.min.js"></script>
+<script src="physics-macros.min.js"></script>
+<script src="exterior-algebra.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

@@ -38,16 +38,6 @@ td {
 }
 ```.text)
 
-
-#show math.equation.where(block: true): it => {
-  if state("i").get() == true { return it }
-  html.div(html.frame(it), class: "block-equation")
-}
-
-#show math.equation.where(block: false): it => {
-  box(html.frame(it))
-}
-
 #show math.arrow.long.l.r: $quad <--> quad$
 
 

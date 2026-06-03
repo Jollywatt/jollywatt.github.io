@@ -3,6 +3,21 @@
 #asset("assets/me.jpg", read("/assets/me.jpg", encoding: none))
 
 
+#show math.equation.where(block: true): it => {
+  if target() == "html" {
+    html.div(html.frame(it), class: "block-equation")
+  } else {
+    it
+  }
+}
+
+#show math.equation.where(block: false): it => {
+  box(html.frame(it))
+}
+
+
+
+
 #let template(body) = {
   html.link(href: "/styles.css", rel: "stylesheet")
 
@@ -97,5 +112,8 @@
     if "label" in v {
       [#it #v.label]
     } else { it }
+
+  } else if type(v) == content and v.func() == asset {
+    v
   }
 }

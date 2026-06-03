@@ -117,3 +117,8 @@ pre {
   box-shadow: 0 4px 10px #0002;
   white-space: pre-wrap;
 }
+
+.block-equation {
+  display: flex;
+  justify-content: center;
+}
