@@ -13,8 +13,8 @@
   background-size: calc(450px + 28vw);
 }
 
-* {
-  outline: 1px solid #f002;
+*:hover {
+  outline: 1px solid #f003;
 }
 
 body {
@@ -52,4 +52,8 @@ header nav a:not(:first-child)::before {
 }
 
 main {
+}
+
+img {
+  border-radius: 5px;
 }
