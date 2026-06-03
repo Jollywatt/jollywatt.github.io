@@ -12,7 +12,7 @@
   )
 
   html.header({
-    link(<home>)[= Jollywatt]
+    html.div(class: "site-name", link(<home>)[Jollywatt])
     html.nav({
       link(<about>)[About]
       link(<blog>)[Blog]
@@ -42,33 +42,40 @@
 #document("about.html", template(include "content/about.typ")) <about>
 
 
-
-#let posts = {
-  glob("content/posts/**/*.typ")
-    .filter(path => path.ends-with(".typ"))
-    .map(path => {
-      let name = path.split("/").last().replace(regex("\.typ$"), "")
-      (
-        path: path,
-        name: name,
-        id: label("post-" + name),
-      )
-    })
+#let post-ids = ()
+#for path in glob("content/posts/**/*.typ") {
+  let name = path.split("/").last().replace(regex("\.typ$"), "")
+  let doc = document(name + ".html", {
+    template(include path)
+  })
+  let id = label("post-" + name)
+  [#doc #id]
+  post-ids.push(id)
 }
 
-
-#for post in posts {
-  [#document(post.name + ".html", {
-      template(include post.path)
-    }) #post.id]
-}
+#let all-posts() = post-ids.map(id => {
+  let title = query(selector(title).within(id)).first().body
+  let meta = query(selector(metadata).within(id)).first().value
+  (
+    id: id,
+    title: title,
+    ..meta
+  )
+}).sorted(key: meta => meta.date)
 
 #document("blog/index.html", {
   template[
-    #title[Blog]
 
-    #for post in posts {
-      [- #link(post.id)[#post.name]]
+    #context for meta in all-posts() {
+
+      html.div(class: "post-meta", meta.date.display("[day] [month repr:long] [year]"))
+      heading(link(meta.id, meta.title))
+
+      if "blurb" in meta {
+        meta.blurb
+      }
+
+      html.hr()
     }
   ]
 }) <blog>

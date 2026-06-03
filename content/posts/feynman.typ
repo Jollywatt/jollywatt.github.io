@@ -1,6 +1,6 @@
 #metadata((
   date: datetime(year: 2026, month: 04, day: 19),
-  blub: [
+  blurb: [
   Feynman diagrams are associated with complicated physics, but they can also be found hiding in relatively simple questions about Gaussian random variables.
   ],
   categories: ("maths",),

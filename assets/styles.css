@@ -1,6 +1,6 @@
 :root {
   font-family: "Crimson Text", "PT Serif", Georgia, serif;
-  --body-color: #505050;
+  --dark-gray: #505050;
   --light-gray: #879ba2;
 
   --fun-font: "Mirza", sans-serif;
@@ -16,7 +16,7 @@
 }
 
 *:hover {
-  outline: 1px solid #f003;
+  /*outline: 1px solid #f003;*/
 }
 
 body {
@@ -36,12 +36,14 @@ header {
   font-family: var(--fun-font);
 }
 header a {
-  font-size: 1.3rem;
   text-decoration: none;
-  color: var(--body-color);
+  color: var(--dark-gray);
 }
 header a:hover {
   color: black;
+}
+header .site-name {
+  font-size: 2.5rem;
 }
 
 header nav a {
@@ -64,6 +66,18 @@ figure {
   text-align: center;
 }
 
+/* text styles */
+
+main a {
+  text-decoration: none;
+  color: var(--dark-gray);
+  cursor: pointer;
+}
+
+main a:hover {
+  text-decoration: underline;
+}
+
 hr {
   text-align: center;
   border: none;
@@ -72,4 +86,19 @@ hr {
 hr:after {
   content: "· · ·";
   color: var(--light-gray);
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+h2 {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.post-meta {
+  color: var(--light-gray);
+  font-family: var(--fun-font);
 }

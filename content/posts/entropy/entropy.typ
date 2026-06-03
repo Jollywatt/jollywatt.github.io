@@ -1,7 +1,8 @@
 #metadata((
   date: datetime(year: 2023, month: 04, day: 24),
-  blub: [
-    My favourite characterisation of (information) entropy with a ‘composition law’, and a uniqueness proof.  ],
+  blurb: [
+    My favourite characterisation of (information) entropy in terms of a natural _composition law_, complete with a uniqueness proof.
+  ],
   categories: ("maths",),
 ))
 
@@ -25,8 +26,10 @@
 #show math.slash: math.op
 #show math.tilde: math.class.with("normal")
 
+#title[Defining Entropy with a Composition Law]
+
 The mathematical definition of _entropy_ is often hard to motivate, coming across as rather mysterious.
-But it can be uniquely characterised with a very natural and pretty ‘composition law’, which anyone could come up with.
+But it can be uniquely characterised with a very natural and pretty 'composition law', which anyone could come up with.
 
 #html.hr()
 
@@ -56,13 +59,13 @@ The same distribution can also be expressed by dividing the decision tree up int
 
 #figure(img("fig-2.png", ```css width: 50%;```))
 
-Notice that each final outcome still has the same overall probability — all we’ve done is add an extra ‘step’ in the random process.
+Notice that each final outcome still has the same overall probability — all we've done is add an extra 'step' in the random process.
 
 Since these two pictures represent the same scenario, *we want our uncertainty measure to be the same for both.*
 But the second picture has many parts. How do you measure the total uncertainty? By taking a _weighted sum_ of the uncertainties of each sub-tree.
 
 Why a weighted sum?
-Consider what should happen when one of the branches’ probabilities goes to zero: the total uncertainty should not include the uncertainty of the sub-tree under that branch, since it is certain that its outcomes won’t happen.
+Consider what should happen when one of the branches' probabilities goes to zero: the total uncertainty should not include the uncertainty of the sub-tree under that branch, since it is certain that its outcomes won't happen.
 
 For example, the probability of ${5, 6}$ is $.1$ in the picture, so the total uncertainty contains only a small contribution from the green sub-tree.
 
@@ -108,7 +111,7 @@ where $(bold(p) slash ~)(e) = sum_(i ∈ e) p_i$.
 
 == Proof of Uniqueness
 
-We will prove that any ‘uncertainty’ function $H(bold(p)) ≡ H(p_1, ..., p_n)$ satisfying
+We will prove that any 'uncertainty' function $H(bold(p)) ≡ H(p_1, ..., p_n)$ satisfying
 
 1. continuity
 2. the composition law
