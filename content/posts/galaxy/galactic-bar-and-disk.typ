@@ -3,7 +3,8 @@
   image: "/img/galactic-model.png",
   blurb: [
     Cosmology summer project reproducing and visualising an empirical model of the galactic bar and disk.
-  ]
+  ],
+  categories: ("research", "physics"),
 ))
 
 #metadata((

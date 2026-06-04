@@ -4,6 +4,7 @@
     Second year summer project about numerically computing the crystal band structure of semiconductors.
   ],
   image: "/img/bands.png",
+  categories: ("research", "physics"),
 ))
 
 #metadata((

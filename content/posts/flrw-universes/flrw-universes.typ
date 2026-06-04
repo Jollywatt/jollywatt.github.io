@@ -3,7 +3,8 @@
   image: "/img/gravitational-waves.png",
   blurb: [
     Honours project about the asymptotic symmetries of spacetime supervised by Prof. David Wiltshire at the University of Canterbury.
-  ]
+  ],
+  categories: ("research", "physics"),
 ))
 
 #metadata((
