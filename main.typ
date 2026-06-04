@@ -28,7 +28,7 @@
       // link("?")[Research]
       link("?")[Software]
       link("?")[Art]
-      link("?")[Resumé]
+      link(<cv>)[Resumé]
     })
   })
 
@@ -54,6 +54,7 @@
 
 
 #document("about.html", template(include "content/about.typ")) <about>
+#document("resume.pdf", include "content/cv.typ") <cv>
 
 #let post-info = ()
 #for path in glob("content/posts/**/*.typ") {
