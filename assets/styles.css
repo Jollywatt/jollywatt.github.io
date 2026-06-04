@@ -1,14 +1,15 @@
 :root {
   font-family: "Crimson Text", "PT Serif", Georgia, serif;
+
+  --sky-white: hsl(205deg, 100%, 98%);
   --dark-gray: #505050;
   --light-gray: #879ba2;
-
   --fun-font: "Mirza", sans-serif;
 
   font-size: 14pt;
 
   background: url("/assets/header.png") fixed top no-repeat;
-  background-color: hsl(205deg, 100%, 98%);
+  background-color: var(--sky-white);
   background-blend-mode: multiply;
   padding-top: calc((450px + 28vw) * 0.33);
   padding-bottom: 60px;
@@ -22,10 +23,8 @@
 body {
   margin: auto;
   width: calc(400px + 25vw);
-  padding: 0 4rem;
-  padding-top: 1.5rem;
-  padding-bottom: 0.4rem;
-  box-shadow: 0px 6px 16px #0002;
+  padding: 1rem 3rem;
+  box-shadow: 0px 6px 36px #0031;
   border-radius: 8px;
   background: white;
 }
@@ -56,6 +55,16 @@ header nav a:not(:first-child)::before {
 }
 
 main {
+}
+
+footer {
+  color: var(--light-gray);
+  text-align: center;
+  font-size: 0.7em;
+}
+footer a {
+  color: var(--light-gray);
+  text-decoration: none;
 }
 
 img {
@@ -114,8 +123,9 @@ pre {
   border-radius: 5px;
   /*font-size: 0.75em;*/
   line-height: 1.4em;
-  box-shadow: 0 4px 10px #0002;
+  box-shadow: inset 0 4px 6px #0002;
   white-space: pre-wrap;
+  background-color: var(--sky-white);
 }
 
 .block-equation {

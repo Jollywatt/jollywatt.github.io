@@ -1,9 +1,3 @@
-// #asset("styles.css", read("/assets/styles.css"))
-// #asset("assets/header.png", read("/assets/header.png", encoding: none))
-// #asset("assets/me.jpg", read("/assets/me.jpg", encoding: none))
-#for file in glob("assets/*.*") {
-  asset(file, read(file, encoding: none))
-}
 
 #show math.equation.where(block: true): it => {
   if target() == "html" {
@@ -16,8 +10,6 @@
 #show math.equation.where(block: false): it => {
   box(html.frame(it))
 }
-
-
 
 
 #let template(body) = {
@@ -33,7 +25,7 @@
     html.nav({
       link(<about>)[About]
       link(<blog>)[Blog]
-      link("?")[Research]
+      // link("?")[Research]
       link("?")[Software]
       link("?")[Art]
       link("?")[Resumé]
@@ -44,7 +36,12 @@
     body
   })
 
-  html.footer({})
+  html.footer({
+    html.hr()
+    [
+      Made entirely with #link("https://typst.app")[Typst]
+    ]
+  })
 }
 
 #document("index.html", {
@@ -61,7 +58,7 @@
 #let post-info = ()
 #for path in glob("content/posts/**/*.typ") {
   let name = path.split("/").last().replace(regex("\.typ$"), "")
-  let doc = document(name + ".html", {
+  let doc = document("blog/" + name + ".html", {
     template(include path)
   })
   let id = label("post-" + name)
@@ -87,7 +84,7 @@
 #document("blog/index.html", {
   template[
 
-    #context for meta in all-posts() {
+    #context all-posts().map(meta => {
       html.div(class: "post-meta", meta.date.display("[day] [month repr:long] [year]"))
       heading(link(meta.id, meta.title))
 
@@ -101,11 +98,17 @@
         panic("missing blurb for " + meta.path)
       }
 
-      html.hr()
-    }
+    }).join(html.hr())
   ]
 }) <blog>
 
+
+
+/* assets */
+
+#for file in glob("assets/*.*") {
+  asset(file, read(file, encoding: none))
+}
 
 #context for m in query(metadata) {
   let v = m.value
