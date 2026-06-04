@@ -1,7 +1,9 @@
-#asset("styles.css", read("/assets/styles.css"))
-#asset("assets/header.png", read("/assets/header.png", encoding: none))
-#asset("assets/me.jpg", read("/assets/me.jpg", encoding: none))
-
+// #asset("styles.css", read("/assets/styles.css"))
+// #asset("assets/header.png", read("/assets/header.png", encoding: none))
+// #asset("assets/me.jpg", read("/assets/me.jpg", encoding: none))
+#for file in glob("assets/*.*") {
+  asset(file, read(file, encoding: none))
+}
 
 #show math.equation.where(block: true): it => {
   if target() == "html" {
@@ -19,7 +21,7 @@
 
 
 #let template(body) = {
-  html.link(href: "/styles.css", rel: "stylesheet")
+  html.link(href: "/assets/styles.css", rel: "stylesheet")
 
   html.link(
     href: "https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&family=Mirza&display=swap",
