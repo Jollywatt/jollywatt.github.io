@@ -2,7 +2,7 @@
   date: datetime(year: 2020, month: 03, day: 17),
   categories: ("interactive",),
   blurb: [
-    Interactively tabulate the special cases of Stokes’ theorem, $integral_Omega dif omega = integral_(partial Omega) omega$.
+    // Interactively tabulate the special cases of Stokes’ theorem, $integral_Omega dif omega = integral_(partial Omega) omega$.
   ],
 ))
 

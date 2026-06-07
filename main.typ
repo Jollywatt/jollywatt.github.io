@@ -13,12 +13,15 @@
 
 
 #let template(body) = {
+
   html.link(href: "/assets/styles.css", rel: "stylesheet")
 
   html.link(
     href: "https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&family=Mirza&display=swap",
     rel: "stylesheet",
   )
+
+  show: html.div.with(class: "container")
 
   html.header({
     html.div(class: "site-name", link(<blog>)[Jollywatt])

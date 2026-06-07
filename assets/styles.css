@@ -7,25 +7,25 @@
   --fun-font: "Mirza", sans-serif;
 
   font-size: 14pt;
-
+}
+body {
   background: url("/assets/header.png") fixed top no-repeat;
   background-color: var(--sky-white);
   background-blend-mode: multiply;
-  padding-top: calc((450px + 28vw) * 0.33);
-  padding-bottom: 60px;
-  background-size: calc(450px + 28vw);
+
+  --main-width: calc(min(100%, 450px + 28vw));
+  background-size: var(--main-width);
 }
 
-*:hover {
-  /*outline: 1px solid #f003;*/
-}
-
-body {
+.container {
   margin: auto;
-  width: calc(400px + 25vw);
+  margin-top: calc(var(--main-width) * 0.34);
+  width: calc(min(100%, 500px + 28vw));
+  margin-bottom: 60px;
+  box-sizing: border-box;
   padding: 1rem 3rem;
-  box-shadow: 0px 6px 36px #0031;
-  border-radius: 8px;
+  box-shadow: 0px 8px 30px #0032;
+  border-radius: 10px;
   background: white;
 }
 
@@ -44,7 +44,10 @@ header a:hover {
 header .site-name {
   font-size: 2.5rem;
 }
-
+header nav {
+  display: flex;
+  flex-wrap: wrap;
+}
 header nav a {
   color: var(--light-gray);
 }
@@ -52,9 +55,6 @@ header nav a:not(:first-child)::before {
   content: "·";
   padding: 0 8px;
   color: var(--light-gray);
-}
-
-main {
 }
 
 footer {
