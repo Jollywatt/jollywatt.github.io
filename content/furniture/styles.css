@@ -1,0 +1,196 @@
+.furniture {
+  display: flex;
+  align-items: end;
+  padding-bottom: 20px;
+  gap: 1.5em;
+  scrollbar-width: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.chest-top {
+  position: absolute;
+  --s: 1.8;
+  top: calc(-1.4em - var(--rim) / var(--s));
+  font-size: calc(var(--s) * 1em);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.chest-of-drawers {
+  position: relative;
+  margin: var(--rim);
+  margin-top: calc(var(--rim) + var(--chest-depth) + 1em);
+  margin-bottom: 0;
+  z-index: var(--layer);
+}
+
+.furniture > .chest-of-drawers:first-child {
+  margin-left: calc(var(--rim) + var(--chest-depth));
+}
+
+.chest-of-drawers > svg {
+  position: absolute;
+  top: calc(-1 * (var(--chest-depth) + var(--rim)));
+  left: calc(-1 * (var(--chest-depth) + var(--rim)));
+}
+
+.drawers-outer {
+  outline: 1.2pt solid black;
+  border-radius: 2px;
+  background: color-mix(var(--accent), black 35%);
+  display: inline-block;
+  transform: translateZ(1pt);
+}
+.drawers {
+  transform-style: preserve-3d;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: var(--gutter);
+  justify-content: space-between;
+  list-style: none;
+  overflow: hidden;
+
+  --clearance: 1cm;
+  padding-bottom: var(--clearance);
+  padding-right: var(--clearance);
+  margin-right: calc(-1 * var(--clearance));
+  margin-bottom: calc(-1 * var(--clearance));
+}
+
+.drawer-label {
+  position: absolute;
+  white-space: nowrap;
+  left: calc(50% + var(--drawer-depth) / 2);
+  top: calc(50% + var(--drawer-depth) / 2);
+  transform: translate(-50%, calc(-50% + 0.15em));
+  font-weight: bold;
+  color: black;
+  font-family: var(--fun-font);
+}
+
+.drawer {
+  display: inline-block;
+  transform-style: preserve-3d;
+  z-index: var(--layer);
+
+  transition: transform 500ms
+    linear(
+      0,
+      0.105 6.3%,
+      0.315 19.4%,
+      0.417 25.5%,
+      0.558 33.3%,
+      0.867 49.4%,
+      0.942 53.8%,
+      1 57.7%,
+      0.955 61.6%,
+      0.938 63.4%,
+      0.925 65.1%,
+      0.915 66.8%,
+      0.908 68.6%,
+      0.903 70.4%,
+      0.902 72.2%,
+      0.905 75.1%,
+      0.916 78.2%,
+      0.931 81.2%,
+      0.971 88.3%,
+      0.988 92.1%,
+      0.997 95.8%,
+      1
+    );
+}
+
+.drawer:hover {
+  transition: transform 250ms ease-in;
+  --shift-out: calc(var(--drawer-depth) * 0.75 - 0.5em);
+  transform: translate(var(--shift-out), var(--shift-out));
+}
+.drawer.open {
+  --shift-out: calc(var(--drawer-depth) - 0.5em);
+  transform: translate(var(--shift-out), var(--shift-out));
+}
+
+.bookshelf {
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.shelf {
+  z-index: -1;
+}
+
+.books {
+  transform-style: preserve-3d;
+
+  display: flex;
+  align-items: flex-end;
+  padding-left: 0.35em;
+  --gutter: 0.25em;
+  gap: var(--gutter);
+}
+
+.book {
+  display: inline-block;
+  transform-style: preserve-3d;
+  z-index: var(--layer);
+
+  width: var(--book-width);
+  margin-bottom: calc(-1 * var(--book-depth) / 2);
+
+  transition: transform 300ms ease-out;
+  --shift-out: 0.5em;
+}
+
+.book:hover {
+  transition: transform 200ms linear;
+  transform: translate(var(--shift-out), var(--shift-out));
+}
+
+.book.open {
+  transform: translate(var(--shift-out), var(--shift-out));
+}
+
+.book-spine {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - var(--book-depth) / 2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+
+  --shift-out: calc(var(--book-depth)/2);
+  transform: translate(var(--shift-out), var(--shift-out));
+}
+
+.book-spine > .book-spine-vertical {
+  writing-mode: vertical-rl;
+  display: inline-block;
+  text-align: center;
+  flex-grow: 1;
+  line-height: 1;
+}
+
+.book-spine .book-spine-horizontal {
+  writing-mode: lr;
+  font-size: 0.7em;
+  transform: scaleX(0.8);
+  bottom: 0;
+  text-align: center;
+  line-height: 1;
+  padding-bottom: 0.3em;
+}
+
+.vertical {
+  text-spacing-trim: trim-all;
+  writing-mode: vertical-rl;
+  width: 100%;
+  max-height: min(70vh, 50em);
+  overflow-x: scroll;
+  padding: 0 var(--page-pad);
+  margin: var(--page-pad) calc(-1 * var(--page-pad));
+}

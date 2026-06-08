@@ -24,6 +24,20 @@ A mixture of my digital art, photography, and drawing.
 
 ```.text)
 
+#let chest-of-drawers = html.div(class: "furniture", {
+  import "/content/furniture/components.typ": *
+  html.style(read("/content/furniture/styles.css"))
+
+  chest-of-drawers(width: 2, height: 2, color: teal.mix((red, 30%)), rim: 0.5, {
+    drawer("https://natsuha.tngl.sh", width: 2, inner: yellow)[Web Wood Work]
+    drawer("https://typst.app", width: 1, inner: teal)[using\ Typst]
+    drawer("https://cetz-package.github.io", width: 1, inner: blue)[and\ CeTZ]
+  })
+  // bookshelf({
+  //   book("?")[Hi]
+  // })
+})
+
 #html.div(style: ```css
 text-align: center;
 display: flex;
@@ -44,6 +58,7 @@ flex-wrap: wrap;
   img("louie-et-garon.jpg", class: "s1")
   img("bubble.jpg", class: "s2")
   img("bold-and-brash.jpg", class: "s2")
+  chest-of-drawers
 })
 
 
