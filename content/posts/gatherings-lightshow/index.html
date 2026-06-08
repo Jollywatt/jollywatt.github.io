@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Visuals</title>
+
+<script src="color-utils.js"></script>
+<script src="global.js"></script>
+<script src="main.js"></script>
+<script src="0.motif.js"></script>
+<script src="1.genesis.js"></script>
+<script src="2.earth.js"></script>
+<script src="3.church.js"></script>
+<script src="4.crescendo.js"></script>
+<script src="5.dessert.js"></script>
+<script type="text/javascript" src="https://livejs.com/live.js"></script>
+
+	
+<style type="text/css">
+body {
+	background: black;
+	height: 500vh;
+	overflow: hidden;
+	color: white;
+}
+canvas {
+	/*border: 1px solid #fff2;*/
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#help {
+	position: fixed;
+}
+</style>
+</head>
+<body>
+
+
+<div id="canvases"></div>
+
+<div id="help">
+	Type <code>1</code>, ..., <code>6</code> to switch slides, <code>0</code> to dim all.<br>
+	Hold <code>ctrl</code> to show multiple.<br>
+	<code>p</code> to play/pause, <code>[</code> and <code>]</code> to slow down/speed up.<br>
+	Scroll to change time.<br>
+	<button onclick="help.remove()">Dismiss</button>
+</div>
+
+<script type="text/javascript">
+window.canvasClasses = {
+	1: Poster,
+	2: Genesis,
+	3: Earth,
+	4: Church,
+	5: Crescendo,
+	6: Dessert,
+}
+
+window.addEventListener('load', event => {
+	main = new Controller()
+	window.canvasElements = document.getElementsByTagName('canvas')
+	main.t = 271000
+	main.start()
+	fadeIn(1)
+})
+
+window.addEventListener('wheel', event => {
+	Δ = event.deltaY*10;
+	main.t += Δ;
+	window.scrollTo(0, document.body.scrollHeight/2);
+
+	if (!main.looping) main.draw()
+})
+
+function getOrCreateSlide(num) {
+	if (!(num in main.canvases)) {
+		let canvasClass = window.canvasClasses[num]
+		main.canvases[num] = new canvasClass(newCanvas())
+	}
+	return main.canvases[num]
+}
+
+function fadeIn(num) {
+	let canvas = getOrCreateSlide(num)
+	canvas.fader = 1
+}
+
+function deleteSlide(key) {
+	if (!(key in main.canvases)) return false
+	main.canvases[key].canvasEl.remove()
+	delete main.canvases[key]
+}
+
+function fadeOut(key) {
+	let canvas = main.canvases[key]
+	if (canvas === undefined) return false
+	canvas.fader = 0
+	canvas.onFadeOut = () => {
+		deleteSlide(key)
+	}
+}
+
+window.addEventListener('keydown', event => {
+	console.log(event)
+	if (event.key == 'p') main.toggle()
+	else if (event.key == 't') main.t = 0
+	else if (event.key == '0') Object.keys(main.canvases).map(fadeOut)
+	else if (event.key == ']') main.speed *= 2
+	else if (event.key == '[') main.speed /= 2
+	else if (!isNaN(event.key)) {
+		if (event.ctrlKey) fadeIn(event.key)
+		else scene(event.key)
+		event.preventDefault()
+	}
+})
+
+function scene(num) {
+	fadeIn(num)
+	for (i in main.canvases) {
+		if (i != num) fadeOut(i)
+	}
+}
+
+function newCanvas() {
+	let containerEl = document.getElementById('canvases')
+	let canvasEl = document.createElement('canvas')
+	let size = Math.min(window.innerHeight, window.innerWidth)
+	canvasEl.setAttribute('width', size)
+	canvasEl.setAttribute('height', size)
+	containerEl.appendChild(canvasEl)
+	return canvasEl
+}
+</script>
+</body>
+</html>

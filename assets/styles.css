@@ -2,11 +2,12 @@
   font-family: "Crimson Text", "PT Serif", Georgia, serif;
 
   --sky-white: hsl(205deg, 100%, 98%);
-  --dark-gray: #505050;
+  --dark-gray: light-dark(#505050, #ccc);
   --light-gray: #879ba2;
   --fun-font: "Mirza", sans-serif;
 
   font-size: 14pt;
+  color-scheme: light;
 }
 body {
   background: url("/assets/header.png") fixed top no-repeat;
@@ -26,7 +27,7 @@ body {
   padding: 1rem 3rem;
   box-shadow: 0px 8px 30px #0032;
   border-radius: 10px;
-  background: white;
+  background: light-dark(white, #222);
 }
 
 header {
@@ -39,7 +40,7 @@ header a {
   color: var(--dark-gray);
 }
 header a:hover {
-  color: black;
+  color: light-dark(black, white);
 }
 header .site-name {
   font-size: 2.5rem;

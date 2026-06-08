@@ -30,7 +30,7 @@
       link(<blog>)[Blog]
       // link("?")[Research]
       link("?")[Software]
-      link("?")[Art]
+      link(<art>)[Art]
       link(<cv>)[Resumé]
     })
   })
@@ -54,6 +54,7 @@
 }) <home>
 
 
+#document("art.html", template(include "content/art/art.typ")) <art>
 
 
 #document("about.html", template(include "content/about.typ")) <about>
@@ -65,7 +66,7 @@
   let doc = document("blog/" + name + ".html", {
     template(include path)
   })
-  let id = label("post-" + name)
+  let id = label(name)
   [#doc #id]
   post-info.push((id: id, path: path))
 }
@@ -122,7 +123,7 @@
       [#it #v.label]
     } else { it }
 
-  } else if type(v) == content and v.func() == asset {
+  } else if type(v) == content {
     v
   }
 }
