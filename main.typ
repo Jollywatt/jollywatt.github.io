@@ -29,7 +29,7 @@
       link(<about>)[About]
       link(<blog>)[Blog]
       // link("?")[Research]
-      link("?")[Software]
+      link(<software>)[Software]
       link(<art>)[Art]
       link(<cv>)[Resumé]
     })
@@ -55,6 +55,7 @@
 
 
 #document("art.html", template(include "content/art/art.typ")) <art>
+#document("software.html", template(include "content/software.typ")) <software>
 
 
 #document("about.html", template(include "content/about.typ")) <about>
