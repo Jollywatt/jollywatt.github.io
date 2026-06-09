@@ -15,7 +15,6 @@
 #let template(body) = {
 
   html.link(href: "/assets/styles.css", rel: "stylesheet")
-
   html.link(
     href: "https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&family=Mirza&display=swap",
     rel: "stylesheet",
@@ -47,11 +46,9 @@
   })
 }
 
-#document("index.html", {
-  template[
-    welcome
-  ]
-}) <home>
+#document("index.html", template[
+  welcome
+]) <home>
 
 
 #document("art.html", template(include "content/art/art.typ")) <art>
@@ -64,9 +61,7 @@
 #let post-info = ()
 #for path in glob("content/posts/**/*.typ") {
   let name = path.split("/").last().replace(regex("\.typ$"), "")
-  let doc = document("blog/" + name + ".html", {
-    template(include path)
-  })
+  let doc = document("blog/" + name + ".html", template(include path))
   let id = label(name)
   [#doc #id]
   post-info.push((id: id, path: path))
@@ -88,6 +83,14 @@
 )
 
 #document("blog/index.html", {
+  html.style(```css
+  .cover-image {
+    max-height: 200px;
+    overflow-y: hidden;
+    border-radius: var(--rounded);
+    box-shadow: 0 4px 8px #0002;
+  }
+  ```.text)
   template[
 
     #context all-posts().map(meta => {
@@ -95,7 +98,9 @@
       heading(link(meta.id, meta.title))
 
       if "image" in meta {
-        link(meta.id, html.img(src: meta.image))
+        html.div(class: "cover-image", {
+          link(meta.id, html.img(src: meta.image))
+        })
       }
 
       if "blurb" in meta {

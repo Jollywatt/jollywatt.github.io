@@ -5,10 +5,12 @@
   --dark-gray: light-dark(#505050, #ccc);
   --light-gray: #879ba2;
   --fun-font: "Mirza", sans-serif;
+  --rounded: 4pt;
 
   font-size: 14pt;
   color-scheme: light;
 }
+
 body {
   background: url("/assets/header.png") fixed top no-repeat;
   background-color: var(--sky-white);
@@ -34,42 +36,45 @@ header {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   font-family: var(--fun-font);
-}
-header a {
-  text-decoration: none;
-  color: var(--dark-gray);
-}
-header a:hover {
-  color: light-dark(black, white);
-}
-header .site-name {
-  font-size: 2.5rem;
-}
-header nav {
-  display: flex;
-  flex-wrap: wrap;
-}
-header nav a {
-  color: var(--light-gray);
-}
-header nav a:not(:first-child)::before {
-  content: "·";
-  padding: 0 8px;
-  color: var(--light-gray);
+
+  & .site-name {
+    font-size: 2.5rem;
+  }
+  & a {
+    text-decoration: none;
+    color: var(--dark-gray);
+    &:hover {
+      color: light-dark(black, white);
+    }
+  }
+
+  & nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  & nav a {
+    color: var(--light-gray);
+  }
+  & nav a:not(:first-child)::before {
+    content: "·";
+    padding: 0 8px;
+    color: var(--light-gray);
+  }
 }
 
 footer {
   color: var(--light-gray);
   text-align: center;
   font-size: 0.7em;
-}
-footer a {
-  color: var(--light-gray);
-  text-decoration: none;
+
+  & a {
+    color: var(--light-gray);
+    text-decoration: none;
+  }
 }
 
 img {
-  border-radius: 5px;
+  border-radius: var(--rounded);
   max-width: 100%;
   height: auto;
 }
@@ -84,20 +89,20 @@ main a {
   text-decoration: none;
   color: var(--dark-gray);
   cursor: pointer;
-}
 
-main a:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 hr {
   text-align: center;
   border: none;
   margin: 20px 0;
-}
-hr:after {
-  content: "· · ·";
-  color: var(--light-gray);
+  &:after {
+    content: "· · ·";
+    color: var(--light-gray);
+  }
 }
 
 h1 {

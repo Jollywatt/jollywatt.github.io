@@ -9,7 +9,6 @@ blurb: [
 #title[Light installation for Gatherings Restaurant]
 
 #metadata(asset("/img/lightshow.png", read("lightshow.png", encoding: none)))
-
 #metadata[#asset("Gatherings Lightshow/index.html", read("index.html")) <lightshow-fullscreen>]
 
 These are the graphics from a projected light show made for a multi-sensory dining experience at #link("https://www.gatherings.co.nz")[Gatherings restaurant] in December, 2020.
