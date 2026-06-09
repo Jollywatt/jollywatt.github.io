@@ -316,7 +316,7 @@ $
 $
 
 Implementing this in Julia is just a matter of summing over all the right components.
-We could do this with `sum(... for μ ∈ 1:n)`, but a nice way of doing this is to use a package like [`TensorOperations.jl`](https://juliapackages.com/p/TensorOperations) which provides a macro enabling Einstein summation notation.
+We could do this with `sum(... for μ ∈ 1:n)`, but a nice way of doing this is to use a package like #link("https://juliapackages.com/p/TensorOperations")[`TensorOperations.jl`] which provides a macro enabling Einstein summation notation.
 
 ```julia
 using TensorOperations
@@ -433,8 +433,46 @@ end
 
 Let’s combine what we have so far to compute some geodesic curves on a torus.
 
-The code is presented as a script for readability, but if you wanted to use it, you should pack everything into functions to avoid global variables and use something like [`Revise.jl`](https://juliapackages.com/p/Revise).
+The code is presented as a script for readability, but if you wanted to use it, you should pack everything into functions to avoid global variables and use something like #link("https://juliapackages.com/p/Revise")[`Revise.jl`].
 
+#let expandable(body) = {
+  html.div(class: "expanding-block", {
+    html.input(id: "ex", type: "checkbox")
+    html.div(class: "expandable", body)
+    html.label(..("for": "ex"))[#sym.triangle.filled.b]
+  })
+  html.style(```css
+
+  .expanding-block {
+    input[type=checkbox] {
+      display: none;
+    }
+    input:not(:checked) ~ .expandable {
+      max-height: 400px;
+      pre {
+        overflow-y: scroll;
+        max-height: inherit;
+        box-shadow: inset 0 -20px 20px -20px #0005;
+      }
+    }
+    & > label {
+      cursor: pointer;
+      /*display: block;*/
+      /*width: 100%;*/
+      height: 2em;
+      text-align: center;
+      transform: translateY(-50%);
+      padding: 1em;
+      background: white;
+    }
+    input:checked ~ label {
+      transform: scaleY(-1);
+    }
+  }
+  ```.text)
+}
+
+#expandable[
 ```julia
 using TaylorSeries
 using TensorOperations
@@ -487,6 +525,7 @@ sol = solve(prob)
 path = mapslices(f, sol(0:0.1:30)[3:4,:], dims=1)
 lines!(path, linewidth=3, color=:black)
 ```
+]
 
 #metadata(asset("/img/torus-geodesic.png", read("torus-geodesic.png", encoding: none)))
 #figure(html.img(src: "/img/torus-geodesic.png"))
