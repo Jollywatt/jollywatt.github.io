@@ -13,7 +13,6 @@
 
 
 #let template(body) = {
-
   html.link(href: "/assets/styles.css", rel: "stylesheet")
   html.link(
     href: "https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&family=Mirza&display=swap",
@@ -61,8 +60,16 @@
 #let post-info = ()
 #for path in glob("content/posts/**/*.typ") {
   let name = path.split("/").last().replace(regex("\.typ$"), "")
-  let doc = document("blog/" + name + ".html", template(include path))
   let id = label(name)
+  let doc = document("blog/" + name + ".html", template({
+    context {
+      let meta = query(selector(metadata).within(id)).first().value
+      html.div(class: "post-meta", {
+        meta.date.display("[day] [month repr:long] [year]")
+      })
+    }
+    include path
+  }))
   [#doc #id]
   post-info.push((id: id, path: path))
 }
@@ -83,33 +90,38 @@
 )
 
 #document("blog/index.html", {
-  html.style(```css
-  .cover-image {
-    max-height: 200px;
-    overflow-y: hidden;
-    border-radius: var(--rounded);
-    box-shadow: 0 4px 8px #0002;
-  }
-  ```.text)
+  html.style(
+    ```css
+    .cover-image {
+      max-height: 200px;
+      overflow-y: hidden;
+      border-radius: var(--rounded);
+      box-shadow: 0 4px 8px #0002;
+    }
+    ```.text,
+  )
   template[
 
-    #context all-posts().map(meta => {
-      html.div(class: "post-meta", meta.date.display("[day] [month repr:long] [year]"))
-      heading(link(meta.id, meta.title))
+    #context (
+      all-posts()
+        .map(meta => {
+          html.div(class: "post-meta", meta.date.display("[day] [month repr:long] [year]"))
+          heading(link(meta.id, meta.title))
 
-      if "image" in meta {
-        html.div(class: "cover-image", {
-          link(meta.id, html.img(src: meta.image))
+          if "image" in meta {
+            html.div(class: "cover-image", {
+              link(meta.id, html.img(src: meta.image))
+            })
+          }
+
+          if "blurb" in meta {
+            meta.blurb
+          } else {
+            panic("missing blurb for " + meta.path)
+          }
         })
-      }
-
-      if "blurb" in meta {
-        meta.blurb
-      } else {
-        panic("missing blurb for " + meta.path)
-      }
-
-    }).join(html.hr())
+        .join(html.hr())
+    )
   ]
 }) <blog>
 
@@ -128,7 +140,6 @@
     if "label" in v {
       [#it #v.label]
     } else { it }
-
   } else if type(v) == content {
     v
   }
