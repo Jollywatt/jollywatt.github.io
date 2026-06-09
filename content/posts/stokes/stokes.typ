@@ -4,6 +4,7 @@
   blurb: [
     Interactive showcase of the special cases of Stokes' theorem, $integral_Omega dif omega = integral_(partial Omega) omega$.
   ],
+  permalink: "stokes-theorem",
 ))
 
 #title[The Many Faces of Stokes' Theorem]

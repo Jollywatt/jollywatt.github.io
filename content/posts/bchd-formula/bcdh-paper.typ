@@ -3,7 +3,8 @@
   blurb: [
     A paper on composing Lorentz transformations in terms of their bivector generators using the geometric algebra of spacetime, submitted to the International Journal of Geometric Methods in Modern Physics.
   ],
-  categories: ("research", "maths")
+  categories: ("research", "maths"),
+  permalink: "bchd-formula-for-spacetime",
 ))
 
 #title[Explicit Baker–Campbell–Hausdorff–Dynkin formula for Spacetime via Geometric Algebra]

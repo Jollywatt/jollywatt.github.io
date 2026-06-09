@@ -1,6 +1,6 @@
 #metadata((
   date: datetime(year: 2023, month: 01, day: 09),
-  slug: "daylight-hours-a-spherical-geometry-problem",
+  permalink: "daylight-hours-formula",
   categories: ("interactive", "maths"),
   blurb: [
     How many hours are there between sunrise and sunset?

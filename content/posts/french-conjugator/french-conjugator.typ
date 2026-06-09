@@ -4,6 +4,7 @@
   blurb: [
     An app to help you practice conjugating French verbs. 🇫🇷
   ],
+  permalink: "conjuguer-francais",
 ))
 
 #title[French verb conjugations quizzer]

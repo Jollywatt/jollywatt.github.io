@@ -4,7 +4,8 @@
     A collection of succinct but wonderfully satisfying mathematical results.
   ],
   image: "/assets/math-collage.png",
-  categories: ("maths", "interactive")
+  categories: ("maths", "interactive"),
+  permalink: "math-one-liners",
 ))
 
 #title[Mathematical One-liners]

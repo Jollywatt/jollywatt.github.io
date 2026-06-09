@@ -61,6 +61,7 @@
 #for path in glob("content/posts/**/*.typ") {
   let name = path.split("/").last().replace(regex("\.typ$"), "")
   let id = label(name)
+
   let doc = document("blog/" + name + ".html", template({
     context html.div(class: "post-meta", {
       let meta = post-meta(id)

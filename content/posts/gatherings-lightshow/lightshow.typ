@@ -5,11 +5,12 @@ image: "/media/lightshow.png",
 blurb: [
   Projector light show made for a multi-sensory dining experience.
 ],
+permalink: "Gatherings-Lightshow/index",
 ))
 #title[Light installation for Gatherings Restaurant]
 
 #metadata(asset("/media/lightshow.png", read("lightshow.png", encoding: none)))
-#metadata[#asset("Gatherings Lightshow/index.html", read("index.html")) <lightshow-fullscreen>]
+#metadata[#asset("Gatherings-Lightshow/fullscreen.html", read("index.html")) <lightshow-fullscreen>]
 
 These are the graphics from a projected light show made for a multi-sensory dining experience at #link("https://www.gatherings.co.nz")[Gatherings restaurant] in December, 2020.
 The _motif_ for the event was a glass of red wine combined with a solar system...

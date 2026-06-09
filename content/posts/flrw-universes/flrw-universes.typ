@@ -5,6 +5,7 @@
     Honours project about the asymptotic symmetries of spacetime supervised by Prof. David Wiltshire at the University of Canterbury.
   ],
   categories: ("research", "physics"),
+  permalink: "asymptotic-structure-of-flrw",
 ))
 
 #metadata((

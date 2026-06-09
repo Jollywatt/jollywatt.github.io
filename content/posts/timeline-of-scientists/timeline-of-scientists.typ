@@ -4,6 +4,7 @@
   blurb: [
     Interactive timeline of famous scientists throughout history, using Wikidata.
   ],
+  permalink: "timeline-of-scientists",
 ))
 
 #metadata(asset("/assets/sample-query.json", read("sample-query.json")))

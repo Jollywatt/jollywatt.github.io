@@ -2,6 +2,7 @@
   date: datetime(year: 2022, month: 03, day: 12),
   categories: ("research",),
   blurb: [Master's thesis in mathematical physics.],
+  permalink: "msc-thesis",
 ))
 
 #title[Geometric Algebra for Special Relativity and Manifold Geometry]

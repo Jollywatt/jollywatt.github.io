@@ -5,6 +5,7 @@
   ],
   image: "/media/bands.png",
   categories: ("research", "physics"),
+  permalink: "crystal-band-structure-cp2k",
 ))
 
 #metadata((
