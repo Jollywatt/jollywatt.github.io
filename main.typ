@@ -56,29 +56,43 @@
 #document("resume.pdf", include "content/cv.typ") <cv>
 
 #let post-meta(id) = {
-   query(selector(metadata).within(id)).first().value
+   let els = query(selector(metadata).within(id))
+   if els.len() == 0 { return (
+     date: datetime.today(),
+     permalink: "temp",
+     blurb: none,
+   ) }
+   els.first().value
 }
 
 #let post-info = ()
-#for path in glob("content/posts/**/*.typ") {
-  let name = path.split("/").last().replace(regex("\.typ$"), "")
+#for path in {
+glob("/content/**/lightshow.typ")
+glob("/content/**/msc-thesis.typ")
+glob("content/posts/**/*.typ").slice(0,6)
+} {
+  let name = path.split("/").last().split(".").first()
   let id = label(name)
-
-  let doc = document("blog/" + name + ".html", template({
-    context html.div(class: "post-meta", {
-      let meta = post-meta(id)
-      meta.date.display("[day] [month repr:long] [year]")
-    })
-    include path
-  }))
-  [#doc #id]
+  context {
+    let meta = post-meta(id)
+    let doc = document(meta.permalink + ".html", template({
+      html.div(class: "post-meta", {
+        meta.date.display("[day] [month repr:long] [year]")
+      })
+      include path
+    }))
+    [#doc #id]
+  }
   post-info.push((id: id, path: path))
 }
 
 #let all-posts() = (
   post-info
     .map(post-info => {
-      let title = query(selector(title).within(post-info.id)).first().body
+      let title = {
+        let el = query(selector(title).within(post-info.id)).first(default: none)
+        if el != none { el.body }
+      }
       let meta = post-meta(post-info.id)
       (
         ..post-info,
