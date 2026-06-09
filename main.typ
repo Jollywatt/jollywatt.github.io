@@ -57,17 +57,19 @@
 #document("about.html", template(include "content/about.typ")) <about>
 #document("resume.pdf", include "content/cv.typ") <cv>
 
+#let post-meta(id) = {
+   query(selector(metadata).within(id)).first().value
+}
+
 #let post-info = ()
 #for path in glob("content/posts/**/*.typ") {
   let name = path.split("/").last().replace(regex("\.typ$"), "")
   let id = label(name)
   let doc = document("blog/" + name + ".html", template({
-    context {
-      let meta = query(selector(metadata).within(id)).first().value
-      html.div(class: "post-meta", {
-        meta.date.display("[day] [month repr:long] [year]")
-      })
-    }
+    context html.div(class: "post-meta", {
+      let meta = post-meta(id)
+      meta.date.display("[day] [month repr:long] [year]")
+    })
     include path
   }))
   [#doc #id]
@@ -78,7 +80,7 @@
   post-info
     .map(post-info => {
       let title = query(selector(title).within(post-info.id)).first().body
-      let meta = query(selector(metadata).within(post-info.id)).first().value
+      let meta = post-meta(post-info.id)
       (
         ..post-info,
         title: title,
@@ -105,7 +107,12 @@
     #context (
       all-posts()
         .map(meta => {
-          html.div(class: "post-meta", meta.date.display("[day] [month repr:long] [year]"))
+          html.div(class: "post-meta", {
+            meta.date.display("[day] [month repr:long] [year]")
+
+            meta.at("categories", default: ()).map(tag => [ #sym.bullet #tag]).join()
+          })
+
           heading(link(meta.id, meta.title))
 
           if "image" in meta {

@@ -1,5 +1,6 @@
 #metadata((
   date: datetime(year: 2018, month: 09, day: 11),
+  categories: ("maths",),
   blurb: [
     My Dynamical Systems course had a competition to make the most creative _phase portrait_...
   ]
