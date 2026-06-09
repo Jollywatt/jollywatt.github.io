@@ -1,6 +1,6 @@
 #metadata((
   date: datetime(year: 2018, month: 02, day: 15),
-  image: "/img/galactic-model.png",
+  image: "/media/galactic-model.png",
   blurb: [
     Cosmology summer project reproducing and visualising an empirical model of the galactic bar and disk.
   ],
@@ -15,9 +15,9 @@
 
 #metadata((
   asset: path("galactic-model.png"),
-  to: "/img/galactic-model.png"
+  to: "/media/galactic-model.png"
 ))
-#html.img(src: "/img/galactic-model.png")
+#html.img(src: "/media/galactic-model.png")
 
 #title[Visualising the Freudenreich 1998 Model of the Galactic Bar and Disk]
 

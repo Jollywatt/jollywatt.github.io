@@ -4,7 +4,7 @@
   categories: ("interactive", "maths"),
   blurb: [
     How many hours are there between sunrise and sunset?
-    The Earth’s tilt makes this a fun geometry problem…
+    The Earth's tilt makes this a fun geometry problem…
   ],
 ))
 
@@ -26,14 +26,14 @@
 #title[Daylight Hours: A spherical geometry problem]
 
 How many hours are there between sunrise and sunset?
-The Earth’s tilt makes this a fun geometry problem…
+The Earth's tilt makes this a fun geometry problem…
 
 = Hours of daylight at the solstice
 
-Let $ε$ be the Earth’s tilt, or _obliquity_. This is the angle between Earth’s axis of rotation $N$ and the normal to Earth’s orbital plane around the sun, $O$.
-At first, let’s assume that the Earth tilts directly toward the sun (or directly away, for $ε < 0$).
+Let $ε$ be the Earth's tilt, or _obliquity_. This is the angle between Earth's axis of rotation $N$ and the normal to Earth's orbital plane around the sun, $O$.
+At first, let's assume that the Earth tilts directly toward the sun (or directly away, for $ε < 0$).
 This direct alignment occurs twice a year, at the summer and winder solstices.
-We can consider seasons later; for now, assume we’re at summer solstice.
+We can consider seasons later; for now, assume we're at summer solstice.
 
 
 In this scenario, the boundary between day and night is a great circle whose angle from the north pole is $ε$.
@@ -55,7 +55,7 @@ $
   (x, y) = (sin ε cos λ, sin λ), quad λ ∈ [0, 2pi)
   .
 $
-This intercepts the circle when the length of the vector $(x, y)$ is the circle’s radius, $\|(x, y)\| = cos φ$.
+This intercepts the circle when the length of the vector $(x, y)$ is the circle's radius, $\|(x, y)\| = cos φ$.
 Squaring this, we get the intercept condition
 $
   sin^2 ε cos^2 λ + sin^2 λ = cos^2 φ
@@ -86,9 +86,9 @@ This means our intercept point $(x, y) = (sin ε cos λ, sin λ)$, shown by the 
 
 #html.div(id: "fig3", class: "fig")
 
-This is one of four possible intercepts, but it’s the one we want: when $ε φ > 0$, the intercept is in the first quadrant, and when $ε φ < 0$ it is in the second, which is consistent with out three-dimensional picture of Earth, where the intercept we want depends on which hemisphere we’re in.
+This is one of four possible intercepts, but it's the one we want: when $ε φ > 0$, the intercept is in the first quadrant, and when $ε φ < 0$ it is in the second, which is consistent with out three-dimensional picture of Earth, where the intercept we want depends on which hemisphere we're in.
 
-We’re almost done, but the parameter value $λ$ isn’t the actual polar angle of the intercept point — we need that to find the arc length which lies in daylight.
+We're almost done, but the parameter value $λ$ isn't the actual polar angle of the intercept point — we need that to find the arc length which lies in daylight.
 The polar coordinate $θ$ of the intercept point $(x, y)$ is
 
 $
@@ -104,15 +104,15 @@ $
 
 == Incorporating seasons
 
-In reality, the Earth’s tilt is not exactly toward or away from the sun, because it orbits the sun while its titled axis of rotation remains fixed.
+In reality, the Earth's tilt is not exactly toward or away from the sun, because it orbits the sun while its titled axis of rotation remains fixed.
 
-At the northern summer solstice, the north pole is tilted toward the sun. Let $ω$ be the angle of the Earth’s course around the sun from this point.
+At the northern summer solstice, the north pole is tilted toward the sun. Let $ω$ be the angle of the Earth's course around the sun from this point.
 
 Looking down the axis the orbital plane, $O$, with the sun always to the right, we see the north pole trace out a circle as $ω$ varies over the course of a year.
 
 #html.div(id: "fig4", class: "fig")
 
-The Earth’s obliquity $ε_0$ remains fixed (the angle of the dashed green arc).
+The Earth's obliquity $ε_0$ remains fixed (the angle of the dashed green arc).
 However, the true angle the north pole makes from the day–night boundary (the solid green arc which we called $ε$ before) varies with $ω$.
 This is the seasonal dependence of day length.
 
@@ -136,7 +136,7 @@ For completeness, the full expression for the fraction of the day in daylight is
 $
   L = 1/pi arctan(1/(sin ε_0 cos ω) tan [arccos((sin φ)/(sqrt(1 - (sin ε_0 cos ω)^2)))])
 $
-where $ε_0 = 24.5degree$ is the obliquity of the Earth, $φ$ is the latitude of the reference point and $ω$ is the season expressed as the arc angle along Earth’s orbit since the solstice.
+where $ε_0 = 24.5degree$ is the obliquity of the Earth, $φ$ is the latitude of the reference point and $ω$ is the season expressed as the arc angle along Earth's orbit since the solstice.
 
 
 

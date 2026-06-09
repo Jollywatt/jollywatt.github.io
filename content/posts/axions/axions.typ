@@ -1,6 +1,6 @@
 #metadata((
   date: datetime(year: 2020, month: 11, day: 07),
-  image: "/img/axion-lagrangian.png",
+  image: "/media/axion-lagrangian.png",
   blurb: [
     Literature review supervised by Dr. Jenni Adams at the University of Canterbury.
   ],
@@ -13,8 +13,8 @@
   label: <axions-pdf>,
 ))
 
-#metadata(asset("/img/axion-lagrangian.png", read("axion-lagrangian.png", encoding: none)))
-#html.img(src: "/img/axion-lagrangian.png")
+#metadata(asset("/media/axion-lagrangian.png", read("axion-lagrangian.png", encoding: none)))
+#html.img(src: "/media/axion-lagrangian.png")
 
 #title[An Overview of the Strong CP Problem and Axion Cosmology]
 

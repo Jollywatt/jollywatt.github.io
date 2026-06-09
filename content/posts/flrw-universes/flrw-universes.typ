@@ -1,6 +1,6 @@
 #metadata((
   date: datetime(year: 2019, month: 12, day: 15),
-  image: "/img/gravitational-waves.png",
+  image: "/media/gravitational-waves.png",
   blurb: [
     Honours project about the asymptotic symmetries of spacetime supervised by Prof. David Wiltshire at the University of Canterbury.
   ],
@@ -24,9 +24,9 @@
 
 #metadata((
   asset: path("gravitational-waves.png"),
-  to: "/img/gravitational-waves.png"
+  to: "/media/gravitational-waves.png"
 ))
-#html.img(src: "/img/gravitational-waves.png")
+#html.img(src: "/media/gravitational-waves.png")
 
 This is my Honours project supervised by #link("https://spcs.canterbury.ac.nz/~dlw24/")[Prof.~David Wiltshire at the University of Canterbury].
 
@@ -37,6 +37,6 @@ You can find the #link(<honors-pdf>)[full report (PDF)] and also the #link(<hono
 
 #metadata((
   asset: path("2019.MAPH480-Poster.png"),
-  to: "pdf/2019.MAPH480-Poster.png",
+  to: "/media/2019.MAPH480-Poster.png",
 ))
-#link(<honors-poster>, html.img(src: "pdf/2019.MAPH480-Poster.png"))
+#link(<honors-poster>, html.img(src: "/media/2019.MAPH480-Poster.png"))

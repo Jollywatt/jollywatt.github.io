@@ -65,7 +65,7 @@ class Color {
 }
 
 class Gradient {
-	/* Simple color ramp with multiple colors at different color ‘stops’. */
+	/* Simple color ramp with multiple colors at different color stops. */
 	constructor(stops) {
 		this.stops = stops
 		for (var i in this.stops) {

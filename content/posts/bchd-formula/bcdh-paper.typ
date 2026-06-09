@@ -11,7 +11,7 @@
 Joseph Wilson, Matt Visser
 
 *In brief.*
-In $≤4$ dimensions, there’s a simple formula for the bivector $sigma_3$ in terms of bivectors $sigma_1$ and $sigma_2$ such that $e^(sigma_1) e^(sigma_2) = plus.minus e^(sigma_3)$.
+In $≤4$ dimensions, there's a simple formula for the bivector $sigma_3$ in terms of bivectors $sigma_1$ and $sigma_2$ such that $e^(sigma_1) e^(sigma_2) = plus.minus e^(sigma_3)$.
 
 *Abstract.*
 We present a compact Baker–Campbell–Hausdorff–Dynkin formula for the composition of Lorentz transformations $e^(sigma_i)$ in the spin representation (a.k.a. Lorentz rotors) in terms of their generators $sigma_i$:

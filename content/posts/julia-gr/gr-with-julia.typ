@@ -27,7 +27,7 @@ Four years after I took general relativity, my professor asked me to send him an
 
 #sphere-transport-video
 
-Actually, I wasn’t the one who had made it (though I was flattered that he had thought so!) but I decided to rise to the challenge.
+Actually, I wasn't the one who had made it (though I was flattered that he had thought so!) but I decided to rise to the challenge.
 
 The tool I reached for was Julia. To my delight, the whole thing was rather simple to make.
 
@@ -43,7 +43,7 @@ This post describes how you might roll your own code for doing basic numerical g
 The very first task is to decide how to represent the relevant mathematical objects: manifolds, homomorphisms between them and tensor fields.
 These things can seem complicated, but given a choice of coordinates, a point in a manifold is just a `Vector` of coordinates, a homomorphism is a function taking a `Vector` argument and returning a `Vector`, and tensor fields are the same thing, but returning a multidimensional `Array`.
 
-For example, here’s an embedding $f: SS^2 → RR^3$ of a sphere into 3D space using the usual spherical coordinates $(θ, φ)$, as a Julia function:
+For example, here's an embedding $f: SS^2 → RR^3$ of a sphere into 3D space using the usual spherical coordinates $(θ, φ)$, as a Julia function:
 
 ```julia
 f((θ, φ)) = [
@@ -63,7 +63,7 @@ julia> f([π/2, 0]) # meridian point on the equator
  6.123233995736766e-17
 ```
 
-Here’s how you might use this embedding to plot a surface with #link("https://juliapackages.com/p/Makie")[`Makie.jl`]:
+Here's how you might use this embedding to plot a surface with #link("https://juliapackages.com/p/Makie")[`Makie.jl`]:
 
 ```julia
 using GLMakie
@@ -77,7 +77,7 @@ surface!(x, y, z, transparency=true, alpha=0.2)
 //   <img src="/projects/julia-general-relativity/sphere.png">
 // </figure>
 
-You could imagine doing something more involved like defining an object-oriented zoo of types for manifolds, coordinate charts, transition functions, homomorphisms, tensor fields, and so on. Don’t bother. Dead simple is good.
+You could imagine doing something more involved like defining an object-oriented zoo of types for manifolds, coordinate charts, transition functions, homomorphisms, tensor fields, and so on. Don't bother. Dead simple is good.
 
 = Step 1: Automatic differentiation
 
@@ -85,7 +85,7 @@ Differential geometry has lots of '$∂$'s.
 We want to have derivatives of homomorphisms such as `f` be computed _automatically_.
 There are many approaches to doing this with Julia, ranging from symbolic differentiation with #link("https://juliapackages.com/p/Symbolics")[`Symbolics.jl`] to using #link("https://juliapackages.com/p/Zygote")[`Zygote.jl`] to differentiate code.
 
-In our case, we’re not doing anything fancy — just building vectors with mathematical functions line `sin` — so all we’ll need is an implementation of dual numbers.
+In our case, we're not doing anything fancy — just building vectors with mathematical functions line `sin` — so all we'll need is an implementation of dual numbers.
 
 == Dual numbers
 
@@ -93,13 +93,13 @@ If you extend the reals by adding an element $ε ≠ 0$ satisfying $ε^2 = 0$, t
 $
   f(x + ε) = f(x) + ε f'(x)
 $
-by Taylor’s theorem.
+by Taylor's theorem.
 The function value is the real part, and its derivative is the coefficient of $ε$. If we denote this coefficient by $⟨quad⟩_ε$, we have our dual number derivative formula:
 $
   f'(x) = angled(f(x + ε))_ε
 $
 To do this in Julia, the #link("https://juliapackages.com/p/TaylorSeries")[`TaylorSeries.jl`] package is sufficient.
-Here’s computing the derivative of $sin(x)$ at $x = pi/3$:
+Here's computing the derivative of $sin(x)$ at $x = pi/3$:
 
 ```julia
 julia> using TaylorSeries
@@ -171,7 +171,7 @@ $
   )
 $
 
-Here’s a literal Julia implementation:
+Here's a literal Julia implementation:
 
 ```julia
 function ∂(f, x::AbstractArray)
@@ -181,7 +181,7 @@ function ∂(f, x::AbstractArray)
 end
 ```
 
-Let’s test it on our sphere embedding map `f`.
+Let's test it on our sphere embedding map `f`.
 
 ```julia
 julia> ∂(f, [π/2, 0])
@@ -293,7 +293,7 @@ end
 ```
 
 This should give us the metric on the sphere.
-Let’s sanity check it again:
+Let's sanity check it again:
 
 ```julia
 julia> g_sphere((θ, ϕ)) = [
@@ -392,7 +392,7 @@ end
 #aside[
   _Solving ODEs in Julia._
 
-  Here’s an example of numerically solving the geodesic equation with some initial data.
+  Here's an example of numerically solving the geodesic equation with some initial data.
   Take our sphere, and imagine launching a particle eastward along the equator, $θ = π/2$.
 
   ```julia
@@ -431,7 +431,7 @@ end
 
 == Interesting example: Doughnut geodesics
 
-Let’s combine what we have so far to compute some geodesic curves on a torus.
+Let's combine what we have so far to compute some geodesic curves on a torus.
 
 The code is presented as a script for readability, but if you wanted to use it, you should pack everything into functions to avoid global variables and use something like #link("https://juliapackages.com/p/Revise")[`Revise.jl`].
 
@@ -527,8 +527,8 @@ lines!(path, linewidth=3, color=:black)
 ```
 ]
 
-#metadata(asset("/img/torus-geodesic.png", read("torus-geodesic.png", encoding: none)))
-#figure(html.img(src: "/img/torus-geodesic.png"))
+#metadata(asset("/media/torus-geodesic.png", read("torus-geodesic.png", encoding: none)))
+#figure(html.img(src: "/media/torus-geodesic.png"))
 
 = Step 4: Parallel transport
 

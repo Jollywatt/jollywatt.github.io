@@ -5,9 +5,9 @@
   ]
 ))
 
-#title[Van Gogh's Starry Night as a phase portraits]
+#title[Van Gogh's _Starry Night_ as a phase portrait]
 
-The Dynamical Systems course I took had a competition to invent a dynamical system with the most creative phase portrait.
+The Dynamical Systems course I took (#link("https://courseinfo.canterbury.ac.nz/GetCourseDetails.aspx?course=MATH363")[MATH363]) had a competition to invent a dynamical system with the most creative phase portrait.
 
 Here's my entry: the Starry Night system.
 

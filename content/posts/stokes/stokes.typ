@@ -2,11 +2,11 @@
   date: datetime(year: 2020, month: 03, day: 17),
   categories: ("interactive",),
   blurb: [
-    // Interactively tabulate the special cases of Stokes’ theorem, $integral_Omega dif omega = integral_(partial Omega) omega$.
+    Interactive showcase of the special cases of Stokes' theorem, $integral_Omega dif omega = integral_(partial Omega) omega$.
   ],
 ))
 
-#title[The Many Faces of Stokes’ Theorem]
+#title[The Many Faces of Stokes' Theorem]
 
 The #link("https://en.wikipedia.org/wiki/Stokes%27_theorem")[generalised Stokes theorem] has the remarkably compact form
 $
@@ -14,7 +14,7 @@ $
 $
 where $Omega$ is a $k$-dimensional #link("https://en.wikipedia.org/wiki/Manifold#Manifold_with_boundary")[manifold with boundary] $partial Omega$, and $omega$ is a $(k - 1)$-form on $Omega$.
 
-While it may seem alien at first when expressed in full generality, you may recognise some of the many special cases of Stokes’ theorem, especially from vector calculus.
+While it may seem alien at first when expressed in full generality, you may recognise some of the many special cases of Stokes' theorem, especially from vector calculus.
 
 = Special cases of Stokes' theorem
 

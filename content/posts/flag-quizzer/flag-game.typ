@@ -10,10 +10,10 @@
 
 Learn world flags by getting quizzed!
 
-Flags are chosen randomly weighted by the country’s population.
-Flags you get right in one try are _memorized_ and won’t be shown again.
+Flags are chosen randomly weighted by the country's population.
+Flags you get right in one try are _memorized_ and won't be shown again.
 
-You can type `enter` to submit your xanswer, and type `?` to show the flag’s country name.
+You can type `enter` to submit your xanswer, and type `?` to show the flag's country name.
 
 #link("/flag-quizzer")[_Fullscreen version_]
 
