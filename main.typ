@@ -45,10 +45,6 @@
   })
 }
 
-#document("index.html", template[
-  welcome
-]) <home>
-
 
 #document("art.html", template(include "content/art/art.typ")) <art>
 #document("software.html", template(include "content/software.typ")) <software>
@@ -91,46 +87,54 @@
     .rev()
 )
 
-#document("blog/index.html", {
-  html.style(
-    ```css
-    .cover-image {
-      max-height: 200px;
-      overflow-y: hidden;
-      border-radius: var(--rounded);
-      box-shadow: 0 4px 8px #0002;
+#let show-posts(posts) = {
+  posts.map(meta => {
+    html.div(class: "post-meta", {
+      meta.date.display("[day] [month repr:long] [year]")
+
+      meta.at("categories", default: ()).map(tag => [
+        #sym.bullet #link(label(tag), tag)
+      ]).join()
+    })
+
+    heading(link(meta.id, meta.title), level: 2)
+
+    if "image" in meta {
+      html.div(class: "cover-image", {
+        link(meta.id, html.img(src: meta.image))
+      })
     }
-    ```.text,
-  )
+
+    if "blurb" in meta {
+      meta.blurb
+    } else {
+      panic("missing blurb for " + meta.path)
+    }
+  })
+  .join(html.hr())
+}
+
+#document("index.html", {
   template[
-
-    #context (
-      all-posts()
-        .map(meta => {
-          html.div(class: "post-meta", {
-            meta.date.display("[day] [month repr:long] [year]")
-
-            meta.at("categories", default: ()).map(tag => [ #sym.bullet #tag]).join()
-          })
-
-          heading(link(meta.id, meta.title))
-
-          if "image" in meta {
-            html.div(class: "cover-image", {
-              link(meta.id, html.img(src: meta.image))
-            })
-          }
-
-          if "blurb" in meta {
-            meta.blurb
-          } else {
-            panic("missing blurb for " + meta.path)
-          }
-        })
-        .join(html.hr())
-    )
+    #context show-posts(all-posts())
   ]
 }) <blog>
+
+#let categories = (
+  maths: [Mathematical posts],
+  interactive: [Interactive things],
+  research: [Research and academic],
+  physics: [Physics],
+)
+#for (category, heading) in categories [
+  #document("blog/" + category + ".html", {
+    template[
+      = #heading
+
+      #context show-posts(all-posts().filter(post => category in post.categories))
+    ]
+  }) #label(category)
+]
 
 
 

@@ -156,3 +156,12 @@ pre {
     margin-top: 0;
   }
 }
+
+/* Blog */
+
+.cover-image {
+  max-height: 200px;
+  overflow-y: hidden;
+  border-radius: var(--rounded);
+  box-shadow: 0 4px 8px #0002;
+}
