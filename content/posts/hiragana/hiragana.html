@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div id="question">あ</div>
+    <style>
+      body {
+        display: flex;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        font-size: 25vh;
+        background: oklch(40% 15% 200deg);
+        color: #fee;
+        text-shadow: 0 3px 5px #0004;
+      }
+    </style>
+    <script>
+    const colors = {
+      k: 'oklch(40% 15% 80deg)',
+      g: 'oklch(40% 15% 80deg)',
+      s: 'oklch(40% 15% 220deg)',
+      z: 'oklch(40% 15% 220deg)',
+      t: 'oklch(40% 15% 300deg)',
+      d: 'oklch(40% 15% 300deg)',
+      n: 'oklch(40% 15% 160deg)',
+      h: 'oklch(40% 15% 80deg)',
+      b: 'oklch(40% 15% 80deg)',
+      p: 'oklch(40% 15% 80deg)',
+      m: 'oklch(40% 15% 350deg)',
+      y: 'oklch(40% 15% 80deg)',
+      r: 'oklch(40% 15% 30deg)',
+      w: 'oklch(40% 15% 200deg)',
+    }
+
+    var input = '';
+
+
+      const questionEl = document.getElementById('question');
+
+      document.addEventListener("keydown", e => {
+        if (e.code == "Space") {
+          speak(questionEl.textContent);
+          return;
+        }
+        if (e.key.length == 1) input += e.key.toLowerCase();
+        else return;
+
+        const character = questionEl.textContent;
+        const [romaji, freq, percent] = stats[character];
+        const correct = input.endsWith(romaji);
+
+        if (correct) {
+          input = '';
+          newQuestion();
+        } else if (input.length >= 8) {
+          alert(`${character}, ‘${romaji}’`);
+          input = '';
+        }
+      })
+
+      function newQuestion() {
+        const targetPercent = Math.random()*100;
+        var acc = 0;
+        for (let hiragana in stats) {
+          const [romaji, freq, percent] = stats[hiragana];
+          acc += percent;
+          if (acc >= targetPercent) {
+            questionEl.textContent = hiragana;
+            const color = colors[romaji.slice(0,1)] || null;
+            document.body.style.background = color;
+            break;
+          }
+        }
+      }
+
+      function getVoice() {
+        const japaneseVoices = window.speechSynthesis.getVoices()
+          .filter(voice => voice.lang == "ja-JP");
+        return japaneseVoices[Math.floor(Math.random()*japaneseVoices.length)]
+      }
+
+      function speak(text) {
+        var msg = new SpeechSynthesisUtterance();
+        msg.voice = getVoice();
+        msg.volume = 0.8; // From 0 to 1
+        msg.rate = 0.7; // From 0.1 to 10
+        msg.text = text;
+        speechSynthesis.speak(msg);
+      }
+    </script>
+  </body>
+</html>
+
+<script>
+  const stats = {
+    あ: ["a", 1076, 1.35922],
+    い: ["i", 5943, 7.5073],
+    う: ["u", 3551, 4.48568],
+    え: ["e", 713, 0.900673],
+    お: ["o", 1111, 1.40343],
+    か: ["ka", 3590, 4.53495],
+    き: ["ki", 1433, 1.81019],
+    く: ["ku", 2011, 2.54033],
+    け: ["ke", 878, 1.1091],
+    こ: ["ko", 1938, 2.44811],
+    さ: ["sa", 1192, 1.50575],
+    し: ["shi", 2828, 3.57238],
+    す: ["su", 1420, 1.79377],
+    せ: ["se", 826, 1.04342],
+    そ: ["so", 662, 0.836249],
+    た: ["ta", 3489, 4.40736],
+    ち: ["chi", 761, 0.961308],
+    つ: ["tsu", 1386, 1.75082],
+    て: ["te", 2008, 2.53654],
+    と: ["to", 1631, 2.06031],
+    な: ["na", 1856, 2.34453],
+    に: ["ni", 2388, 3.01656],
+    ぬ: ["nu", 54, 0.0682137],
+    ね: ["ne", 350, 0.442126],
+    の: ["no", 3334, 4.21156],
+    は: ["ha", 3331, 4.20777],
+    ひ: ["hi", 461, 0.582343],
+    ふ: ["fu", 342, 0.43202],
+    へ: ["he", 186, 0.234958],
+    ほ: ["ho", 434, 0.548236],
+    ま: ["ma", 1500, 1.89482],
+    み: ["mi", 576, 0.727613],
+    む: ["mu", 227, 0.28675],
+    め: ["me", 535, 0.675821],
+    も: ["mo", 869, 1.09774],
+    や: ["ya", 416, 0.525498],
+    ゆ: ["yu", 215, 0.271592],
+    よ: ["yo", 590, 0.745298],
+    ら: ["ra", 994, 1.25564],
+    り: ["ri", 823, 1.03963],
+    る: ["ru", 1693, 2.13863],
+    れ: ["re", 1415, 1.78745],
+    ろ: ["ro", 321, 0.405492],
+    わ: ["wa", 817, 1.03205],
+    を: ["wo", 2012, 2.54159],
+    ん: ["n", 3682, 4.65116],
+    が: ["ga", 1980, 2.50117],
+    ぎ: ["gi", 180, 0.227379],
+    ぐ: ["gu", 80, 0.101057],
+    げ: ["ge", 237, 0.299382],
+    ご: ["go", 350, 0.442126],
+    ざ: ["za", 120, 0.151586],
+    じ: ["ji", 718, 0.906989],
+    ず: ["zu", 172, 0.217273],
+    ぜ: ["ze", 117, 0.147796],
+    ぞ: ["zo", 106, 0.133901],
+    だ: ["da", 1428, 1.80387],
+    ぢ: ["di", 1, 0.00126322],
+    づ: ["du", 47, 0.0593712],
+    で: ["de", 1463, 1.84809],
+    ど: ["do", 466, 0.588659],
+    ば: ["ba", 289, 0.36507],
+    び: ["bi", 181, 0.228642],
+    ぶ: ["bu", 258, 0.32591],
+    べ: ["be", 217, 0.274118],
+    ぼ: ["bo", 110, 0.138954],
+    ぱ: ["pa", 57, 0.0720033],
+    ぴ: ["pi", 9, 0.0113689],
+    ぷ: ["pu", 18, 0.0227379],
+    ぺ: ["pe", 5, 0.00631608],
+    ぽ: ["po", 22, 0.0277908],
+    きゃ: ["kya", 31, 0.0391597],
+    きゅ: ["kyu", 96, 0.121269],
+    きょ: ["kyo", 264, 0.333489],
+    しゃ: ["sha", 266, 0.336016],
+    しゅ: ["shu", 273, 0.344858],
+    しょ: ["sho", 416, 0.525498],
+    ちゃ: ["cha", 31, 0.0391597],
+    ちゅ: ["chu", 91, 0.114953],
+    ちょ: ["cho", 119, 0.150323],
+    にゃ: ["nya", 0, 0],
+    にゅ: ["nyu", 46, 0.058108],
+    にょ: ["nyo", 1, 0.00126322],
+    ひゃ: ["hya", 9, 0.0113689],
+    ひゅ: ["hyu", 0, 0],
+    ひょ: ["hyo", 25, 0.0315804],
+    みゃ: ["mya", 2, 0.00252643],
+    みゅ: ["myu", 0, 0],
+    みょ: ["myo", 4, 0.00505287],
+    りゃ: ["rya", 3, 0.00378965],
+    りゅ: ["ryu", 17, 0.0214747],
+    りょ: ["ryo", 201, 0.253906],
+    ぎゃ: ["gya", 3, 0.00378965],
+    ぎゅ: ["gyu", 4, 0.00505287],
+    ぎょ: ["gyo", 75, 0.0947412],
+    じゃ: ["ja", 25, 0.0315804],
+    じゅ: ["ju", 167, 0.210957],
+    じょ: ["jo", 464, 0.586132],
+    びゃ: ["bya", 1, 0.00126322],
+    びゅ: ["byu", 0, 0],
+    びょ: ["byo", 22, 0.0277908],
+    ぴゃ: ["pya", 0, 0],
+    ぴゅ: ["pyu", 0, 0],
+    ぴょ: ["pyo", 8, 0.0101057],
+  };
+</script>
