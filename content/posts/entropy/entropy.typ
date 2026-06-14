@@ -8,7 +8,7 @@
 ))
 
 #let img(src, style) = {
-  let dest = "/assets/" + src
+  let dest = "/media/" + src
   metadata((asset: path(src), to: dest))
   html.img(src: dest, style: style.text)
 }

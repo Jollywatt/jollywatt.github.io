@@ -91,7 +91,7 @@ body {
 ]
 
 #let scr(path) = {
-  let src = "/Gatherings Lightshow/" + path
+  let src = "/Gatherings-Lightshow/" + path
   metadata(asset(src, read(path)))
   html.script(src: src)
 }

@@ -2,7 +2,7 @@ A mixture of my digital art, photography, and drawing.
 
 
 #let img(path, ..args) = {
-  let src = "art/" + path
+  let src = "/media/" + path
   metadata(asset(src, read(path, encoding: none)))
   html.img(src: src, ..args)
 }
@@ -71,7 +71,7 @@ flex-wrap: wrap;
 "3.church.js",
 "4.crescendo.js",
 "5.dessert.js") {
-  html.script(src: "Gatherings Lightshow/" + src)
+  html.script(src: "Gatherings-Lightshow/" + src)
 }
 
 

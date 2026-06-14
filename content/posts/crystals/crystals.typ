@@ -10,7 +10,7 @@
 
 #metadata((
   asset: path("2019.Crystal-Band-Structures-CP2K.pdf"),
-  to: "pdf/2019.Crystal-Band-Structures-CP2K.pdf",
+  to: "/media/2019.Crystal-Band-Structures-CP2K.pdf",
   label: <crystal-pdf>,
 ))
 

@@ -9,7 +9,7 @@
 
 My master's thesis in mathematical physics completed in March 2022 at Victoria University of Wellington, centring around geometric algebra and its applications to special relativity.
 
-#metadata[#asset("2022.Geometric-Algebra-for-Special-Relativity-and-Manifold-Geometry.pdf", read("msc-thesis.pdf", encoding: none)) <msc-thesis-pdf>]
+#metadata[#asset("/media/2022.Geometric-Algebra-for-Special-Relativity-and-Manifold-Geometry.pdf", read("msc-thesis.pdf", encoding: none)) <msc-thesis-pdf>]
 
 #emph(link(<msc-thesis-pdf>)[Full PDF.])
 

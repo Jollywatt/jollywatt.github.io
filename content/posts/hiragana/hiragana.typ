@@ -1,5 +1,5 @@
 #metadata((
-  date: datetime(year: 2026, month: 06, day: 15),
+  date: datetime(year: 2026, month: 06, day: 14),
   categories: ("interactive",),
   blurb: [
     Ultra-minimal Hiragana memory trainer.

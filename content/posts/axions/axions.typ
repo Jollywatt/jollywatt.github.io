@@ -10,7 +10,7 @@
 
 #metadata((
   asset: path("2020.Strong-CP-Problem-and-Axions.pdf"),
-  to: "pdf/2020.Strong-CP-Problem-and-Axions.pdf",
+  to: "/media/2020.Strong-CP-Problem-and-Axions.pdf",
   label: <axions-pdf>,
 ))
 

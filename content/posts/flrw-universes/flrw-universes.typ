@@ -10,12 +10,12 @@
 
 #metadata((
   asset: path("2019.Asymptotic-Structure-of-FLRW.pdf"),
-  to: "pdf/2019.Asymptotic-Structure-of-FLRW.pdf",
+  to: "/media/2019.Asymptotic-Structure-of-FLRW.pdf",
   label: <honors-pdf>,
 ))
 #metadata((
   asset: path("2019.MAPH480-Poster.pdf"),
-  to: "pdf/2019.MAPH480-Poster.pdf",
+  to: "/media/2019.MAPH480-Poster.pdf",
   label: <honors-poster>,
 ))
 

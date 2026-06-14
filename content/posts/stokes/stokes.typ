@@ -28,7 +28,7 @@ Adjust the parameters below or select a preset to see the associated Stokes theo
   "physics-macros.min.js",
   "main.js",
   "exterior-algebra.js",
-  "index.html",
+  "stokes.html",
 ) {
   metadata(asset("stokes/" + it, read(it)))
 }

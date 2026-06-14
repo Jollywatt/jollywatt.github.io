@@ -10,7 +10,7 @@
 
 #metadata((
   asset: path("2018.Freudenreich-Galactic-Bar-and-Disk.pdf"),
-  to: "pdf/2018.Freudenreich-Galactic-Bar-and-Disk.pdf",
+  to: "/media/2018.Freudenreich-Galactic-Bar-and-Disk.pdf",
   label: <galaxy-pdf>,
 ))
 
