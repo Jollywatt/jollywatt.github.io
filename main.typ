@@ -26,8 +26,10 @@
     html.nav({
       link(<about>)[About]
       link(<blog>)[Blog]
-      // link("?")[Research]
-      link(<software>)[Software]
+      link(<research>)[Research]
+      link("/notes/")[Notes]
+      link(<interactive>)[Interactive]
+      // link(<software>)[Software]
       link(<art>)[Art]
       link(<cv>)[Resumé]
     })
@@ -40,7 +42,7 @@
   html.footer({
     html.hr()
     [
-      Made entirely with #link("https://typst.app")[Typst]
+      Site made entirely with #link("https://typst.app")[Typst]
     ]
   })
 }

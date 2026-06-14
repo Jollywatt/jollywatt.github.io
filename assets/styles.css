@@ -96,6 +96,11 @@ main a {
   }
 }
 
+p a {
+  text-decoration: underline;
+  text-decoration-color: var(--light-gray);
+}
+
 p:first-child {
   margin-top: 0;
 }
