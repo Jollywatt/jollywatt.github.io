@@ -25,6 +25,10 @@ jobs:
 
       - run: typst --version
 
+      - uses: jim60105/action-install-google-fonts@v2
+        with:
+          fonts: 'Montserrat'
+
       - run: >
           typst compile main.typ
           --features bundle,html
