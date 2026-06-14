@@ -59,7 +59,7 @@
 )
 
 
-#set text(font: "SF Pro Text", size: 10.5pt, fallback: false)
+#set text(font: "Montserrat", size: 10.5pt, fallback: false)
 #show heading: set text(weight: 400, size: .8em)
 #show heading.where(level: 1): strong
 
@@ -78,7 +78,7 @@
 		[Cambridge, UK],
 		// [PhD Candidate],
 	).intersperse(h(1fr)).join()
-).join(), width: 98mm)
+).join(), width: 105mm)
 
 
 #let sections = (
@@ -91,33 +91,33 @@ skills: [
 	]
 
 	#dot[== Open source][
+		#link("https://github.com/Jollywatt/typst-fletcher")[fletcher] (Typst diagramming package)
 		#link("https://github.com/Jollywatt/GeometricAlgebra.jl")[GeometricAlgebra.jl] (Julia),
-		#link("https://github.com/Jollywatt/typst-fletcher")[fletcher] (Typst)
 	]
 	#dot[== Languages][English, French (CEFR B1)]
 	#dot[== Hobbies][Piano, modern jive dance]
 	#dot[== Design][Scientific typesetting, graphic design, web design]
 
-	#dot[== Code][Julia, Python, R, Git, Unix, Node, React JS]
+	#dot[== Code][Julia, Python, R, Jujutsu VCS / Git, Typst, Unix, Node, React]
 ],
 
 edu: [
 
 	#dot[= Education][]//[_Maintained A#super[+] GPA across all qualifications_]
 
-	#dot[== 2024-present][*PhD in Engineering*, #where[University of Cambridge]]
+	#dot[== 2024-present][*PhD in Engineering*, #where[University of Cambridge], UK]
 
 	Applications of geometric algebra in engineering, supervisor Prof.~Joan Lasenby.
 
-	#dot[== 2021--2022][*Master of Science with Distinction*, #where[Victoria University of Wellington]]
+	#dot[== 2021--2022][*Master of Science with Distinction*, #where[Victoria University of Wellington], NZ]
 
 	Thesis #link("https://openaccess.wgtn.ac.nz/articles/thesis/Geometric_Algebra_for_Special_Relativity_and_Manifold_Geometry/21185911")[Geometric Algebra for Special Relativity and Manifold Geometry] supervised by Dr.~Matt Visser, GPA 9/9.
 
-	#dot[== 2020][*Postgraduate Certificate in Science*, #where[University of Canterbury]]
+	#dot[== 2020][*Postgraduate Certificate in Science*, #where[University of Canterbury], NZ]
 
 	Literature review #link("https://jollywatt.github.io/assets/pdf/2020.Strong-CP-Problem-and-Axions.pdf")[An Overview of the Strong _CP_ Problem and Axion Cosmology] supervised by Dr.~Jenni Adams, GPA 9/9.
 
-	#dot[== 2017--2019][*Bachelor of Science with First Class Honours*, #where[University of Canterbury]]
+	#dot[== 2017--2019][*Bachelor of Science with First Class Honours*, #where[University of Canterbury], NZ]
 
 	Honours project #link("https://jollywatt.github.io/assets/pdf/2019.Asymptotic-Structure-of-FLRW.pdf")[Asymptotic Structure and Symmetries of FLRW Universes] supervised by Dr.~David Wiltshire, GPA 9/9.
 	Included summer research projects:
@@ -189,8 +189,7 @@ awards: [
 )
 
 #par(justify: true)[
-Second-year PhD student in information engineering at the University of Cambridge, from New Zealand.
-I am especially interested on applications of geometric algebra in physics, inference, robotics, and computing.
+Engineering PhD student at the University of Cambridge, interested in geometric algebra, statistical inference and computer graphics.
 ]
 
 #sections.edu
