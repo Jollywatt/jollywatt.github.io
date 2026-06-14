@@ -4,7 +4,6 @@
     My favourite characterisation of (information) entropy in terms of a natural _composition law_, complete with a uniqueness proof.
   ],
   categories: ("maths",),
-  permalink: "entropy",
 ))
 
 #let img(src, style) = {

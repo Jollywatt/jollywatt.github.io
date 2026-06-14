@@ -4,7 +4,6 @@
   blurb: [
     My Dynamical Systems course had a competition to make the most creative _phase portrait_...
   ],
-  permalink: "van-gogh-phase-portrait",
 ))
 
 #title[Van Gogh's _Starry Night_ as a phase portrait]

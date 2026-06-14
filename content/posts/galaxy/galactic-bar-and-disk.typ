@@ -4,7 +4,6 @@
   blurb: [
     Cosmology summer project reproducing and visualising an empirical model of the galactic bar and disk.
   ],
-  permalink: "model-of-galactic-bar-and-disk",
   categories: ("research", "physics"),
 ))
 

@@ -14,8 +14,8 @@ Pressing `space` will use a random local text-to-speech service to utter the cha
 
 #link("/hiragana.html")[Fullscreen version.]
 
-#metadata(asset("/hiragana.html", read("hiragana.html")))
-#html.iframe(src: "/hiragana.html", style: ```css
+#metadata(asset("/hiragana-quiz.html", read("hiragana-quiz.html")))
+#html.iframe(src: "/hiragana-quiz.html", style: ```css
   width: 100%;
   height: 40vh;
   border: none;

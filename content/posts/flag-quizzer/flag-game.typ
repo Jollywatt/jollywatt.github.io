@@ -4,7 +4,6 @@
   blurb: [
     A game to teach you world flags. 🇨🇳🇮🇳🇺🇸🇮🇩🇵🇰🇧🇷🇳🇬🇧🇩⋯
   ],
-  permalink: "flag-game",
 ))
 
 #title[World Flags Quizzer]

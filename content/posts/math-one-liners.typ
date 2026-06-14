@@ -5,7 +5,6 @@
   ],
   image: "/assets/math-collage.png",
   categories: ("maths", "interactive"),
-  permalink: "math-one-liners",
 ))
 
 #title[Mathematical One-liners]

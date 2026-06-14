@@ -4,7 +4,6 @@
   blurb: [
     A minimal example of a connection on the plane which exhibits torsion.
   ],
-  permalink: "simple-torsion-example",
 ))
 
 #title[A Simple Example of a Connection With Torsion]

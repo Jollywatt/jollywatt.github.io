@@ -1,6 +1,5 @@
 #metadata((
   date: datetime(year: 2023, month: 08, day: 19),
-  permalink: "julia-general-relativity",
   categories: ("maths",),
   blurb: [
     A minimal implementation of differential geometry calculations in Julia.

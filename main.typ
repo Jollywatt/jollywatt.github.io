@@ -48,34 +48,37 @@
 }
 
 
+/* static pages */
+
+
 #document("art.html", template(include "content/art/art.typ")) <art>
 #document("software.html", template(include "content/software.typ")) <software>
-
-
 #document("about.html", template(include "content/about.typ")) <about>
 #document("resume.pdf", include "content/cv.typ") <cv>
+
+
+
+/* blog pages */
 
 #let post-meta(id) = {
    let els = query(selector(metadata).within(id))
    if els.len() == 0 { return (
      date: datetime.today(),
-     permalink: "temp",
+     permalink: "temp-" + str(id),
      blurb: none,
    ) }
    els.first().value
 }
 
+#let permalinks = yaml("permalinks.yaml")
 #let post-info = ()
-#for path in {
-glob("/content/**/lightshow.typ")
-glob("/content/**/msc-thesis.typ")
-glob("content/posts/**/*.typ").slice(0,6)
-} {
+#for path in glob("content/posts/**/*.typ") {
   let name = path.split("/").last().split(".").first()
   let id = label(name)
+  let permalink = permalinks.at(name, default: name)
   context {
     let meta = post-meta(id)
-    let doc = document(meta.permalink + ".html", template({
+    let doc = document(permalink + "/index.html", template({
       html.div(class: "post-meta", {
         meta.date.display("[day] [month repr:long] [year]")
       })
@@ -83,8 +86,10 @@ glob("content/posts/**/*.typ").slice(0,6)
     }))
     [#doc #id]
   }
-  post-info.push((id: id, path: path))
+  post-info.push((name: name, id: id, path: path))
 }
+
+
 
 #let all-posts() = (
   post-info
@@ -103,6 +108,7 @@ glob("content/posts/**/*.typ").slice(0,6)
     .sorted(key: meta => meta.date)
     .rev()
 )
+
 
 #let show-posts(posts) = {
   posts.map(meta => {

@@ -5,7 +5,6 @@
     Literature review supervised by Dr. Jenni Adams at the University of Canterbury.
   ],
   categories: ("research", "physics"),
-  permalink: "axion-literature-review",
 ))
 
 #metadata((
