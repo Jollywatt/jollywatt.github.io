@@ -1,0 +1,44 @@
+name: Build documentation site
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install typst
+        uses: baptiste0928/cargo-install@v3
+        with:
+          crate: typst-cli
+          git: https://github.com/Jollywatt/typst.git
+          branch: supertypst
+
+      - run: typst --version
+
+      - run: >
+          typst compile main.typ
+          --features bundle,html
+          --format bundle
+          public/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
